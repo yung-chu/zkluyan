@@ -1,0 +1,66 @@
+﻿@model Zkly.Common.SMS.SmsResult
+
+@if (!Model.Success)
+{
+    <div class="alert alert-danger" role="alert">@Model.ErrorMessage</div>
+}
+<dl class="dl-horizontal dl-md">
+    <dt>结果:</dt>
+    <dd>
+        @Model.Message
+    </dd>
+    <dt>Code:</dt>
+    <dd>
+        @Model.Code
+    </dd>
+    @if (!string.IsNullOrEmpty(Model.SmsId))
+    {
+        <dt>SMS-ID:</dt>
+        <dd>
+            @Model.SmsId
+        </dd>
+    }
+    @if (!string.IsNullOrEmpty(Model.Balance))
+    {
+        <dt>剩余短信数:</dt>
+        <dd>
+            @Model.Balance
+        </dd>
+    }
+    @if (!string.IsNullOrEmpty(Model.DailySubmited))
+    {
+        <dt>今日发送数:</dt>
+        <dd>
+            @Model.DailySubmited
+        </dd>
+    }
+    @if (!string.IsNullOrEmpty(Model.SendingNumber))
+    {
+        <dt>正在发送数:</dt>
+        <dd>
+            @Model.SendingNumber
+        </dd>
+    }
+    @if (!string.IsNullOrEmpty(Model.SuccessNumber))
+    {
+        <dt>成功发送数:</dt>
+        <dd>
+            @Model.SuccessNumber
+        </dd>
+    }
+    @if (!string.IsNullOrEmpty(Model.WaitNumber))
+    {
+        <dt>等待发送数:</dt>
+        <dd>
+            @Model.WaitNumber
+        </dd>
+    }
+    @if (!string.IsNullOrEmpty(Model.FailNumber))
+    {
+        <dt>失败发送数:</dt>
+        <dd>
+            @Model.FailNumber
+        </dd>
+    }
+</dl>
+

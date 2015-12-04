@@ -1,0 +1,367 @@
+﻿@using Zkly.Common.Dictionary
+@model Zkly.DAL.Models.InvestSecondAuditInfo
+
+<div id="invest-second-audit-panel" class="panel panel-default first-audit-form">
+    <div class="panel-body">
+
+        <div class="form-group">
+            <div class="form-label">公司地址</div>
+            <div class="form-input underline">
+                <span>@Model.Address</span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="form-label">公司注册资本</div>
+            <div class="form-input underline">
+                <span>@(Model.RegisteredCapital > 0 ? Model.RegisteredCapital + "万元" : "")</span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="form-label">公司所处阶段</div>
+            <div class="form-input underline">
+                @{
+                    string companyStage = string.Empty;
+                    if (Model.CompanyStage == 0)
+                    {
+                        companyStage = "创业期";
+                    }
+                    else if (Model.CompanyStage == 1)
+                    {
+                        companyStage = "发展期";
+                    }
+                    else
+                    {
+                        companyStage = "成熟期";
+                    }
+
+                }
+                <span>@companyStage</span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="form-label">股权结构及主要管理者简介</div>
+            <div class="form-input underline">
+                <span>@Model.Introduction</span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="form-label">项目来源</div>
+            <div class="form-input underline">
+                @{
+                   //  0 --63计划  1 --科技支撑计划  2-- 国家部委计划  3--地方政府计划  4--国际合作 5--企业自主研发  6--其他
+                    string projectSource;
+                    switch (Model.ProjectSource)
+                    {
+                        case "0":
+                            projectSource = "63计划";
+                            break;
+                        case "1":
+                            projectSource = "科技支撑计划";
+                            break;
+                        case "2":
+                            projectSource = "国家部委计划";
+                            break;
+                        case "3":
+                            projectSource = "地方政府计划";
+                            break;
+                        case "4":
+                            projectSource = "国际合作";
+                            break;
+                        case "5":
+                            projectSource = "企业自主研发";
+                            break;
+                        default:
+                            projectSource = Model.ProjectSource;
+                            break;
+                    }
+     
+                }
+
+                <span>@projectSource</span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="form-label">项目阶段</div>
+            <div class="form-input underline">
+                @{
+                    string projectStage = string.Empty;
+
+                    if (Model.ProjectStage == "0")
+                    {
+                        projectStage = "实验室研究成果";
+                    }
+                    else if (Model.ProjectStage == "1")
+                    {
+                        projectStage = "中试成果";
+                    }
+                    else if(Model.ProjectStage=="2")
+                    {
+                        projectStage = "小批量生产成果";
+                    }
+                    else
+                    {
+                        projectStage = "已投入市场";
+                    }
+
+                }
+                <span>@projectStage</span>
+            </div>
+
+        </div>
+
+
+        <div class="form-group">
+            <div class="form-label">项目介绍</div>
+            <div class="form-input underline">
+                <span>@Model.ProjectIntroduction</span>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="form-label">公司劣势</div>
+            <div class="form-input underline">
+                <span>@Model.Inferiority</span>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="form-label">是否有知识产权</div>
+
+            @{
+                if (Model.IsHasIPR)
+                {
+                    <div class="form-input">
+                        <table class="table table-bordered" id="showIsHasIPR">
+                            <tr>
+                                <td>专利状况</td>
+                                <td colspan="4">
+                                    @{
+                                        string patentStatus = string.Empty;
+
+                                        if (Model.PatentStatus == 0)
+                                        {
+                                            patentStatus = "未申请专利";
+                                        }
+
+                                        if (Model.PatentStatus == 1 || Model.PatentStatus == 2)//已受理专利 ,已授权专利
+                                        {
+                                            patentStatus = Model.PatentNumber;
+                                        }
+
+                                    }
+                                    <span>@patentStatus</span>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td>知识产权形式</td>
+                                @{
+                                        //0--发明专利 1--实用新型专利 2--外观设计专利 3--软件著作权 4其他
+                                        string iPRform;
+                                        switch (Model.IprForm)
+                                        {
+                                            case "0":
+                                                iPRform = "发明专利";
+                                                break;
+                                            case "1":
+                                                iPRform = "实用新型专利";
+                                                break;
+                                            case "2":
+                                                iPRform = "外观设计专利";
+                                                break;
+                                            case "3":
+                                                iPRform = "软件著作权";
+                                                break;
+                                            default:
+                                                iPRform = Model.IprForm;
+                                                break;
+                                        }
+
+                                }
+                                <td colspan="4">
+                                    @iPRform
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>知识产权权属</td>
+                                <td>专利发明人</td>
+                                <td>
+                                    @Model.PatentInventor
+                                </td>
+                                <td>专利所有权人</td>
+                                <td>
+                                    @Model.PatentOwner
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                }
+                else
+                {
+
+                    <div class="form-input underline">
+                        <span>否</span>
+                    </div>
+
+                }
+            }
+        </div>
+
+
+
+        <div class="form-group">
+            <div class="form-label">融资后的战略规划</div>
+            <div class="form-input underline">
+                <span>@Model.Plan</span>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="form-label">目前存在的问题风险及对策</div>
+            <div class="form-input underline">
+                <span>@Model.RiskPrevention</span>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="form-label">公司债务</div>
+            <div class="form-input underline">
+                <span>@(Model.Debt ? Model.DebtAmount + "万元" : "否")</span>
+            </div>
+        </div>
+
+    </div>
+
+    <br />
+
+    <div class="panel-body">
+        <div class="form-group">
+            <div class="form-label">资信证明</div>
+
+            <div class="form-input underline ajax-file-holder" data-src="@Url.Action("ShowPartial", "File", new { investSecondAuditId = Model.Id,typeId=(int)Enums.InvestSecondAuditFilesUpload.CreditCertificate })">
+            </div>
+        </div>
+    </div>
+
+
+    <div class="panel-body">
+        <div class="form-group">
+            <div class="form-label">机构代码证</div>
+
+            <div class="form-input underline ajax-file-holder" data-src="@Url.Action("ShowPartial", "File", new { investSecondAuditId = Model.Id, typeId = (int)Enums.InvestSecondAuditFilesUpload.IdOrganization })">
+            </div>
+
+        </div>
+    </div>
+
+    <div class="panel-body">
+        <div class="form-group">
+            <div class="form-label">身份证正面</div>
+
+            <div class="form-input underline ajax-file-holder" data-src="@Url.Action("ShowPartial", "File", new { investSecondAuditId = Model.Id, typeId = (int)Enums.InvestSecondAuditFilesUpload.IdCardFront })">
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="panel-body">
+        <div class="form-group">
+            <div class="form-label">身份证反面</div>
+
+            <div class="form-input underline ajax-file-holder" data-src="@Url.Action("ShowPartial", "File", new { investSecondAuditId = Model.Id, typeId = (int)Enums.InvestSecondAuditFilesUpload.IdCardBack })">
+            </div>
+
+        </div>
+    </div>
+
+    <div class="panel-body">
+        <div class="form-group">
+            <div class="form-label">营业执照</div>
+
+            <div class="form-input underline ajax-file-holder" data-src="@Url.Action("ShowPartial", "File", new { investSecondAuditId = Model.Id, typeId = (int)Enums.InvestSecondAuditFilesUpload.BusinessLicense })">
+            </div>
+        </div>
+    </div>
+
+
+    <div class="panel-body">
+        <div class="form-group">
+            <div class="form-label">商业计划书</div>
+
+            <div class="form-input underline ajax-file-holder" data-src="@Url.Action("ShowPartial", "File", new { investSecondAuditId = Model.Id, typeId = (int)Enums.InvestSecondAuditFilesUpload.BusinessPlan })">
+            </div>
+
+        </div>
+    </div>
+
+    <div class="panel-body">
+        <div class="form-group">
+            <div class="form-label">税务登记</div>
+
+            <div class="form-input underline ajax-file-holder" data-src="@Url.Action("ShowPartial", "File", new { investSecondAuditId = Model.Id, typeId = (int)Enums.InvestSecondAuditFilesUpload.TaxRegistration })">
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="panel-body">
+        <div class="form-group">
+            <div class="form-label">项目图片</div>
+
+            <div class="form-input underline ajax-file-holder" data-src="@Url.Action("ShowPartial", "File", new { investSecondAuditId = Model.Id, typeId = (int)Enums.InvestSecondAuditFilesUpload.ProjectImage })">
+            </div>
+        </div>
+    </div>
+
+
+
+   <div class="panel-body">
+        <div class="form-group">
+            <div class="form-label">证明书</div>
+
+            <div class="form-input underline ajax-file-holder" data-src="@Url.Action("ShowPartial", "File", new { investSecondAuditId = Model.Id, typeId = (int)Enums.InvestSecondAuditFilesUpload.Manual })">
+            </div>
+        </div>
+    </div>
+
+    <div class="panel-body">
+        <div class="form-group">
+            <div class="form-label">附件1</div>
+
+            <div class="form-input underline ajax-file-holder" data-src="@Url.Action("ShowPartial", "File", new { investSecondAuditId = Model.Id, typeId = (int)Enums.InvestSecondAuditFilesUpload.Accessory1FileId })">
+            </div>
+        </div>
+    </div>
+
+    <div class="panel-body">
+        <div class="form-group">
+            <div class="form-label">附件2</div>
+
+            <div class="form-input underline ajax-file-holder" data-src="@Url.Action("ShowPartial", "File", new { investSecondAuditId = Model.Id, typeId = (int)Enums.InvestSecondAuditFilesUpload.Accessory2FileId })">
+            </div>
+        </div>
+    </div>
+
+
+    <div class="panel-body">
+        <div class="form-group">
+            <div class="form-label">附件3</div>
+
+            <div class="form-input underline ajax-file-holder" data-src="@Url.Action("ShowPartial", "File", new { investSecondAuditId = Model.Id, typeId = (int)Enums.InvestSecondAuditFilesUpload.Accessory3FileId })">
+            </div>
+        </div>
+    </div>
+
+
+</div>

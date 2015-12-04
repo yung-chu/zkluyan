@@ -1,0 +1,113 @@
+﻿@using Autofac.Core
+@using Glimpse.AspNet
+@model Zkly.DAL.Models.CapitalRoadshow
+@section styles {
+    @Styles.Render("~/css/bootstrapValidatorCss")
+    @Scripts.Render("~/js/bootstrapValidator")
+    @Scripts.Render("~/js/fileinput")
+}
+<div class="panel-body">
+    @Html.AntiForgeryToken()
+
+    @Html.HiddenFor(m => m.Id)
+
+    @Html.HiddenFor(m => m.WebinarId)
+    @Html.HiddenFor(m => m.CreateTime)
+    @Html.HiddenFor(m => m.Status)
+    @Html.HiddenFor(m => m.FileId)
+
+    <input type="hidden" value="1" id="IsChange" name="IsChange" />
+    <div class="form-group">
+        <label for="companyName" class="col-xs-2 control-label">公司名称</label>
+        <div class="col-xs-10">
+            @Html.TextBoxFor(m => m.CompanyName, new { @class = "form-control", id = "companyName", placeholder = "公司名称" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="subject" class="col-xs-2 control-label">活动主题 <span class="validation-fail">*</span></label>
+        <div class="col-xs-10">
+            @Html.TextBoxFor(m => m.Subject, new { @class = "form-control", id = "subject", placeholder = "活动主题" })
+            @Html.ValidationMessageFor(m => m.Subject, null, new { @class = "validation-fail" })
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="startDate" class="col-xs-2 control-label">活动开始时间 <span class="validation-fail">*</span></label>
+        <div class="col-xs-10">
+            @Html.TextBoxFor(m => m.StartDate, new { @class = "form-control", id = "startDate" })
+            @Html.ValidationMessageFor(m => m.StartDate, null, new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="endDate" class="col-xs-2 control-label">活动结束时间 <span class="validation-fail">*</span></label>
+        <div class="col-xs-10">
+            @Html.TextBoxFor(m => m.EndDate, new { @class = "form-control", id = "endDate" })
+            @Html.ValidationMessageFor(m => m.EndDate, null, new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="hoster" class="col-xs-2 control-label">主持人姓名</label>
+        <div class="col-xs-10">
+            @Html.TextBoxFor(m => m.Hoster, new { @class = "form-control", id = "hoster", placeholder = "主持人姓名" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="description" class="col-xs-2 control-label">活动描述</label>
+        <div class="col-xs-10">
+            @Html.TextAreaFor(m => m.Description, new { @class = "form-control", id = "description", placeholder = "活动描述" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="publicPassword" class="col-xs-2 control-label">公共密码</label>
+        <div class="col-xs-10">
+            @Html.TextBoxFor(m => m.PublicPassword, new { @class = "form-control", id = "publicPassword", placeholder = "公共密码" })
+            @Html.ValidationMessageFor(m => m.PublicPassword, null, new { @class = "validation-fail" })
+        </div>
+    </div>
+    @*<div class="form-group">
+            <label for="publicPassword" class="col-xs-2 control-label">关联的投资</label>
+            <div class="col-xs-10">
+                @Html.DropDownListFor(m => m.Id, ViewData["invests"] as IEnumerable<SelectListItem>, new { @class = "form-control", id = "invests" })
+            </div>
+        </div>*@
+
+    <div class="form-group">
+        <label for="coverFile" class="col-xs-2 control-label">活动封面</label>
+        <div class="col-xs-10">
+            @if (Model.Id > 0 && Model.FileId > 0)
+            {
+                <div id="activityCover" class="col-xs-10">
+                    <div id="activityCover" class="col-xs-8">
+                        <img src="@Url.Action("FileDisplayById", "File", new {id = Model.FileId})" style="max-width: 400px; max-height: 250px;" />
+                    </div>
+                    <div id="activityCover" class="col-xs-2">
+                        <a href="javascript:void(0)" onclick="changeActivityCover(1)">
+                            修改
+                        </a>
+                    </div>
+                </div>
+            }
+            <div id="activityUpload" class="col-xs-10 @(Model.Id > 0 && Model.FileId > 0?"hidden":"show")">
+                <div class="col-xs-8">
+                    <input id="coverFile" name="coverFile" type="file" class="file" data-show-upload="false">
+                </div>
+                <div class="col-xs-2">
+                    <a href="javascript:void(0)" onclick="changeActivityCover(0)">
+                        取消
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+
+    @Scripts.Render("~/js/capital-roadshow-Verification")
+
+}

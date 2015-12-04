@@ -1,0 +1,145 @@
+﻿@model Zkly.BLL.ViewModels.IndexViewModel
+@{
+    ViewBag.Title = "管理";
+}
+@section styles {
+    @Styles.Render("~/css/bootstrapValidatorCss")
+    @Scripts.Render("~/js/bootstrapValidator")
+}
+@if (!string.IsNullOrEmpty(ViewBag.StatusMessage))
+{
+    <div class="alert alert-success" role="alert">@ViewBag.StatusMessage</div>
+}
+<div class="panel panel-primary">
+    <div class="panel-heading">帐户设置</div>
+    <div class="panel-body">
+
+        <div>
+            <dl class="dl-horizontal dl-md">
+                <dt>邮箱:</dt>
+                <dd>
+                    @Model.Email&nbsp;[
+                    @if (Model.IsEmailConfirmed)
+                    {
+                        <span class="label label-success">已验证</span>
+                    }
+                    else
+                    {
+                        <span class="label label-danger">未验证</span>
+                        @Html.ActionLink("验证", "SendEmailConfirmationToken", "Account")
+                    }
+                    ]
+                </dd>
+                <dt>密码:</dt>
+                <dd>
+                    [
+                    @if (Model.HasPassword)
+                    {
+                        @Html.ActionLink("更改密码", "ChangePassword")
+                    }
+                    else
+                    {
+                        @Html.ActionLink("创建", "SetPassword")
+                    }
+                    ]
+                </dd>
+                @*<dt>第三方登录:</dt>
+            <dd>
+                @Model.Logins.Count [
+                @Html.ActionLink("管理", "ManageLogins") ]
+            </dd>*@
+
+                <dt>电话号码:</dt>
+                <dd>
+                    @(Model.PhoneNumber ?? "无") [
+                    @if (Model.PhoneNumber != null)
+                    {
+                        if (Model.IsPhoneNumberConfirmed)
+                        {
+                            <span class="label label-success">已验证</span>
+                        }
+                        else
+                        {
+                            <span class="label label-danger">未验证</span>
+                            @Html.ActionLink("验证", "SendPhoneConfirmationToken")
+                        }
+                        @: &nbsp;|&nbsp;
+                        @Html.ActionLink("更改", "AddPhoneNumber")
+                    }
+                    else
+                    {
+                        @Html.ActionLink("添加", "AddPhoneNumber")
+                    }
+                    ]
+                </dd>
+            </dl>
+
+        </div>
+    </div>
+</div>
+
+<div class="panel panel-primary">
+    <div class="panel-heading">安全设置</div>
+    <div class="panel-body">
+
+        <div>
+
+            <dl class="dl-horizontal dl-md">
+                <dt>登录验证:</dt>
+                <dd>
+                    <p>
+                        登录验证可以在用户登录系统的时候提供包括短信和电子邮箱的身份验证，以保护帐号安全。
+                    </p>
+                    @if (Model.TwoFactor)
+                    {
+                        using (Html.BeginForm("DisableTwoFactorAuthentication", "Profile", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <text><span class="label label-success">已启用</span>
+                                <input type="submit" value="禁用" class="btn btn-link" />
+                            </text>
+                        }
+                    }
+                    else
+                    {
+                        using (Html.BeginForm("EnableTwoFactorAuthentication", "Profile", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <text><span class="label label-danger">已禁用</span>
+                                <input type="submit" value="启用" class="btn btn-link" />
+                            </text>
+                        }
+                    }
+                </dd>
+            </dl>
+
+        </div>
+    </div>
+</div>
+
+<div id="sms-settings" class="panel panel-primary">
+    <div class="panel-heading">短信管理</div>
+    <div class="panel-body">
+
+        <div>
+
+            <div class="col-sm-3">@Html.ActionLink("注册环境", "Register", "Sms", null, new { id = "sms-register", @class = "btn btn-success" })</div>
+            <div class="col-sm-3">@Html.ActionLink("查询剩余短信数", "Balance", "Sms", null, new { id = "sms-balance", @class = "btn btn-success" })</div>
+            <div class="col-sm-3">@Html.ActionLink("查询状态报告", "Report", "Sms", null, new { id = "sms-report", @class = "btn btn-success" })</div>
+            <div class="col-sm-3">@Html.ActionLink("更改密码", "UpdatePassword", "Sms", null, new { id = "sms-update-password", @class = "btn btn-warning" })</div>
+
+            <div class="col-sm-12">
+                <hr />
+            </div>
+            <div id="sms-content" class="col-sm-12" style="display: none;">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts
+{
+    @Scripts.Render("~/js/profile")
+    @Scripts.Render("~/js/Verification")
+}

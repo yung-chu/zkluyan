@@ -1,0 +1,94 @@
+﻿@model IDictionary<int, Invest>
+@{
+    ViewBag.Title = "批量导入一审资料";
+}
+
+@using (Html.BeginForm("SaveImport", "Invest", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">
+                上传一审资料表格
+            </h3>
+        </div>
+        @Html.Partial("_SuccessMessage")
+        @Html.Partial("_ErrorMessage")
+        <div class="panel-body">
+            @if (Model != null && Model.Count != 0)
+            {
+                <table class="table table-striped">
+                    <tr>
+                        <th>
+                            行号
+                        </th>
+                        <th>
+                            用户名
+                        </th>
+                        <th>
+                            公司名称
+                        </th>
+                        <th>
+                            项目名称
+                        </th>
+                        <th>
+                            联系人
+                        </th>
+                        <th>
+                            联系人手机
+                        </th>
+                        <th>&nbsp;</th>
+                    </tr>
+
+                    @foreach (var kvp in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => kvp.Key)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => kvp.Value.User.UserName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => kvp.Value.FirstAuditInfo.CompanyName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => kvp.Value.FirstAuditInfo.ProjectName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => kvp.Value.FirstAuditInfo.Contact)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => kvp.Value.FirstAuditInfo.ContactCellPhone)
+                            </td>
+                            <td>
+                                @Html.ActionLink("查看", "AuditDetails", new { id = kvp.Value.Id, stage = EInvestAuditStage.First }, new { target = "_blank" })
+                            </td>
+                        </tr>
+                    }
+                </table>
+            }
+
+            <div class="bg-info" style="padding: 15px;">
+                <p>请选择包含一审资料的Excel文件，文件格式如下图所示：</p>
+                <hr />
+                <p> <img src="~/Images/import-invests-excel-sample.png" alt="Excel的内容格式样例" style="width:100%"></p>
+            </div>
+            <hr />
+            <div class="col-xs-5">
+                <input type="file" name="excelFile" accept=".xlsx" style="float:left;margin-right:5px;" />
+                <a href="~/Files/企业项目列表_数据导入用 .xlsx" class="btn btn-success" style="float:left">下载模板</a>
+            </div>
+        </div>
+        <div class="panel-footer">
+            <input type="submit" value="提交" class="btn btn-primary" />
+            <a href="@Url.Action("AuditList")" class="btn btn-default">返回列表</a>
+        </div>
+    </div>
+}
+
+
+
+
+
+ 

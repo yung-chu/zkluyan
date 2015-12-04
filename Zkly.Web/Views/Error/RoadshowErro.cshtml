@@ -1,0 +1,28 @@
+﻿
+@section heads {
+    @Styles.Render("~/css/TestAndVerify")
+}
+<!--content头部信息结束-->
+<div class="content">
+    <div class="yanzheng">
+        <ul>
+            <li>
+
+                <div class="col-xs-12 text-center"><img src="~/images/PublicImg/PromptWarning.png" /></div>
+
+                <div class="col-xs-12 text-center " id="Zkly_Title">提 &nbsp;&nbsp;&nbsp;示</div>
+                <div class="col-xs-12 text-center " id="Zkly_fTitle" >您还未登录，请以投资人身份登录查看资本路演！</div>
+                <div class="col-xs-6 text-right">
+                    <a href='@(Url.Action("Register", "Account"))' role="button" class="btn btn-default">立即注册</a>
+                    
+                        &nbsp;&nbsp;
+                </div>
+                <div class="col-xs-6 text-left" id="Zkly_Login">
+                    <a href="@(Url.Action("Login", "Account"))">已有帐号登录</a>
+                </div>
+
+            </li>
+        </ul>
+    </div>
+</div>
+<!--content头部信息结束-->

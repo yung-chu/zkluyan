@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "ApplicationForLoan";
+    Layout = "~/Views/Shared/_LayoutHelp.cshtml";
+   }  
+<div class="row" id="zkly_Row">
+    <div class="col-xs-12" id="zkly_HelpHeader">
+        <img src="~/images/PublicImg/Blue.png" />
+        申请借贷
+    </div>
+
+    <div class="col-xs-12" id="zkly_Style">
+        @Html.ActionLink("申请贷款的整个流程是什么样的？", "LendingProcess", "HelpPage")
+    </div>
+    <div class="col-xs-12" id="zkly_Style">
+        @Html.ActionLink("如何提交申请贷款资料？", "Loan", "HelpPage")
+    </div>
+    <div class="col-xs-12" id="zkly_Style">
+        @Html.ActionLink("如何修改我的申请贷款资料？", "UpdLoan", "HelpPage")
+    </div>
+</div>
+

@@ -1,0 +1,189 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>@ViewBag.Title - 中科路演</title>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    @Styles.Render("~/css/css")
+    @Scripts.Render("~/js/modernizr")
+    @Scripts.Render("~/js/jquery")
+    @Scripts.Render("~/js/jqueryjson")
+    @Scripts.Render("~/js/bootstrap")
+    @Scripts.Render("~/js/common")
+    @RenderSection("heads", required: false)
+    @Scripts.Render("~/js/contactService")
+</head>
+<body>
+    <div id="top" data-img-url="@Url.Content("~/images/Others/weixin.jpg")"></div>
+    <!--header开始-->
+    <div id="top-header">
+        <div class="container">
+            <ul class="nav navbar-nav">
+                <li><img src="~/Images/PublicImg/icon-tel.png" /><span>客户热线:0755-25335551</span></li>
+                <li><img src="~/Images/PublicImg/icon-question.png" />@Html.ActionLink("帮助中心", "Index", "HelpPage")</li>
+            </ul>
+            @Html.Partial("_LoginPartial")
+        </div>
+    </div>
+    <div id="top-header-menu" class="navbar navbar-default">
+        <div class="container">
+            <div class="navbar-header" style="padding-top: 7px">
+                <a href="@Url.Action("Index", "Home")" class="navbar-brand">
+                    <img alt="Brand" src="~/Images/LogoAndBanner/logo-003.png" />
+                </a>
+            </div>
+            <div class="navbar-collapse collapse" id="top-menu">
+                <ul class="nav navbar-nav">
+
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        if (User.IsInRole("Enterprise"))
+                        {
+                            <li id="zkly-logo-frist">@Html.ActionLink("我的主页", "Index", "Enterprise")</li>
+                            <li id="zkly-logo-frist">
+                                <a href="/loan">我要借贷</a>
+                                @*@Html.ActionLink("我要借贷", "Loan", "Enterprise")*@
+                            </li>
+                            <li id="zkly-logo-frist">
+                                @*@Html.ActionLink("我要投资", "FirstAuditInfo", "Enterprise")*@
+                                <a href="/invest-frist">我要投资</a>
+                            </li>
+                            <li id="zkly-logo-frist">@Html.ActionLink("新手指引", "Build", "Home")</li>
+                            <li id="zkly-logo-frist">@Html.ActionLink("新闻报道", "Report", "Home")</li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">关于我们 <span class="caret"></span></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>@Html.ActionLink("公司简介", "About", "Home")</li>
+                                    <li class="divider"></li>
+                                    <li>@Html.ActionLink("管理团队", "Build", "Home")</li>
+                                    <li class="divider"></li>
+                                    <li>@Html.ActionLink("最新动态", "Build", "Home")</li>
+                                    @*<li class="divider"></li>
+                                    <li>@Html.ActionLink("资金说明", "List", "Funds")</li>*@
+                                </ul>
+                            </li>
+                        }
+                        else if (User.IsInRole("Investor"))
+                        {
+                            <li id="zkly-logo-tow">@Html.ActionLink("偏好设置", "InvestorPreference", "Manage")</li>
+                            <li id="zkly-logo-tow">@Html.ActionLink("新手指引", "Build", "Home")</li>
+                            <li id="zkly-logo-tow">@Html.ActionLink("新闻报道", "Report", "Home")</li>
+                            <li class="dropdown" id="zkly-logo-tow">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">关于我们 <span class="caret"></span></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>@Html.ActionLink("公司简介", "About", "Home")</li>
+                                    <li class="divider"></li>
+                                    <li>@Html.ActionLink("管理团队", "Build", "Home")</li>
+                                    <li class="divider"></li>
+                                    <li>@Html.ActionLink("最新动态", "Build", "Home")</li>
+                                    @*<li class="divider"></li>
+                                    <li>@Html.ActionLink("资金说明", "List", "Funds")</li>*@
+                                </ul>
+                            </li>
+                        }
+
+
+                    }
+                    else
+                    {
+                        <li id="zkly-logo-frist">@Html.ActionLink("首页", "Index", "Home")</li>
+                        <li id="zkly-logo-frist">@Html.ActionLink("我要借贷", "Login", "Account")</li>
+                        <li id="zkly-logo-frist">@Html.ActionLink("我要投资", "Login", "Account")</li>
+                        <li id="zkly-logo-frist">@Html.ActionLink("新手指引", "Build", "Home")</li>
+                        <li id="zkly-logo-frist">@Html.ActionLink("新闻报道", "Report", "Home")</li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">关于我们 <span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li>@Html.ActionLink("公司简介", "About", "Home")</li>
+                                <li class="divider"></li>
+                                <li>@Html.ActionLink("管理团队", "Build", "Home")</li>
+                                <li class="divider"></li>
+                                <li>@Html.ActionLink("最新动态", "Build", "Home")</li>
+                                @*<li class="divider"></li>
+                                <li>@Html.ActionLink("资金说明", "List", "Funds")</li>*@
+                            </ul>
+                        </li>
+                    }
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--header结束-->
+    @RenderSection("banner", required: false)
+
+    @RenderSection("homeActivity", required: false)
+    <div class="container body-content">
+        @RenderBody()
+    </div>
+
+    <!--footer开始-->
+    <div id="footer">
+        <!--menu开始-->
+        <div class="footer-menu">
+            <div class="container">
+                <ul class="auto-width">
+                    <li>@Html.ActionLink("媒体报道", "Build", "Home")</li>
+                    <li>|</li>
+                    <li>@Html.ActionLink("新手指引", "Build", "Home")</li>
+                    <li>|</li>
+                    <li>@Html.ActionLink("服务条款", "Build", "Home")</li>
+                    <li>|</li>
+                    <li>@Html.ActionLink("免责声明", "MianZe", "Home")</li>
+                    <li>|</li>
+                    <li>@Html.ActionLink("用户协议", "Build", "Home")</li>
+                    <li>|</li>
+                    <li>@Html.ActionLink("客服热线", "HotLine", "Home")</li>
+                    <li>|</li>
+                    <li>@Html.ActionLink("联系方式", "Contact", "Home")</li>
+                    <li>|</li>
+                    <li>@Html.ActionLink("帮助中心", "Index", "HelpPage")</li>
+                    <li>|</li>
+                    <li>@Html.ActionLink("关于我们", "About", "Home")</li>
+                </ul>
+            </div>
+        </div>
+        <!--menu结束-->
+        <!--copyright开始-->
+        <div class="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <div class="tel">0755-25335551</div>
+                        <p>客服电话（9：00-24：00）</p>
+                        <a href="tencent://Message/?Uin=3266409112&Menu=yes"><img src="~/Images/Others/qq-large.png" /></a>
+
+                    </div>
+                    <div class="col-xs-9">
+                        <div class="col-xs-12 friend-link">
+                            <ul class="auto-width">
+                                <li>友情链接：</li>
+                                <li><a href="http://weibo.com/">新浪微博</a></li>
+                                <li><a href="http://www.cufe.edu.cn/">中央财经</a></li>
+                                <li><a href="http://www.cmbchina.com/">招商银行</a></li>
+                                <li><a href="http://www.icbc.com.cn/icbc/">工商银行</a></li>
+                                <li><a href="http://www.howtou.cn/">好投网</a></li>
+                                <li><a href="http://www.yhd.com/">一号店</a></li>
+                                <li><a href="http://www.amazon.cn/">亚马逊</a></li>
+                                <li><a href="http://www.1688.com/">阿里巴巴</a></li>
+                                <li><a href="http://money.163.com/">网易财经</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-xs-4">Copyright &copy; @DateTime.Now.Year - 中科路演</div>
+                        <div class="col-xs-4">
+                            ICP许可证号 <a href="http://www.miibeian.gov.cn" target="_blank">粤ICP备1502122</a>
+                        </div>
+                        <div class="col-xs-4">地址：深圳市福田区求是大厦西座14楼</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--copyright结束-->
+    </div>
+    <!--footer结束-->
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,50 @@
+﻿@using Newtonsoft.Json
+@model Zkly.BLL.ViewModels.RecordViewModel
+
+<div>
+    @if (Model.Records != null)
+    {
+        <div class="recorded">
+            <span>已生成的录播</span>
+            <table>
+                @foreach (var item in Model.Records)
+                {
+                    <tr>
+                        <td class="col-1">@item.Subject&nbsp;|&nbsp;</td>
+                        <td class="col-2">@item.Create_Time&nbsp;|&nbsp;</td>
+                        <td>@item.Url</td>
+                    </tr>
+                }
+            </table>
+        </div>
+    }
+
+    @if (Model.RecordParts != null)
+    {
+        @Html.HiddenFor(m => m.OriginData);
+        <div class="record-parts">
+            <span>录播片段，可以生成录播</span>
+            <table>
+                @foreach (var item in Model.RecordParts)
+                {
+                    <tr class="data">
+                        <td><input type="checkbox" /></td>
+                        <td class="col-1">@item.Session_Id</td>
+                        <td class="col-1">&nbsp;|&nbsp;@item.Start_Time&nbsp;|&nbsp;</td>
+                        <td class="col-1">@item.End_Time&nbsp;|&nbsp;</td>
+                        <td class="col-1">@item.ToRecList()</td>
+                    </tr>
+                }
+            </table>
+            <div class="record-gen">
+                <input id="subject" type="text" class="form-control" placeholder="录播主题 （小于50个字）" />
+                <a class="btn btn-default gen" href="#" data-url="@Url.Action("GenerateRecord", "CapitalRoadshow", new {id = @Model.CapitalId})">生成</a>
+                <span class="message"></span>
+            </div>
+        </div>
+    }
+    else
+    {
+        <span>没有录播片段</span>
+    }
+</div>

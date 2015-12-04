@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewBag.Title = "ApplicationForInvestment";
+    Layout = "~/Views/Shared/_LayoutHelp.cshtml";
+}
+
+<div class="row" id="zkly_Row">
+    <div class="col-xs-12" id="zkly_HelpHeader">
+        <img src="~/images/PublicImg/Blue.png" />
+        申请投资
+    </div>
+    <div class="col-xs-12" id="zkly_Style">
+        @Html.ActionLink("申请投资的整个流程是什么样的？", "ApplicationInvestment", "HelpPage")
+    </div>
+    <div class="col-xs-12" id="zkly_Style">
+        @Html.ActionLink("投资的一审资料该如何提交？", "FirstInstance", "HelpPage")
+    </div>
+    <div class="col-xs-12" id="zkly_Style">
+        @Html.ActionLink("怎么去修改我的一审资料？", "UpdFirstInstance", "HelpPage")
+
+    </div>
+    <div class="col-xs-12" id="zkly_Style">
+
+        @Html.ActionLink("投资的二审资料该如何提交？", "TowFirstInstance", "HelpPage")
+    </div>
+    <div class="col-xs-12" id="zkly_Style">
+        @Html.ActionLink("怎么去修改我的二审资料？", "UpdTowFirstInstance", "HelpPage")
+    </div>
+    <div class="col-xs-12" id="zkly_Style">
+        @Html.ActionLink("我该怎么去上传业务路演？", "UploadRoadShow", "HelpPage")
+    </div>
+
+    <div class="col-xs-12" id="zkly_Style">
+        @Html.ActionLink("我从哪里能查看自己的投资申请状态？", "LookInvestment", "HelpPage")
+    </div>
+    <div class="col-xs-12" id="zkly_Style">
+        @Html.ActionLink("我该如何参加资本路演？", "", "HelpPage")
+    </div>
+</div>
+

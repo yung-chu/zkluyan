@@ -1,0 +1,72 @@
+﻿@model Zkly.BLL.ViewModels.TempFolderModel
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "初审审核";
+}
+
+<link href="~/Content/first-audit.css" rel="stylesheet" type="text/css" />
+<br />
+<div class="panel panel-default first-audit">
+    <div class="panel-body">
+
+        @if (Model.ListTempFolder.Count == 0)
+        {
+            <p>目前还没有初审的暂存文件夹</p>
+        }
+        else
+        {
+            <table name="audit" class="table table-hover">
+                <thead>
+                <tr>
+                    <th>
+                        <input type="checkbox" alt="全选" id="btnCheckAll"/>
+                    </th>
+                    <th>申请日期</th>
+                    <th>公司</th>
+                    <th>申请资金</th>
+                    <th>阶段</th>
+                    <th>状态</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach (Zkly.DAL.Models.InvestTempFolder item in Model.ListTempFolder)
+                {
+                    <tr>
+                        <td><input type="checkbox" name="chkItem" value="@item.Id"/></td>
+                        <td>@item.Invest.ApplyTime.ToString("yyyy-MM-dd")</td>
+                        <td>@item.Invest.FirstAuditInfo.CompanyName</td>
+                        <td>@item.Invest.FirstAuditInfo.ApplyQuota</td>
+                        <td>@item.Invest.Audit.Stage</td>
+                        <td>@item.Invest.Audit.Status</td>
+                        <td><a href="/invest/first-audits/info/@item.Invest.Id">审批</a></td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+
+            <br/>
+
+            <div class="panel-footer">
+                <input type="button" class="btn btn-primary" value="删除暂存文件夹" id="deleteTempFolder" data-post-url="@Url.Action("DeleteTempFolder")"/>
+            </div>
+
+        }
+
+
+    </div>
+    <div class="paging">
+        @Html.PagedListPager(Model.ListTempFolder, page => Url.Action("first-audits", new { page }), new PagedListRenderOptions() { LinkToFirstPageFormat = "首页", LinkToNextPageFormat = "下一页", LinkToPreviousPageFormat = "上一页", LinkToLastPageFormat = "末页", DisplayItemSliceAndTotal = false, MaximumPageNumbersToDisplay = 8 })
+    </div>
+</div>
+
+
+@section scripts
+{
+    @Scripts.Render("~/js/deleteTempFolder")
+}
+
+
+
+
+

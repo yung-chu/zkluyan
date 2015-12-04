@@ -1,0 +1,42 @@
+﻿@model Zkly.DAL.Models.InvestAgreement
+
+<div id="invest-agreement" class="panel panel-default">
+    <div class="panel-body">
+        <div class="panel panel-primary">
+            <div class="panel-heading"></div>
+            <div class="panel-body">
+
+                    <div class="form-group">
+                         @Html.Label("", "锁定期", new { @class = "col-xs-2 control-label" })
+                        <div class="col-xs-10">
+                            <span>@Model.LockMonth 个月</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+      
+                        @Html.Label("", "佣金", new { @class = "col-xs-2 control-label" })
+                        <div class="col-xs-10">
+                                <span>@Model.AgencyCommission.Description</span>
+ 
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.Label("", "协议上传", new { @class = "col-xs-2 control-label" })
+                        <div class="col-xs-10">
+
+                            @if (Model.AgreementFile != null)
+                            {
+                                <span class="text-success">文件名： @Model.AgreementFile.FileName</span>
+                                <a href="@Url.Action("DownLoad", "File", new { id = Model.AgreementFile.Id })">下载文件</a>
+                            }
+
+                        </div>
+                    </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>

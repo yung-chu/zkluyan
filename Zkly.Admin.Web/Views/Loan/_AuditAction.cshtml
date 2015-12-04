@@ -1,0 +1,96 @@
+﻿@model Loan
+<div id="loan-audit-panel" class="panel panel-default">
+
+    <div class="panel-heading">
+        审批
+    </div>
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="audit">
+            @if (Model.IsAuditable())
+            {
+                using (Html.BeginForm("SaveAudit", "Loan"))
+                {
+                   
+                    <div id="loan-audit-panel" class="panel panel-default">
+                        <div class="panel-body">
+                            @Html.AntiForgeryToken()
+                            <input type="hidden" value="@Model.Id" name="Id" />
+
+                            <div class="btn-group btn-group-justified" data-toggle="buttons">
+                                <label class="btn btn-default">
+                                    <input type="radio" name="IsPass" id="pass" value="true" autocomplete="off"> 通过
+                                </label>
+                                <label class="btn btn-default">
+                                    <input type="radio" name="IsPass" id="fail" value="false" autocomplete="off"> 拒绝
+                                </label>
+                            </div>
+
+                            <div id="audit-reason" style="display:none">
+                                <span>备注原因：</span>
+                                <textarea name="Remark" class="form-control" type="text" placeholder="拒绝的原因" data-container="body" data-placement="top" data-toggle="popover" data-content="审批拒绝时，请填写拒绝原因。"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="panel-footer">
+                            <button type="submit" id="save-audit" class="btn btn-primary" disabled="disabled"><span class="fa fa-save" aria-hidden="true"></span> 保存</button>
+                            <a class="btn btn-default" href="@Url.Action("LoanList", "Loan")">返回列表</a>
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+
+                <div class="panel-body">
+                    <dl class="dl-horizontal dl-xs">
+
+                        <dt>阶段：</dt>
+                        <dd>
+                            借贷
+                        </dd>
+
+                        <dt>状态：</dt>
+                        <dd>
+                            @if (Model.Status == ELoanAuditStatus.Accepted)
+                            {
+                                <span class="label label-success">已通过</span>
+                            }
+                            else if (Model.Status == ELoanAuditStatus.Rejected)
+                            {
+                                <span class="label label-danger">已拒绝</span>
+                            }
+                            else
+                            {
+                                <span class="label label-info">@Html.DisplayFor(m => m.Status)</span>
+                            }
+                        </dd>
+
+                        @if (Model.Status == ELoanAuditStatus.Rejected)
+                        {
+                            <dt>拒绝原因：</dt>
+                            <dd>
+                                <p class="bg-info">@Model.FailReason</p>
+                            </dd>
+                        }
+
+                        <dt>申请金额：</dt>
+                        <dd>
+
+                            @(Model.ApplyQuota > 0 ? Model.ApplyQuota + "万元" : "")
+                        </dd>
+
+                        <dt>申请时间：</dt>
+                        <dd>
+                            @Model.ApplyTime.ToString("yyyy-MM-dd")
+                        </dd>
+                    </dl>
+                </div>
+                <div class="panel-footer">
+                    <a class="btn btn-default" href="@Url.Action("LoanList", "Loan")">返回列表</a>
+                </div>
+            }
+        </div>
+
+</div>
+   
+</div>

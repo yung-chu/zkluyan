@@ -1,0 +1,17 @@
+﻿@using Zkly.DAL.Models
+@model EInvestAuditStage
+
+<ol class="breadcrumb">
+    <li><a href="/">首页</a></li>
+    <li><a href="@Url.Action("Index", "Enterprise")">我的主页</a></li>
+    <li class="active">@ViewBag.Title</li>
+</ol>
+
+<div id="invest-nav-tabs" class="info-nav">
+    <ul>
+        <li id="first-audit" class="@(EInvestAuditStage.First == Model ? "on" : "")" data-url="@Url.Action("FirstAuditInfo", "Enterprise", Html.ViewContext.RouteData.Values)">一审资料</li>
+        <li id="second-audit" class="@(EInvestAuditStage.Second == Model ? "on" : "") @(EInvestAuditStage.Second > ViewBag.MaxStage ? "disabled" : "")" data-url="@Url.Action("SecondAuditInfo", "Enterprise", Html.ViewContext.RouteData.Values)">二审资料</li>
+        <li id="signed" class="@(EInvestAuditStage.Agreement == Model ? "on" : "") @(EInvestAuditStage.Agreement > ViewBag.MaxStage ? "disabled" : "")" data-url="@Url.Action("InvestAgreement", "Enterprise", Html.ViewContext.RouteData.Values)">协议签订</li>
+        <li id="roadshow" class="@(EInvestAuditStage.Roadshow == Model ? "on" : "") @(EInvestAuditStage.Roadshow > ViewBag.MaxStage ? "disabled" : "")" data-url="@Url.Action("RoadshowIndex", "Roadshow", Html.ViewContext.RouteData.Values)">路演</li>
+    </ul>
+</div>

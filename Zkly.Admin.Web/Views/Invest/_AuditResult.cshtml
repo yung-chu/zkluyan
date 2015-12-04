@@ -1,0 +1,70 @@
+﻿@model Invest
+@using Zkly.Common.Extension
+
+@{
+    var requestStage = this.ViewContext.RouteData.Values["stage"].ToString().ToEnum<EInvestAuditStage>();
+    var status = Model.GetStageStatus(requestStage);
+}
+
+<div id="invest-audit-panel" class="panel panel-default">
+
+    <div class="panel-heading">
+        投资申请审批状态
+    </div>
+
+    <div class="panel-body">
+        <dl class="dl-horizontal dl-xs">
+
+            <dt>阶段：</dt>
+            <dd>
+                @Html.DisplayFor(m => requestStage)
+            </dd>
+
+            <dt>状态：</dt>
+            <dd>
+                @if (status == EInvestAuditStatus.Accepted)
+                {
+                    <span class="label label-success">已通过</span>
+                }
+                else if (status == EInvestAuditStatus.Rejected)
+                {
+                    <span class="label label-danger">已拒绝</span>
+                }
+                else
+                {
+                    <span class="label label-info">@Html.DisplayFor(m => status)</span>
+                }
+            </dd>
+
+            @if (status == EInvestAuditStatus.Rejected)
+            {
+                <dt>拒绝原因：</dt>
+                <dd>
+                    <p class="bg-info">@Html.DisplayFor(m => m.Reason)</p>
+                </dd>
+            }
+
+            <dt>申请金额：</dt>
+            <dd>
+                @(Model.FirstAuditInfo.ApplyQuota > 0 ? Model.FirstAuditInfo.ApplyQuota + "万元" : "") 
+            </dd>
+
+            <dt>申请时间：</dt>
+            <dd>
+                @Html.DisplayFor(m => m.ApplyTime)
+            </dd>
+
+            <dt>更新时间：</dt>
+            <dd>
+                @Html.DisplayFor(m => m.UpdateTime)
+            </dd>
+
+        </dl>
+    </div>
+
+    <div class="panel-footer">
+        <a class="btn btn-default" href="@Url.Action("AuditList", "Invest", new {stage = requestStage, state = ViewBag.State})">
+            <span class="fa fa-arrow-left" aria-hidden="true"></span> 返回列表
+        </a>
+    </div>
+</div>

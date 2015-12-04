@@ -1,0 +1,48 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section heads {
+    @Styles.Render("~/css/TestAndVerify")
+}
+<!--content头部信息结束-->
+<style type="text/css">.navbar-center { }</style>
+<div class="content">
+    <div class="yanzheng">
+        <ul>
+            <li>
+
+                <div class="col-xs-12 text-center"><img src="~/images/PublicImg/PromptWarning.png" /></div>
+
+                <div class="col-xs-12 text-center " id="Zkly_Title">提 &nbsp;&nbsp;&nbsp;示</div>
+                <div class="col-xs-12 text-center " id="Zkly_fTitle">您的身份为企业方，请以投资人的身份登录查看资本路演！</div>
+                
+                <div class="col-xs-12">
+                    <DIV class="col-xs-4"></DIV>
+                    <div class="col-xs-8" style="font-size:25px;">您可以：</div>
+                 </div>
+                <br />
+               
+                <div class="col-xs-12 text-center">
+                @using (Html.BeginForm("ResOff", "Error", FormMethod.Post, new { id = "resoutFormInfo", @class = "navbar-center" }))
+                {
+                    @Html.AntiForgeryToken()
+                   <a href="javascript:document.getElementById('resoutFormInfo').submit()">注销当前账号并已投资人身份注册</a>
+                }                   
+                </div>
+
+                <br />
+                
+                <div class="col-xs-12 text-center">
+                @using (Html.BeginForm("LogOff", "Error", FormMethod.Post, new { id = "logoutFormInfo", @class = "navbar-center" }))
+                {
+                    @Html.AntiForgeryToken()
+                     <a href="javascript:document.getElementById('logoutFormInfo').submit()">注销当前账号并登录投资人身份账号</a>
+                }
+                </div>
+
+            </li>
+        </ul>
+    </div>
+</div>
+<!--content头部信息结束-->
+

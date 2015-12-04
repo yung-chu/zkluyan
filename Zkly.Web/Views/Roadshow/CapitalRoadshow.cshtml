@@ -1,0 +1,44 @@
+﻿@model Zkly.DAL.Models.CapitalRoadshow
+@using Zkly.Common.Config;
+@using Zkly.BLL.Vhall;
+@{
+    ViewBag.Title = "观看资本路演";
+}
+<br />
+<div class="row">
+    @Html.Partial("AlertMessage")
+</div>
+
+<div class="row">
+    <div class="col-xs-12">
+        @if (Model.Status == EActivityStatus.End)
+        {
+            <span>直播已结束，请观看录播</span>
+            <iframe class="zkly-capital-container" src="@VhallUtil.GetRecordUrl(Model.WebinarId)"></iframe>
+        }
+        else
+        {
+            var url = ViewBag.IsEnterprise != null && ViewBag.IsEnterprise ? VhallSettings.WebinarGuestUrl : VhallSettings.WebinarUrl;
+            
+            <iframe class="zkly-capital-container" src="@string.Format(url, Model.WebinarId, ViewBag.Email, ViewBag.Name)"></iframe>
+        }
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-10">
+        <div class="zkly-capital-subject">@Model.Subject</div>
+        <div>直播时间：@Model.StartDate - @Model.EndDate</div>
+    </div>
+    <div class="col-xs-2">
+        <a id="like-this-capital" href="#" data-id="@Model.Id" class="btn btn-primary">我对该企业感兴趣</a>
+    </div>
+</div>
+<div class="row zkly-capital-desc">@Model.Description</div>
+
+
+@section scripts{
+
+@Scripts.Render("~/js/capital-roadshow-manager")
+}
+
+

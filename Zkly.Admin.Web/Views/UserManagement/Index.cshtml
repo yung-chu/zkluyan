@@ -1,0 +1,130 @@
+﻿@model PagedList.IPagedList<Zkly.DAL.Models.ApplicationUser>
+
+@{
+    ViewBag.Title = "用户管理";
+    var isSearch = ViewContext.RouteData.Values["action"].ToString().ToLower() == "search";
+}
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <ul id="top-category-tabs" class="nav nav-pills nav-justified">
+            <li role="presentation" class="@Html.Raw(ViewBag.Role == EUserRole.Enterprise ? "active" : "")">
+                <a href="@Url.Action("Index", "UserManagement", new {role = EUserRole.Enterprise})">企业用户</a>
+            </li>
+            <li role="presentation" class="@Html.Raw(ViewBag.Role == EUserRole.Investor ? "active" : "")">
+                <a href="@Url.Action("Index", "UserManagement", new {role = EUserRole.Investor})">投资者</a>
+            </li>
+            <li role="presentation" class="@Html.Raw(ViewBag.Role == EUserRole.Administrator ? "active" : "")">
+                <a href="@Url.Action("Index", "UserManagement", new {role = EUserRole.Administrator})">管理员</a>
+            </li>
+            <li role="presentation" class="@Html.Raw(isSearch ? "active" : "")">
+                <a data-toggle="collapse" href="#user-search-panel" aria-expanded="false" aria-controls="user-search-panel">高级查询<span class="caret"></span></a>
+            </li>
+        </ul>
+    </div>
+
+    @Html.Partial("_SuccessMessage")
+    @Html.Partial("_ErrorMessage")
+
+    <div id="user-search-panel" class="panel-body collapse @Html.Raw(isSearch ? "in" : "")">
+        @using (Html.BeginForm("Search", "UserManagement", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        {
+        @Html.AntiForgeryToken()
+        <div class="form-group">
+            <div class="col-xs-2"></div>
+            <div class="col-xs-10"><h3>用户查询</h3></div>
+        </div>
+        <hr />
+        <div class="form-group">
+            <label for="UserId" class="col-xs-2 control-label">用户ID</label>
+            <div class="col-xs-10">
+                <input type="text" value="" name="UserId" id="UserId" class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="UserName" class="col-xs-2 control-label">用户名</label>
+            <div class="col-xs-10">
+                <input type="text" value="" name="UserName" id="UserName" class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="Email" class="col-xs-2 control-label">用户邮箱</label>
+            <div class="col-xs-10">
+                <input type="text" value="" name="Email" id="Email" class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="PhoneNumber" class="col-xs-2 control-label">电话号码</label>
+            <div class="col-xs-10">
+                <input type="text" value="" name="PhoneNumber" id="PhoneNumber" class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-xs-2"></div>
+            <div class="col-xs-10">
+                <input type="submit" value="立 即 查 询" class="btn btn-primary" />
+            </div>
+        </div>
+        }
+        <hr />
+    </div>
+    <table class="table table-hover table-striped">
+        <tr>
+            <th>
+                用户名
+            </th>
+            <th>
+                显示名（昵称）
+            </th>
+            <th>
+                邮箱
+            </th>
+            <th>
+                电话号码
+            </th>
+            <th>
+                锁定到期时间
+            </th>
+            <th>
+                失败登录次数
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.ActionLink(item.UserName, "Details", new { item.Id })
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DisplayName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LockoutEndDateUtc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AccessFailedCount)
+            </td>
+        </tr>
+        }
+    </table>
+
+    <div class="panel-footer">
+        <a href="@Url.Action("Create")" class="btn btn-primary">创建新用户</a>
+        <a href="@Url.Action("CreateMultiple")" class="btn btn-primary">批量添加新用户</a>
+        <div class="pull-right">
+            @Html.DisplayPagination(page => Url.Action("Index", new { page }))
+        </div>
+    </div>
+</div>
+
+@section scripts
+{
+    @Scripts.Render("~/js/user-management")
+}

@@ -1,0 +1,80 @@
+﻿@using Microsoft.AspNet.Identity
+@using Zkly.Common
+@{
+    Layout = "_BaseLayout.cshtml";
+}
+
+@section styles{
+    @RenderSection("styles", required: false)
+}
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/"><span class="fa fa-home" aria-hidden="true"></span> 中科路演－控制台</a>
+        </div>
+        <div id="navbar">
+            @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+            {
+                @Html.AntiForgeryToken()
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="@Url.Action("Index", "UserManagement")">用户管理</a></li>
+                    <li><a href="@Url.Action("Index", "AgencyCommissions")">佣金设置</a></li>
+                    <li><a href="#">帮助</a></li>
+                    <li>
+                        <a href="@Url.Action("Index", "Profile")" title="帐户管理">[ @User.Identity.GetUserName() ]</a>
+                    </li>
+                    <li>
+                        <a href="javascript:document.getElementById('logoutForm').submit()">退出</a>
+                    </li>
+                </ul>
+            }
+            @*<form class="navbar-form navbar-right">
+                <input type="text" class="form-control" placeholder="Search...">
+            </form>*@
+        </div>
+    </div>
+</nav>
+<!--[if lt IE 8]>
+    <div class="alert alert-warning" role="alert">
+        <p>You are using an outdated browser. Please <a class="alert-link" href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    </div>
+<![endif]-->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-2 sidebar">
+            <ul class="nav nav-sidebar">
+                <li class="active"><a href="">贷款审核<span class="sr-only">(current)</span></a></li>
+                <li><a href="@Url.Action("LoanList", "Loan")">所有贷款审核</a></li>
+            </ul>
+            <ul class="nav nav-sidebar">
+                <li class="active"><a href="">投资审核<span class="sr-only">(current)</span></a></li>
+                <li><a href="@Url.Action("AuditList", "Invest", new {stage = EInvestAuditStage.First, state = FilterType.Waiting})">初审</a></li>
+                <li><a href="@Url.Action("AuditList", "Invest", new {stage = EInvestAuditStage.Second, state = FilterType.Waiting})">二审</a></li>
+                <li><a href="@Url.Action("AuditList", "Invest", new {stage = EInvestAuditStage.Agreement, state = FilterType.Waiting})">协议签订</a></li>
+                @*<li><a href="@Url.Action("AuditList", "Invest", new {stage = EInvestAuditStage.Roadshow, state = FilterType.Waiting})">终审</a></li>*@
+            </ul>
+            <ul class="nav nav-sidebar">
+                <li class="active"><a href="">路演管理<span class="sr-only">(current)</span></a></li>
+                <li><a href="@Url.Action("Business", "Roadshow")">业务路演</a></li>
+                <li><a href="@Url.Action("List", "CapitalRoadshow")">资本路演</a></li>
+            </ul>
+            <ul class="nav nav-sidebar">
+                <li class="active"><a href="">前台注册管理<span class="sr-only">(current)</span></a></li>
+                <li><a href="@Url.Action("Index", "ReceptionRegister")">控制前台注册</a></li>
+            </ul>
+        </div>
+        <div class="col-xs-10 col-md-offset-2 main">
+            @RenderBody()
+            <hr />
+            <footer class="text-center">
+                <p>&copy; @DateTime.Now.Year - @Application.Name</p>
+            </footer>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    @RenderSection("scripts", required: false)
+}

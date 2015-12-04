@@ -1,0 +1,369 @@
+﻿@model Zkly.DAL.Models.Loan
+@{
+    ViewBag.Title = "申请贷款";
+}
+
+@section heads {
+    @Scripts.Render("~/js/datepicker")
+    @Scripts.Render("~/js/bootstrapValidator")
+    @Scripts.Render("~/js/jquery-form")
+    @Styles.Render("~/css/bootstrapValidatorCss")
+    @Styles.Render("~/css/loan")
+
+}
+
+<div class="container">
+
+    <div class="row">
+      
+            <div id="invert-apply-loan-form">
+                <ol class="breadcrumb">
+                    <li><a href="/">首页</a></li>
+                    <li><a href="@Url.Action("Index", "Enterprise")">我的主页</a></li>
+                    <li class="active">@ViewBag.Title</li>
+                </ol>
+
+                <div class="panel-body apply panel panel-default">
+
+                    @Html.Partial("AlertMessage")
+
+
+                   @using (Html.BeginForm("SaveLoan", "Enterprise", FormMethod.Post, new { @class = "form-horizontal", @id = "ApplyLoan", role = "form" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true)
+                        @Html.HiddenFor(m => m.Id)
+                        @Html.HiddenFor(m => m.ApplyTime)
+                        <br />
+                        <div class="form-group">
+                            <div class="col-xs-3 control-label">
+                                <label for="companyName">公司名称 <span class="validation-fail">*</span></label>
+                            </div>
+                            <div class="col-xs-9">
+                          
+                               @Html.TextBoxFor(m => m.CompanyName, new { @class = "form-control", id = "companyName", placeholder = "公司名称" })
+                               
+
+                                @Html.ValidationMessageFor(m => m.CompanyName, null, new { @class = "validation-fail" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-3 control-label">
+                                <label for="companyDescription">公司简介 <span class="validation-fail">*</span></label>
+                            </div>
+                            <div class="col-xs-9">
+                              
+                                @Html.TextAreaFor(m => m.CompanyDescription, new { @class = "form-control ", id = "companyDescription", placeholder = "公司简介" })
+                                
+
+                                @Html.ValidationMessageFor(m => m.CompanyDescription, null, new { @class = "validation-fail" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-3 control-label">
+                                <label for="foundingDateWrap">成立时间 <span class="validation-fail">*</span></label>
+                            </div>
+                            <div class="col-xs-9" id="foundingDateWrap">
+                             
+                                <input type="text" class="form-control" value="@Model.FoundingDate.ToString("yyyy-MM-dd")" id="foundingDate" name="FoundingDate">
+                               
+
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-xs-3 control-label">所属行业 <span class="validation-fail">*</span></div>
+                            <div class="col-xs-9  input-3">
+                                @Html.DropDownListFor(m => m.Industry, @ViewData["indus"] as IEnumerable<SelectListItem>, new { @class = "form-control", id = "industry" })
+                            </div>
+
+                            <div class="col-xs-9 input-3">
+                                <span id="IndustrySpanError"></span>
+                            </div>
+                        </div>
+
+
+
+                        <div class="form-group">
+                            <div class="col-xs-3 control-label">所在地区 <span class="validation-fail">*</span></div>
+                            <div class="col-xs-9 input-2">
+                                <select id="s_province" class="form-control selection"></select>&nbsp;&nbsp;
+                                <select id="s_city" class="form-control selection"></select>&nbsp;&nbsp;
+                                <select id="s_county" class="form-control selection"></select>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <div class="col-xs-3 control-label">
+                                &nbsp;
+                            </div>
+
+                            <div class="col-xs-9">
+                             
+                                @Html.TextBoxFor(m => m.Area, new { @class = "form-control", id = "area", placeholder = "所在地区" })
+                                
+
+                                @Html.ValidationMessageFor(m => m.Area, null, new { @class = "validation-fail" })
+
+                                <span class="zkly-span-frist">
+                                    <span id="AreaError" class="glyphicon glyphicon-remove text-danger" aria-hidden="true"></span>
+                                    <span id="AreaOk" class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-xs-3 control-label">
+                                <label for="projectName">项目名 <span class="validation-fail">*</span></label>
+                            </div>
+
+                            <div class="col-xs-9">
+                           
+                                @Html.TextBoxFor(m => m.ProjectName, new { @class = "form-control", id = "projectName", placeholder = "项目名" })
+                               
+
+
+                                @Html.ValidationMessageFor(m => m.ProjectName, null, new { @class = "validation-fail" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-3 control-label">
+                                <label for="applyQuota">申请金额 <span class="validation-fail">*</span></label>
+                            </div>
+                            <div class="col-xs-9">
+                             
+                                @Html.TextBoxFor(m => m.ApplyQuota, new { @class = "form-control", id = "applyQuota", style = "float: left;", placeholder = "申请金额" })
+                                
+
+                                <span class="input-group-btn">
+                                    <input type="hidden" name="isLock" value="false" />
+                                    <button class="btn btn-info">万元</button>
+                                </span>
+                            </div>
+                            <div class="col-xs-3 control-label"></div>
+                            <div>
+                                &nbsp; @Html.ValidationMessageFor(m => m.ApplyQuota, null, new { @class = "validation-fail" })
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-3 control-label">
+                                <label for="guaranteeAssessment">抵押物估值 <span class="validation-fail">*</span></label>
+                            </div>
+                            <div class="col-xs-9">
+                             
+                                @Html.TextBoxFor(m => m.GuaranteeAssessment, new { @class = "form-control", id = "guaranteeAssessment", style = "float: left;", placeholder = "公司评估值" })
+                                
+
+                                <span class="input-group-btn">
+                                    <input type="hidden" name="isLock" value="false" />
+                                    <button class="btn btn-info">万元</button>
+                                </span>
+
+                            </div>
+                            <div class="col-xs-3 control-label"></div>
+                            <div>
+                                &nbsp;@Html.ValidationMessageFor(m => m.GuaranteeAssessment, null, new { @class = "validation-fail" })
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+
+                            <div class="col-xs-3 control-label">
+                                <label for="contract">联系人 <span class="validation-fail">*</span></label>
+                            </div>
+                            <div class="col-xs-9">
+                              
+                                @Html.TextBoxFor(m => m.Contract, new { @class = "form-control", id = "contract", placeholder = "联系人" })
+                                
+
+                                @Html.ValidationMessageFor(m => m.Contract, null, new { @class = "validation-fail" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-3 control-label">
+                                <label for="phone">手机 <span class="validation-fail">*</span></label>
+                            </div>
+
+                            <div class="col-xs-9">
+                             
+                                @Html.TextBoxFor(m => m.Phone, new { @class = "form-control", id = "phone", placeholder = "电话" })
+                                
+
+                                @Html.ValidationMessageFor(m => m.Phone, null, new { @class = "validation-fail" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-3 control-label">
+                                <label for="email">公司邮箱 <span class="validation-fail">*</span></label>
+                            </div>
+
+                            <div class="col-xs-9">
+                       
+                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", id = "email", placeholder = "公司邮箱" })
+                               
+
+                                @Html.ValidationMessageFor(m => m.Email, null, new { @class = "validation-fail" })
+                            </div>
+                        </div>
+
+
+                        <div class="form-group group-list" id="compnayAdvance">
+                            <div class="col-xs-3 control-label">公司核心优势 <span class="validation-fail">*</span></div>
+                            <div class="col-xs-9 ">
+
+                                <div class="">
+                                    <span data-bv-result="INVALID" id="showAdvError" data-bv-for="TeamAdv" data-bv-validator="notEmpty" class="help-block">公司核心优势至少填一项</span>
+
+                                    @Html.CheckBoxFor(m => m.IsTeamAdv) 团队优势
+                                    @{
+                        var clsTeam = Model.IsTeamAdv ? "" : "hidden";
+                        @Html.TextAreaFor(m => m.TeamAdv, new { @class = "form-control text-1 " + clsTeam, id = "teamAdv" })
+                                    }
+                                </div>
+                                <div class="">
+                                    @Html.CheckBoxFor(m => m.IsProdAdv) 产品优势
+                                    @{
+                        var clsProd = Model.IsProdAdv ? "" : "hidden";
+                        @Html.TextAreaFor(m => m.ProdAdv, new { @class = "form-control text-1 " + clsProd, id = "prodAdv" })
+                                    }
+                                </div>
+                                <div class="">
+                                    @Html.CheckBoxFor(m => m.IsTechAdv) 技术优势
+                                    @{
+                        var clsTech = Model.IsTechAdv ? "" : "hidden";
+                        @Html.TextAreaFor(m => m.TechAdv, new { @class = "form-control text-1 " + clsTech, id = "techAdv" })
+                                    }
+                                </div>
+                                <div class="">
+                                    @Html.CheckBoxFor(m => m.IsScaleAdv) 规模优势
+                                    @{
+                        var clsScale = Model.IsScaleAdv ? "" : "hidden";
+                        @Html.TextAreaFor(m => m.ScaleAdv, new { @class = "form-control text-1 " + clsScale, id = "scaleAdv" })
+                                    }
+                                </div>
+                                <div class="">
+                                    @Html.CheckBoxFor(m => m.IsSaleAdv) 销售优势
+                                    @{
+                        var clsSale = Model.IsSaleAdv ? "" : "hidden";
+                        @Html.TextAreaFor(m => m.SaleAdv, new { @class = "form-control text-1 " + clsSale, id = "saleAdv" })
+                                    }
+                                </div>
+                                <div class="">
+                                    @Html.CheckBoxFor(m => m.IsIndustryAdv) 行业优势
+                                    @{
+                        var clsIndustry = Model.IsIndustryAdv ? "" : "hidden";
+                        @Html.TextAreaFor(m => m.IndustryAdv, new { @class = "form-control text-1 " + clsIndustry, id = "industryAdv" })
+                                    }
+                                </div>
+                                <div class="">
+                                    @Html.CheckBoxFor(m => m.IsResourceAdv) 客户资源优势
+                                    @{
+                        var clsResource = Model.IsResourceAdv ? "" : "hidden";
+                        @Html.TextAreaFor(m => m.ResourceAdv, new { @class = "form-control text-1 " + clsResource, id = "resourceAdv" })
+                                    }
+                                </div>
+                                <div class="">
+                                    @Html.CheckBoxFor(m => m.IsOtherAdv) 其他优势
+                                    @{
+                        var clsOther = Model.IsOtherAdv ? "" : "hidden";
+                        @Html.TextAreaFor(m => m.OtherAdv, new { @class = "form-control text-1 " + clsOther, id = "otherAdv" })
+                                    }
+                                </div>
+
+
+                                <div>@Html.ValidationMessageFor(m => m.ResourceAdv, null, new { @class = "validation-fail" })</div>
+                                <div class="tip" style="color: #0d83d7;">请详细填写，该项对投资人至关重要</div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="form-group clearfix" id="myData">
+                            <div class="col-xs-3 control-label">
+                                5年收入<br /> (单位：万元)
+                            </div>
+                            <div class="col-xs-9 form-input">
+
+                                <div class="financial-data">
+                                    <ul>
+
+                                            <li>@Html.TextBoxFor(m => m.Data1, new { @class = "form-control", id = "data" + DateTime.Now.Year, placeholder = @DateTime.Now.Year + " 年" })</li>
+                                            <li>@Html.TextBoxFor(m => m.Data2, new { @class = "form-control", id = "data" + (DateTime.Now.Year - 1), placeholder = @DateTime.Now.Year - 1 + " 年" })</li>
+                                            <li>@Html.TextBoxFor(m => m.Data3, new { @class = "form-control", id = "data" + (DateTime.Now.Year - 2), placeholder = @DateTime.Now.Year - 2 + " 年" })</li>
+                           
+                                    </ul>
+                                </div>
+                                <div class="financial-data">
+                                    <ul>
+                                
+                                            <li>@Html.TextBoxFor(m => m.Data4, new { @class = "form-control", id = "data" + (DateTime.Now.Year - 3), placeholder = @DateTime.Now.Year - 3 + " 年" })</li>
+                                            <li>@Html.TextBoxFor(m => m.Data5, new { @class = "form-control", id = "data" + (DateTime.Now.Year - 4), placeholder = @DateTime.Now.Year - 4 + " 年" })</li>
+                                            <li><span id="Prompt"></span></li>
+                                       
+
+                                    </ul>
+                                </div>
+
+
+                                <div class="financial-data">
+
+                                    <p class="tip" style="color: #0d83d7;">该财务数据不作为税收依据</p>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        if (Model.EnableEdit())
+                        {
+                            <div class="form-group">
+                                <div class=" col-xs-3"></div>
+                                <div class=" col-xs-9">
+                                    <button type="button" class="btn btn-primary" id="invert-apply-loan" onclick="return beforeSubmitCheckData()">申请贷款</button>
+                                    @Html.ActionLink("取消", "Index", null, new { @class = "cancel" })
+                                </div>
+                            </div>
+                        }
+                    }
+
+
+                </div>
+             </div>
+       
+
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@section scripts {
+
+
+    @Scripts.Render("~/js/area")
+    @Scripts.Render("~/js/loan")
+}
+

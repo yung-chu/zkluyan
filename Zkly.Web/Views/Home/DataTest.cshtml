@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewBag.Title = "数据字典";
+}
+
+<h2>行业数据列表显示</h2>
+@if (ViewBag.DataDictionaries != null)
+{
+    var datalist = (List<DataDictionary>)ViewBag.DataDictionaries;
+    foreach (var item in datalist)
+    {
+        <div>
+            id:@(item.DataDictionaryId),&nbsp;&nbsp;Name:@item.DataDictionaryName<br/>
+        </div>
+    }
+}
+

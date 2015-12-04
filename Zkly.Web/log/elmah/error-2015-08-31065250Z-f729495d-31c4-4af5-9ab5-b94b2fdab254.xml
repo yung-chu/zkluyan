@@ -1,0 +1,321 @@
+﻿<error errorId="f729495d-31c4-4af5-9ab5-b94b2fdab254" application="/LM/W3SVC/3/ROOT" host="VM-DEV-ZY01" type="Microsoft.CSharp.RuntimeBinder.RuntimeBinderException" message="无法将 null 转换为“bool”，因为后者是不可以为 null 的值类型" source="Anonymously Hosted DynamicMethods Assembly" detail="Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: 无法将 null 转换为“bool”，因为后者是不可以为 null 的值类型&#xD;&#xA;   在 CallSite.Target(Closure , CallSite , Object )&#xD;&#xA;   在 System.Dynamic.UpdateDelegates.UpdateAndExecute1[T0,TRet](CallSite site, T0 arg0)&#xD;&#xA;   在 CallSite.Target(Closure , CallSite , Object )&#xD;&#xA;   在 ASP._Page_Views_Enterprise_FirstAuditInfo_cshtml.Execute() 位置 d:\Project\LuYan\src\Zkly.Web\Views\Enterprise\FirstAuditInfo.cshtml:行号 357&#xD;&#xA;   在 System.Web.WebPages.WebPageBase.ExecutePageHierarchy()&#xD;&#xA;   在 System.Web.Mvc.WebViewPage.ExecutePageHierarchy()&#xD;&#xA;   在 System.Web.WebPages.StartPage.RunPage()&#xD;&#xA;   在 System.Web.WebPages.StartPage.ExecutePageHierarchy()&#xD;&#xA;   在 System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)&#xD;&#xA;   在 System.Web.Mvc.RazorView.RenderView(ViewContext viewContext, TextWriter writer, Object instance)&#xD;&#xA;   在 System.Web.Mvc.BuildManagerCompiledView.Render(ViewContext viewContext, TextWriter writer)&#xD;&#xA;   在 System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)&#xD;&#xA;   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)&#xD;&#xA;   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilterRecursive(IList`1 filters, Int32 filterIndex, ResultExecutingContext preContext, ControllerContext controllerContext, ActionResult actionResult)&#xD;&#xA;   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilterRecursive(IList`1 filters, Int32 filterIndex, ResultExecutingContext preContext, ControllerContext controllerContext, ActionResult actionResult)&#xD;&#xA;   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)&#xD;&#xA;   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass21.&lt;&gt;c__DisplayClass2b.&lt;BeginInvokeAction&gt;b__1c()&#xD;&#xA;   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass21.&lt;BeginInvokeAction&gt;b__1e(IAsyncResult asyncResult)&#xD;&#xA;   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   在 System.Web.Mvc.Async.AsyncResultWrapper.End[TResult](IAsyncResult asyncResult, Object tag)&#xD;&#xA;   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeAction(IAsyncResult asyncResult)&#xD;&#xA;   在 System.Web.Mvc.Controller.&lt;BeginExecuteCore&gt;b__1d(IAsyncResult asyncResult, ExecuteCoreState innerState)&#xD;&#xA;   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   在 System.Web.Mvc.Async.AsyncResultWrapper.End[TResult](IAsyncResult asyncResult, Object tag)&#xD;&#xA;   在 System.Web.Mvc.Async.AsyncResultWrapper.End(IAsyncResult asyncResult, Object tag)&#xD;&#xA;   在 System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)&#xD;&#xA;   在 System.Web.Mvc.Controller.&lt;BeginExecute&gt;b__15(IAsyncResult asyncResult, Controller controller)&#xD;&#xA;   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   在 System.Web.Mvc.Async.AsyncResultWrapper.End[TResult](IAsyncResult asyncResult, Object tag)&#xD;&#xA;   在 System.Web.Mvc.Async.AsyncResultWrapper.End(IAsyncResult asyncResult, Object tag)&#xD;&#xA;   在 System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)&#xD;&#xA;   在 System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)&#xD;&#xA;   在 System.Web.Mvc.MvcHandler.&lt;BeginProcessRequest&gt;b__5(IAsyncResult asyncResult, ProcessRequestState innerState)&#xD;&#xA;   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   在 System.Web.Mvc.Async.AsyncResultWrapper.End[TResult](IAsyncResult asyncResult, Object tag)&#xD;&#xA;   在 System.Web.Mvc.Async.AsyncResultWrapper.End(IAsyncResult asyncResult, Object tag)&#xD;&#xA;   在 System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)&#xD;&#xA;   在 System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)&#xD;&#xA;   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()&#xD;&#xA;   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean&amp; completedSynchronously)" user="TestEnt01" time="2015-08-31T06:52:50.0043175Z">
+  <serverVariables>
+    <item name="ALL_HTTP">
+      <value string="HTTP_CACHE_CONTROL:max-age=0&#xD;&#xA;HTTP_CONNECTION:keep-alive&#xD;&#xA;HTTP_CONTENT_LENGTH:958&#xD;&#xA;HTTP_CONTENT_TYPE:application/x-www-form-urlencoded&#xD;&#xA;HTTP_ACCEPT:text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8&#xD;&#xA;HTTP_ACCEPT_ENCODING:gzip, deflate&#xD;&#xA;HTTP_ACCEPT_LANGUAGE:zh-CN,zh;q=0.8&#xD;&#xA;HTTP_COOKIE:UMB_UPDCHK=1; XSRF-TOKEN=Rq46EtMhlFqQSzR_Q3OP-Zj4B0V1srCo9XYEy__j4LuozhQpsa6kAxRxtqBFQz6R5BWYdlVNzn6K718aPnDHvJCJZx8BAZchEunsOz1zEIwdHI8Cw-n1ZQZHrm38Ot170; XSRF-V=_fD4twusNL_69pUupa2SNArdj4QpyqAR_khHiFXhzNPIlgDRr9EUPcLGwhCFrrMqPmuUH3eSzhw6YnOVVlySxeOGJLuUVoCHyPBWL3k6mTs1; UMB_UCONTEXT=2CD758EDF8E0E1815F89A75E8CA89A80E1C6D48BE21676F60A9A21001EB0195979B50C01AC59606C190D513D650C3165DE445BB3A79835CD7B164BC8C098D998E32681B011454D65BE634F42112AD0AF618C826295941A5152286B062F8CFC3CB99F3F2828C30ABDB64CF8E5921771E17AA2F55F2E06406918988F06AE4797807674744FE9BFF500028CA271D05ACC41DB610521260E05A29E0F4D8F3FF6A144D8B21B8C2DDFE3D347D4FA99A26420FCD9501A4C08E69FBD188C3E2694C0D38B838DE49D6A88D9065D85FEDF76334978CBEF7983DC075553D54188A7CBD649650571B5FE7845BB9C6721741EFFFF0FE50D48AD34C75FE5FAE2AFC2F97D2C103C8A80AB1C3970CEED942BA602CBC9E68A75555920520F89F7834D83AA28E160490044646F4036D92E261762211E4295D5F5FBF6DE6E676C3D669CA347F98393EDC0022635E22657B0991F3E68759D0993204BACA67D49CBCA218E09F8C0626C6D6EDE6A7AD50ABF92A5C1683DFA0CCD3D06C5E6A28AB5D97D937CCE797F53B095A47842AA29606D12E19DF277D9BA945A82496DA2EFB572D7EDDA74C35DC5F8AFBA18116C0F38FA724B07589B056150B0E39FA9B50F301FF975704F8C11ED9513747443A72AC1CF55EFCCCA6827D796F39088BB9A0FC0126904BE7C409CB676400E637753DB46F64EB21EFCF89EDBC6402CE162D4B0A5534E72E585DE1ABA7D3C4C2A31228E1BD53FFFC164D67D9458E9F84CC2A693CB4CF0CDC1E074F992DA42AF226A7B06BC1A0A238AAEC7F554C6D018CB9C0A3FE0A8567BBDE4487C471AE354A42D1A0F6239FDA167BF9EEDB2B9D9A1B97ABBD7042E903DB3E55D1F386FF0F02CCA52AB38BFFFE0129FFC621B4E43; __RequestVerificationToken=YBWDBeiBxmQxd0Uehqj8LseGd9bdEV5JDydOcapOD4-qvCDU8RtpCB-ddq52xEQrlVhL1orMgReI1juu1ofC6vr_yxM66tZ8zecjwwTG1lg1; zkly.auth=U8db4PdbsXukMqeCZR4HHoyvPhN_RxauDL36itur1TWrQnPbKn52LwH98omaLOzRPI4aKJ30ERViZSErRgfKByKHw1U-9sUXasXJ5HxsVRgvU1fgNIIStKd_nBfNgobS0wgT-lWEnf_7c_VXA4C3EcZoR7QZJgK1-JBLMpMZeIBPj1BoNk0q__u3E4z-xmAapmPu3lOE8D9jYNMmkxK_T38ht1Mx2uMixzGXTIhoond0wU666-Xio1TcFk6z0xhRrrpRhovn6rhwP5PybGYmN3SzTd6LcPZwhyg9pu2JkPYkmi-_SiH-RkHcu-VsIBUXQ96Ciy1LRuQqrLuLgvQZGWCJ9no1OQFP2fzentAGtkNh6iJa7gXvDJBFLSvIxtG2GMJrrA3mgdsQ8DsH2trS8JnPCCoW1sCTGTDsqT-DZOXXUtXPBRJZfv0ZWubeXcQSaNCshTVlFKtIpkbXXejS-HfzCYYt6_lVcLps6eLn-J6yao_W1wLYcDcodSWjCGzJVJxW6_y2aGO1X-PGIaA25g&#xD;&#xA;HTTP_HOST:localhost:1757&#xD;&#xA;HTTP_REFERER:http://localhost:1757/invest-frist&#xD;&#xA;HTTP_USER_AGENT:Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.135 Safari/537.36&#xD;&#xA;HTTP_ORIGIN:http://localhost:1757&#xD;&#xA;" />
+    </item>
+    <item name="ALL_RAW">
+      <value string="Cache-Control: max-age=0&#xD;&#xA;Connection: keep-alive&#xD;&#xA;Content-Length: 958&#xD;&#xA;Content-Type: application/x-www-form-urlencoded&#xD;&#xA;Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8&#xD;&#xA;Accept-Encoding: gzip, deflate&#xD;&#xA;Accept-Language: zh-CN,zh;q=0.8&#xD;&#xA;Cookie: UMB_UPDCHK=1; XSRF-TOKEN=Rq46EtMhlFqQSzR_Q3OP-Zj4B0V1srCo9XYEy__j4LuozhQpsa6kAxRxtqBFQz6R5BWYdlVNzn6K718aPnDHvJCJZx8BAZchEunsOz1zEIwdHI8Cw-n1ZQZHrm38Ot170; XSRF-V=_fD4twusNL_69pUupa2SNArdj4QpyqAR_khHiFXhzNPIlgDRr9EUPcLGwhCFrrMqPmuUH3eSzhw6YnOVVlySxeOGJLuUVoCHyPBWL3k6mTs1; UMB_UCONTEXT=2CD758EDF8E0E1815F89A75E8CA89A80E1C6D48BE21676F60A9A21001EB0195979B50C01AC59606C190D513D650C3165DE445BB3A79835CD7B164BC8C098D998E32681B011454D65BE634F42112AD0AF618C826295941A5152286B062F8CFC3CB99F3F2828C30ABDB64CF8E5921771E17AA2F55F2E06406918988F06AE4797807674744FE9BFF500028CA271D05ACC41DB610521260E05A29E0F4D8F3FF6A144D8B21B8C2DDFE3D347D4FA99A26420FCD9501A4C08E69FBD188C3E2694C0D38B838DE49D6A88D9065D85FEDF76334978CBEF7983DC075553D54188A7CBD649650571B5FE7845BB9C6721741EFFFF0FE50D48AD34C75FE5FAE2AFC2F97D2C103C8A80AB1C3970CEED942BA602CBC9E68A75555920520F89F7834D83AA28E160490044646F4036D92E261762211E4295D5F5FBF6DE6E676C3D669CA347F98393EDC0022635E22657B0991F3E68759D0993204BACA67D49CBCA218E09F8C0626C6D6EDE6A7AD50ABF92A5C1683DFA0CCD3D06C5E6A28AB5D97D937CCE797F53B095A47842AA29606D12E19DF277D9BA945A82496DA2EFB572D7EDDA74C35DC5F8AFBA18116C0F38FA724B07589B056150B0E39FA9B50F301FF975704F8C11ED9513747443A72AC1CF55EFCCCA6827D796F39088BB9A0FC0126904BE7C409CB676400E637753DB46F64EB21EFCF89EDBC6402CE162D4B0A5534E72E585DE1ABA7D3C4C2A31228E1BD53FFFC164D67D9458E9F84CC2A693CB4CF0CDC1E074F992DA42AF226A7B06BC1A0A238AAEC7F554C6D018CB9C0A3FE0A8567BBDE4487C471AE354A42D1A0F6239FDA167BF9EEDB2B9D9A1B97ABBD7042E903DB3E55D1F386FF0F02CCA52AB38BFFFE0129FFC621B4E43; __RequestVerificationToken=YBWDBeiBxmQxd0Uehqj8LseGd9bdEV5JDydOcapOD4-qvCDU8RtpCB-ddq52xEQrlVhL1orMgReI1juu1ofC6vr_yxM66tZ8zecjwwTG1lg1; zkly.auth=U8db4PdbsXukMqeCZR4HHoyvPhN_RxauDL36itur1TWrQnPbKn52LwH98omaLOzRPI4aKJ30ERViZSErRgfKByKHw1U-9sUXasXJ5HxsVRgvU1fgNIIStKd_nBfNgobS0wgT-lWEnf_7c_VXA4C3EcZoR7QZJgK1-JBLMpMZeIBPj1BoNk0q__u3E4z-xmAapmPu3lOE8D9jYNMmkxK_T38ht1Mx2uMixzGXTIhoond0wU666-Xio1TcFk6z0xhRrrpRhovn6rhwP5PybGYmN3SzTd6LcPZwhyg9pu2JkPYkmi-_SiH-RkHcu-VsIBUXQ96Ciy1LRuQqrLuLgvQZGWCJ9no1OQFP2fzentAGtkNh6iJa7gXvDJBFLSvIxtG2GMJrrA3mgdsQ8DsH2trS8JnPCCoW1sCTGTDsqT-DZOXXUtXPBRJZfv0ZWubeXcQSaNCshTVlFKtIpkbXXejS-HfzCYYt6_lVcLps6eLn-J6yao_W1wLYcDcodSWjCGzJVJxW6_y2aGO1X-PGIaA25g&#xD;&#xA;Host: localhost:1757&#xD;&#xA;Referer: http://localhost:1757/invest-frist&#xD;&#xA;User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.135 Safari/537.36&#xD;&#xA;Origin: http://localhost:1757&#xD;&#xA;" />
+    </item>
+    <item name="APPL_MD_PATH">
+      <value string="/LM/W3SVC/3/ROOT" />
+    </item>
+    <item name="APPL_PHYSICAL_PATH">
+      <value string="D:\Project\LuYan\src\Zkly.Web\" />
+    </item>
+    <item name="AUTH_TYPE">
+      <value string="ApplicationCookie" />
+    </item>
+    <item name="AUTH_USER">
+      <value string="TestEnt01" />
+    </item>
+    <item name="AUTH_PASSWORD">
+      <value string="*****" />
+    </item>
+    <item name="LOGON_USER">
+      <value string="" />
+    </item>
+    <item name="REMOTE_USER">
+      <value string="TestEnt01" />
+    </item>
+    <item name="CERT_COOKIE">
+      <value string="" />
+    </item>
+    <item name="CERT_FLAGS">
+      <value string="" />
+    </item>
+    <item name="CERT_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SERIALNUMBER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CERT_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CONTENT_LENGTH">
+      <value string="958" />
+    </item>
+    <item name="CONTENT_TYPE">
+      <value string="application/x-www-form-urlencoded" />
+    </item>
+    <item name="GATEWAY_INTERFACE">
+      <value string="CGI/1.1" />
+    </item>
+    <item name="HTTPS">
+      <value string="off" />
+    </item>
+    <item name="HTTPS_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="INSTANCE_ID">
+      <value string="3" />
+    </item>
+    <item name="INSTANCE_META_PATH">
+      <value string="/LM/W3SVC/3" />
+    </item>
+    <item name="LOCAL_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="PATH_INFO">
+      <value string="/invest/submit-first-audit/" />
+    </item>
+    <item name="PATH_TRANSLATED">
+      <value string="D:\Project\LuYan\src\Zkly.Web\invest\submit-first-audit\" />
+    </item>
+    <item name="QUERY_STRING">
+      <value string="" />
+    </item>
+    <item name="REMOTE_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_HOST">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_PORT">
+      <value string="22238" />
+    </item>
+    <item name="REQUEST_METHOD">
+      <value string="POST" />
+    </item>
+    <item name="SCRIPT_NAME">
+      <value string="/invest/submit-first-audit/" />
+    </item>
+    <item name="SERVER_NAME">
+      <value string="localhost" />
+    </item>
+    <item name="SERVER_PORT">
+      <value string="1757" />
+    </item>
+    <item name="SERVER_PORT_SECURE">
+      <value string="0" />
+    </item>
+    <item name="SERVER_PROTOCOL">
+      <value string="HTTP/1.1" />
+    </item>
+    <item name="SERVER_SOFTWARE">
+      <value string="Microsoft-IIS/8.0" />
+    </item>
+    <item name="URL">
+      <value string="/invest/submit-first-audit/" />
+    </item>
+    <item name="HTTP_CACHE_CONTROL">
+      <value string="max-age=0" />
+    </item>
+    <item name="HTTP_CONNECTION">
+      <value string="keep-alive" />
+    </item>
+    <item name="HTTP_CONTENT_LENGTH">
+      <value string="958" />
+    </item>
+    <item name="HTTP_CONTENT_TYPE">
+      <value string="application/x-www-form-urlencoded" />
+    </item>
+    <item name="HTTP_ACCEPT">
+      <value string="text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8" />
+    </item>
+    <item name="HTTP_ACCEPT_ENCODING">
+      <value string="gzip, deflate" />
+    </item>
+    <item name="HTTP_ACCEPT_LANGUAGE">
+      <value string="zh-CN,zh;q=0.8" />
+    </item>
+    <item name="HTTP_COOKIE">
+      <value string="UMB_UPDCHK=1; XSRF-TOKEN=Rq46EtMhlFqQSzR_Q3OP-Zj4B0V1srCo9XYEy__j4LuozhQpsa6kAxRxtqBFQz6R5BWYdlVNzn6K718aPnDHvJCJZx8BAZchEunsOz1zEIwdHI8Cw-n1ZQZHrm38Ot170; XSRF-V=_fD4twusNL_69pUupa2SNArdj4QpyqAR_khHiFXhzNPIlgDRr9EUPcLGwhCFrrMqPmuUH3eSzhw6YnOVVlySxeOGJLuUVoCHyPBWL3k6mTs1; UMB_UCONTEXT=2CD758EDF8E0E1815F89A75E8CA89A80E1C6D48BE21676F60A9A21001EB0195979B50C01AC59606C190D513D650C3165DE445BB3A79835CD7B164BC8C098D998E32681B011454D65BE634F42112AD0AF618C826295941A5152286B062F8CFC3CB99F3F2828C30ABDB64CF8E5921771E17AA2F55F2E06406918988F06AE4797807674744FE9BFF500028CA271D05ACC41DB610521260E05A29E0F4D8F3FF6A144D8B21B8C2DDFE3D347D4FA99A26420FCD9501A4C08E69FBD188C3E2694C0D38B838DE49D6A88D9065D85FEDF76334978CBEF7983DC075553D54188A7CBD649650571B5FE7845BB9C6721741EFFFF0FE50D48AD34C75FE5FAE2AFC2F97D2C103C8A80AB1C3970CEED942BA602CBC9E68A75555920520F89F7834D83AA28E160490044646F4036D92E261762211E4295D5F5FBF6DE6E676C3D669CA347F98393EDC0022635E22657B0991F3E68759D0993204BACA67D49CBCA218E09F8C0626C6D6EDE6A7AD50ABF92A5C1683DFA0CCD3D06C5E6A28AB5D97D937CCE797F53B095A47842AA29606D12E19DF277D9BA945A82496DA2EFB572D7EDDA74C35DC5F8AFBA18116C0F38FA724B07589B056150B0E39FA9B50F301FF975704F8C11ED9513747443A72AC1CF55EFCCCA6827D796F39088BB9A0FC0126904BE7C409CB676400E637753DB46F64EB21EFCF89EDBC6402CE162D4B0A5534E72E585DE1ABA7D3C4C2A31228E1BD53FFFC164D67D9458E9F84CC2A693CB4CF0CDC1E074F992DA42AF226A7B06BC1A0A238AAEC7F554C6D018CB9C0A3FE0A8567BBDE4487C471AE354A42D1A0F6239FDA167BF9EEDB2B9D9A1B97ABBD7042E903DB3E55D1F386FF0F02CCA52AB38BFFFE0129FFC621B4E43; __RequestVerificationToken=YBWDBeiBxmQxd0Uehqj8LseGd9bdEV5JDydOcapOD4-qvCDU8RtpCB-ddq52xEQrlVhL1orMgReI1juu1ofC6vr_yxM66tZ8zecjwwTG1lg1; zkly.auth=U8db4PdbsXukMqeCZR4HHoyvPhN_RxauDL36itur1TWrQnPbKn52LwH98omaLOzRPI4aKJ30ERViZSErRgfKByKHw1U-9sUXasXJ5HxsVRgvU1fgNIIStKd_nBfNgobS0wgT-lWEnf_7c_VXA4C3EcZoR7QZJgK1-JBLMpMZeIBPj1BoNk0q__u3E4z-xmAapmPu3lOE8D9jYNMmkxK_T38ht1Mx2uMixzGXTIhoond0wU666-Xio1TcFk6z0xhRrrpRhovn6rhwP5PybGYmN3SzTd6LcPZwhyg9pu2JkPYkmi-_SiH-RkHcu-VsIBUXQ96Ciy1LRuQqrLuLgvQZGWCJ9no1OQFP2fzentAGtkNh6iJa7gXvDJBFLSvIxtG2GMJrrA3mgdsQ8DsH2trS8JnPCCoW1sCTGTDsqT-DZOXXUtXPBRJZfv0ZWubeXcQSaNCshTVlFKtIpkbXXejS-HfzCYYt6_lVcLps6eLn-J6yao_W1wLYcDcodSWjCGzJVJxW6_y2aGO1X-PGIaA25g" />
+    </item>
+    <item name="HTTP_HOST">
+      <value string="localhost:1757" />
+    </item>
+    <item name="HTTP_REFERER">
+      <value string="http://localhost:1757/invest-frist" />
+    </item>
+    <item name="HTTP_USER_AGENT">
+      <value string="Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.135 Safari/537.36" />
+    </item>
+    <item name="HTTP_ORIGIN">
+      <value string="http://localhost:1757" />
+    </item>
+  </serverVariables>
+  <form>
+    <item name="__RequestVerificationToken">
+      <value string="sx2wrzPxPQqP3M6ysOcdLmWyQ46lTyhVjie5DMd8fu7nu1AiMYn0HiSQPjzpltpwRmrAzumjjbHotxCOGhilmNAq6o0rFTaSKNkAD9vYKqPSei2XBdFeLWqwqz-E5xx4T26FScSP1iZQw7r83u7Kgg2" />
+    </item>
+    <item name="Id">
+      <value string="0" />
+    </item>
+    <item name="CompanyName">
+      <value string="zdsdsf" />
+    </item>
+    <item name="FoundingDate">
+      <value string="2015-08-31" />
+    </item>
+    <item name="Industry">
+      <value string="医疗健康" />
+    </item>
+    <item name="Area">
+      <value string="天津市天津市河西区" />
+    </item>
+    <item name="IndustryPosition">
+      <value string="" />
+    </item>
+    <item name="IndustryCompetition">
+      <value string="" />
+    </item>
+    <item name="ProjectName">
+      <value string="sadsad" />
+    </item>
+    <item name="ProjectAwards">
+      <value string="" />
+    </item>
+    <item name="InvestmentInstitutions">
+      <value string="天使" />
+    </item>
+    <item name="ApplyQuota">
+      <value string="100.5255555" />
+    </item>
+    <item name="isLock">
+      <value string="false" />
+    </item>
+    <item name="LegalPerson">
+      <value string="asds" />
+    </item>
+    <item name="LegalPhone">
+      <value string="1111111" />
+    </item>
+    <item name="LegalCellPhone">
+      <value string="" />
+    </item>
+    <item name="Contact">
+      <value string="1111111" />
+    </item>
+    <item name="ContactPhone">
+      <value string="1111111" />
+    </item>
+    <item name="ContactCellPhone">
+      <value string="" />
+    </item>
+    <item name="Email">
+      <value string="721083103@qq.com" />
+    </item>
+    <item name="CompanyDescription">
+      <value string="sadsd" />
+    </item>
+    <item name="IsTeamAdv">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="TeamAdv">
+      <value string="sadsd" />
+    </item>
+    <item name="IsProdAdv">
+      <value string="false" />
+    </item>
+    <item name="ProdAdv">
+      <value string="" />
+    </item>
+    <item name="IsTechAdv">
+      <value string="false" />
+    </item>
+    <item name="TechAdv">
+      <value string="" />
+    </item>
+    <item name="IsScaleAdv">
+      <value string="false" />
+    </item>
+    <item name="ScaleAdv">
+      <value string="" />
+    </item>
+    <item name="IsSaleAdv">
+      <value string="false" />
+    </item>
+    <item name="SaleAdv">
+      <value string="" />
+    </item>
+    <item name="IsIndustryAdv">
+      <value string="false" />
+    </item>
+    <item name="IndustryAdv">
+      <value string="" />
+    </item>
+    <item name="IsResourceAdv">
+      <value string="false" />
+    </item>
+    <item name="ResourceAdv">
+      <value string="" />
+    </item>
+    <item name="IsOtherAdv">
+      <value string="false" />
+    </item>
+    <item name="OtherAdv">
+      <value string="" />
+    </item>
+    <item name="MarketAndSales">
+      <value string="" />
+    </item>
+    <item name="Data1">
+      <value string="" />
+    </item>
+    <item name="Data2">
+      <value string="" />
+    </item>
+    <item name="Data3">
+      <value string="" />
+    </item>
+    <item name="Data4">
+      <value string="" />
+    </item>
+    <item name="Data5">
+      <value string="" />
+    </item>
+  </form>
+  <cookies>
+    <item name="UMB_UPDCHK">
+      <value string="1" />
+    </item>
+    <item name="XSRF-TOKEN">
+      <value string="Rq46EtMhlFqQSzR_Q3OP-Zj4B0V1srCo9XYEy__j4LuozhQpsa6kAxRxtqBFQz6R5BWYdlVNzn6K718aPnDHvJCJZx8BAZchEunsOz1zEIwdHI8Cw-n1ZQZHrm38Ot170" />
+    </item>
+    <item name="XSRF-V">
+      <value string="_fD4twusNL_69pUupa2SNArdj4QpyqAR_khHiFXhzNPIlgDRr9EUPcLGwhCFrrMqPmuUH3eSzhw6YnOVVlySxeOGJLuUVoCHyPBWL3k6mTs1" />
+    </item>
+    <item name="UMB_UCONTEXT">
+      <value string="2CD758EDF8E0E1815F89A75E8CA89A80E1C6D48BE21676F60A9A21001EB0195979B50C01AC59606C190D513D650C3165DE445BB3A79835CD7B164BC8C098D998E32681B011454D65BE634F42112AD0AF618C826295941A5152286B062F8CFC3CB99F3F2828C30ABDB64CF8E5921771E17AA2F55F2E06406918988F06AE4797807674744FE9BFF500028CA271D05ACC41DB610521260E05A29E0F4D8F3FF6A144D8B21B8C2DDFE3D347D4FA99A26420FCD9501A4C08E69FBD188C3E2694C0D38B838DE49D6A88D9065D85FEDF76334978CBEF7983DC075553D54188A7CBD649650571B5FE7845BB9C6721741EFFFF0FE50D48AD34C75FE5FAE2AFC2F97D2C103C8A80AB1C3970CEED942BA602CBC9E68A75555920520F89F7834D83AA28E160490044646F4036D92E261762211E4295D5F5FBF6DE6E676C3D669CA347F98393EDC0022635E22657B0991F3E68759D0993204BACA67D49CBCA218E09F8C0626C6D6EDE6A7AD50ABF92A5C1683DFA0CCD3D06C5E6A28AB5D97D937CCE797F53B095A47842AA29606D12E19DF277D9BA945A82496DA2EFB572D7EDDA74C35DC5F8AFBA18116C0F38FA724B07589B056150B0E39FA9B50F301FF975704F8C11ED9513747443A72AC1CF55EFCCCA6827D796F39088BB9A0FC0126904BE7C409CB676400E637753DB46F64EB21EFCF89EDBC6402CE162D4B0A5534E72E585DE1ABA7D3C4C2A31228E1BD53FFFC164D67D9458E9F84CC2A693CB4CF0CDC1E074F992DA42AF226A7B06BC1A0A238AAEC7F554C6D018CB9C0A3FE0A8567BBDE4487C471AE354A42D1A0F6239FDA167BF9EEDB2B9D9A1B97ABBD7042E903DB3E55D1F386FF0F02CCA52AB38BFFFE0129FFC621B4E43" />
+    </item>
+    <item name="__RequestVerificationToken">
+      <value string="YBWDBeiBxmQxd0Uehqj8LseGd9bdEV5JDydOcapOD4-qvCDU8RtpCB-ddq52xEQrlVhL1orMgReI1juu1ofC6vr_yxM66tZ8zecjwwTG1lg1" />
+    </item>
+    <item name="zkly.auth">
+      <value string="U8db4PdbsXukMqeCZR4HHoyvPhN_RxauDL36itur1TWrQnPbKn52LwH98omaLOzRPI4aKJ30ERViZSErRgfKByKHw1U-9sUXasXJ5HxsVRgvU1fgNIIStKd_nBfNgobS0wgT-lWEnf_7c_VXA4C3EcZoR7QZJgK1-JBLMpMZeIBPj1BoNk0q__u3E4z-xmAapmPu3lOE8D9jYNMmkxK_T38ht1Mx2uMixzGXTIhoond0wU666-Xio1TcFk6z0xhRrrpRhovn6rhwP5PybGYmN3SzTd6LcPZwhyg9pu2JkPYkmi-_SiH-RkHcu-VsIBUXQ96Ciy1LRuQqrLuLgvQZGWCJ9no1OQFP2fzentAGtkNh6iJa7gXvDJBFLSvIxtG2GMJrrA3mgdsQ8DsH2trS8JnPCCoW1sCTGTDsqT-DZOXXUtXPBRJZfv0ZWubeXcQSaNCshTVlFKtIpkbXXejS-HfzCYYt6_lVcLps6eLn-J6yao_W1wLYcDcodSWjCGzJVJxW6_y2aGO1X-PGIaA25g" />
+    </item>
+  </cookies>
+</error>

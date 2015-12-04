@@ -1,0 +1,53 @@
+﻿@model Zkly.DAL.Models.AgencyCommission
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>你确定要删除该记录吗?</h2>
+<div>
+    <hr />
+    <dl class="dl-horizontal dl-md">
+        <dt>
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CashPercent)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CashPercent)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StockPercent)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StockPercent)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="删除" class="btn btn-primary" /> 
+            @Html.ActionLink("返回列表", "Index", null, new { @class = "btn btn-default" })
+        </div>
+    }
+</div>

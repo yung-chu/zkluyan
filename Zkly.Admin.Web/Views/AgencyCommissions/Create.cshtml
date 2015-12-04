@@ -1,0 +1,64 @@
+﻿@model Zkly.DAL.Models.AgencyCommission
+
+@{
+    ViewBag.Title = "添加 - 佣金方案";
+}
+
+@section styles {
+    @Styles.Render("~/css/bootstrapValidatorCss")
+    @Scripts.Render("~/js/bootstrapValidator")
+    @Scripts.Render("~/js/jqueryval")
+}
+
+@using (Html.BeginForm("SaveCreate", "AgencyCommissions", FormMethod.Post, new { @class = "form-horizontal", role = "form", @id = "info-form" }))
+{
+    <div id="create-user" class="panel panel-default">
+        <div class="panel-heading">
+            @ViewBag.Title
+        </div>
+        @Html.Partial("_SuccessMessage")
+        @Html.Partial("_ErrorMessage")
+        <div class="panel-body">
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.CashPercent, htmlAttributes: new { @class = "control-label col-xs-2" })
+                    <div class="col-xs-5">
+                        @Html.EditorFor(model => model.CashPercent, new { htmlAttributes = new { @class = "form-control", @id = "CashPercent" } })
+                        @Html.ValidationMessageFor(model => model.CashPercent, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.StockPercent, htmlAttributes: new { @class = "control-label col-xs-2" })
+                    <div class="col-xs-5">
+                        @Html.EditorFor(model => model.StockPercent, new { htmlAttributes = new { @class = "form-control", @id = "StockPercent" } })
+                        @Html.ValidationMessageFor(model => model.StockPercent, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-xs-2" })
+                    <div class="col-xs-5">
+                        @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control", @id = "Description" } })
+                        @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                </div>
+        </div>
+        <div class="panel-footer">
+            <div class="col-xs-offset-2 col-xs-10">
+                <input type="submit" value="添加" class="btn btn-primary" id="commission-submit" />
+                @Html.ActionLink("返回列表", "Index", null, new { @class = "btn btn-default" })
+            </div>
+        </div>
+            </div>
+            }
+@section scripts{
+
+    @Scripts.Render("~/js/agencyCommission")
+
+}

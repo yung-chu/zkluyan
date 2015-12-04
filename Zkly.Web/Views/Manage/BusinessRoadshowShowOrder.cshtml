@@ -1,0 +1,54 @@
+﻿@model Zkly.BLL.ViewModels.BusinessRoadshowShowOrderViewModel
+
+@{
+    ViewBag.Title = "业务路演显示设置";
+}
+<br />
+
+@Html.Partial("AlertMessage")
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        设置业务路演显示顺序
+        <a id="save-shows" href="#" class="btn btn-primary">保存</a>
+    </div>
+    <div class="panel-body">
+        <div id="show-order" class="row">
+            <div class="col-xs-6 zkly-show-all-roadshow">
+                <ul id="all-roadshows" class="list-group">
+                    @foreach (var item in Model.Roadshows)
+                    {
+                        <li class="list-group-item" title="点击显示路演描述">
+                            <div>
+                                <input type="checkbox" checked="@item.IsOnShow" value="@item.Id" />
+                                <span>@item.VideoName</span>
+                            </div>
+                        </li>
+                        <li class="zkly-show-desc hidden">
+                            @item.VideoDescrition
+                        </li>
+                    }
+                </ul>
+            </div>
+            <div id="top8-roadshows" class="col-xs-6">
+                <ul id="top8-shows" class="list-group">
+                    @foreach (var item in Model.Top8Shows)
+                    {
+                        <li id="@item.Id" class="list-group-item">
+                            <span>@item.VideoName</span>
+                            <span name="delete" class="glyphicon glyphicon-remove zkly-right zkly-pointer"></span>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section scripts{
+    @Scripts.Render("~/js/roadshow-order")
+}
+
+
+

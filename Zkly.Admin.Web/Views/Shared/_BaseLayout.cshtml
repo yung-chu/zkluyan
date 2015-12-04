@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+@* no-js - The no JavaScript class is removed by modernizr if JavaScript is available. *@
+<html class="no-js" lang="zh-CN">
+<head>
+    @* The order of the tags in the head is important for best performance and comaptability. *@
+    <meta charset="utf-8" />
+    @* title - The title of the page. Appears in the browser window title. The site name appears at the end for better SEO. *@
+    <title>@ViewBag.Title - @Application.Name</title>
+
+    <meta name="description" content="@Application.Name" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    @* Custom Fonts - If you are using custom fonts. Consider using the Google Web Fonts Loader in async mode https://github.com/typekit/webfontloader. *@
+    @Styles.Render("~/Content/style/main")
+    @Scripts.Render("~/js/modernizr")
+    @Scripts.Render("~/js/jquery")
+    @Scripts.Render("~/js/jqueryval")
+    @Scripts.Render("~/js/jqueryvalunobtrusive")
+    @Scripts.Render("~/js/jqueryjson")
+    @Scripts.Render("~/js/bootstrap")
+    @* Render failover scripts. If a Content Delivery Network (CDN) fails, load a local copy.
+        If you trust the CDN to be available 100% of the time and you prefer better performance
+        you can omit this line and the one for 'failoverrespond' below. *@
+    @Scripts.Render("~/js/failovercore")
+    @* Only load respond if we are running IE8 or less. *@
+    <!--[if lt IE 9]>
+      @Scripts.Render("~/js/respond")
+      @Scripts.Render("~/js/failoverrespond")
+    <![endif]-->
+    @RenderSection("styles", required: false)
+
+</head>
+<body>
+
+    @RenderBody()
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

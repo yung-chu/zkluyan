@@ -1,0 +1,107 @@
+﻿@model Zkly.DAL.Models.ApplicationUser
+
+@{
+    ViewBag.Title = "编辑用户资料";
+    var role = RoleManager.GetRoleName(Model);
+}
+@section styles {
+    @Styles.Render("~/css/bootstrapValidatorCss")
+    @Scripts.Render("~/js/bootstrapValidator")
+    @Scripts.Render("~/js/jqueryval")
+}
+
+
+@using (Html.BeginForm("SaveEdit", "UserManagement", FormMethod.Post, new { @class = "form-horizontal", role = "form", @id = "info-form" }))
+{
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            @ViewBag.Title
+        </div>
+        @Html.Partial("_SuccessMessage")
+        @Html.Partial("_ErrorMessage")
+        <div class="panel-body">
+
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                @Html.HiddenFor(model => model.Id)
+
+                <div class="form-group">
+                    <label class="control-label col-md-2" for="UserName">用户名</label>
+                    <div class="col-md-6">
+                        @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control", @id = "UserName" } })
+                        @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2" for="DisplayName">显示名称（昵称）</label>
+                    <div class="col-md-6">
+                        @Html.EditorFor(model => model.DisplayName, new { htmlAttributes = new { @class = "form-control", @id = "DisplayName" } })
+                        @Html.ValidationMessageFor(model => model.DisplayName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="Role" class="col-xs-2 control-label">角色</label>
+                    <div class="col-xs-6">
+                        <div id="user-role-group" class="btn-group" data-toggle="buttons">
+                            <label class="btn btn-default @(role == "Administrator" ? "active" : "")">
+                                <input type="radio" value="Administrator" name="Role" id="Role" class="form-control" @Html.Raw(role == "Administrator" ? "checked=\"checked\"" : "")> 管理员
+                            </label>
+                            <label class="btn btn-default @(role == "Enterprise" ? "active" : "")">
+                                <input type="radio" value="Enterprise" name="Role" id="Role" class="form-control" @Html.Raw(role == "Enterprise" ? "checked=\"checked\"" : "")> 企业
+                            </label>
+                            <label class="btn btn-default @(role == "Investor" ? "active" : "")">
+                                <input type="radio" value="Investor" name="Role" id="Role" class="form-control" @Html.Raw(role == "Investor" ? "checked=\"checked\"" : "")> 投资人
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2" for="PhoneNumber">手机号码</label>
+                    <div class="col-md-6">
+                        @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control", @id = "PhoneNumber" } })
+                        @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2" for="Email">电子邮箱</label>
+                    <div class="col-md-6">
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @id = "Email" } })
+                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2" for="LockoutEnabled">允许锁定</label>
+                    <div class="col-md-6">
+                        <div id="user-role-group" class="btn-group" data-toggle="buttons">
+                            <label class="btn btn-default @(Model.LockoutEnabled ? "active" : "")">
+                                <input type="radio" value="true" name="LockoutEnabled" id="LockoutEnabled" class="form-control" @Html.Raw(Model.LockoutEnabled ? "checked=\"checked\"" : "")> 开启
+                            </label>
+                            <label class="btn btn-default @(Model.LockoutEnabled ? "" : "active")">
+                                <input type="radio" value="false" name="LockoutEnabled" id="LockoutEnabled" class="form-control" @Html.Raw(Model.LockoutEnabled ? "" : "checked=\"checked\"")> 关闭
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="panel-footer">
+            <div class="col-md-offset-2">
+                <input type="submit" value="保存" class="btn btn-primary" />
+                <a href="@Url.Action("Details", new {Model.Id})" class="btn btn-default">返回资料页</a>
+                <a href="@Url.Action("Index", new {role})" class="btn btn-default">返回列表</a>
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/js/user-management")
+    @Scripts.Render("~/js/user")
+}

@@ -1,0 +1,94 @@
+﻿@using Zkly.Common.Extension
+@model IDictionary<int, ApplicationUser>
+@{
+    ViewBag.Title = "批量创建新用户";
+    var role = ViewContext.RouteData.Values["role"].ToString().ToEnum<EUserRole>();
+}
+
+@using (Html.BeginForm("SaveCreateMultiple", "UserManagement", FormMethod.Post, new { enctype = "multipart/form-data", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+
+    <input id="role" name="role" value="@role" type="hidden" />
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">
+                上传新用户表格 <span class="label label-info">@Html.DisplayFor(m => role)</span>
+            </h3>
+        </div>
+        @Html.Partial("_SuccessMessage")
+        @Html.Partial("_ErrorMessage")
+        <div class="panel-body">
+            @if (Model != null && Model.Count != 0)
+            {
+                <table class="table table-striped">
+                    <tr>
+                        <th>
+                            行号
+                        </th>
+                        <th>
+                            登录用户名
+                        </th>
+                        <th>
+                            电子邮箱
+                        </th>
+                        <th>
+                            手机号码
+                        </th>
+                        <th>
+                            用户角色
+                        </th>
+                        <th>&nbsp;</th>
+                    </tr>
+
+                    @foreach (var kvp in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => kvp.Key)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => kvp.Value.UserName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => kvp.Value.Email)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => kvp.Value.PhoneNumber)
+                            </td>
+                            <td>
+                                @{
+                        var itemRole = RoleManager.GetRoleType(kvp.Value);
+                                }
+                                @Html.DisplayFor(modelItem => itemRole)
+                            </td>
+                            <td>
+                                @Html.ActionLink("查看", "Details", new { id = kvp.Value.Id }, new { target = "_blank" })
+                            </td>
+                        </tr>
+                    }
+                </table>
+            }
+
+            <div class="bg-info" style="padding: 15px;">
+                <p>请选择包含用户资料的Excel文件，文件格式如下图所示：</p>
+                <hr />
+                <p> <img src="~/Images/create-users-excel-sample.png" alt="Excel的内容格式样例" style="width:100%"></p>
+            </div>
+            <hr />
+            <div class="col-xs-5" >
+                <input type="file" name="excelFile" accept=".xlsx" style="float:left;margin-right:5px;" />
+                <a href="~/Files/用户_数据导入.xlsx" class="btn btn-success" style="float:left">下载模板</a>
+            </div>
+        </div>
+        <div class="panel-footer">
+            <input type="submit" value="提交" class="btn btn-primary" />
+            <a href="@Url.Action("Index")" class="btn btn-default">返回列表</a>
+        </div>
+    </div>
+}
+
+
+
+
+

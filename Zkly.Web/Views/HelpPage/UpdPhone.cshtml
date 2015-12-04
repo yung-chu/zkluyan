@@ -1,0 +1,92 @@
+﻿
+@{
+    ViewBag.Title = "UpdPhone";
+    Layout = "~/Views/Shared/_LayoutHelp.cshtml";
+}
+ <div class="row" id="zkly_Row">
+
+    <div class="col-xs-1">
+        <img src="~/images/PublicImg/Blue.png" />
+    </div>
+    <div class="col-xs-10">
+        用户修改电话号码
+    </div>
+
+</div>
+        <!--neirong开始-->
+        <div class="neirong">
+
+            <ul id="UI">
+                <li>
+                    <div class="tiao"></div>
+                    <div class="aa-1">
+                        <span>
+                            <i><img src="~/images/HelpCenterImg/Step_1.png" /> </i>
+                            <p>登录后，点击页面右上角您的登录名</p>
+                            @*<a href="#">免费注册</a>*@
+                        </span>
+                        <div class="aa-2">
+                            <a><img src="~/Images/HelpCenterImg/Manager_01.png" /></a>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="tiao"></div>
+                    <div class="aa-1">
+                        <span>
+                            <i><img src="~/images/HelpCenterImg/Step_2.png" /> </i>
+                            <p>点击更改</p>
+
+                        </span>
+                        <div class="aa-2">
+                            <a><img src="~/Images/HelpCenterImg/UpdPhone01.png"></a>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="tiao"></div>
+                    <div class="aa-1">
+                        <span>
+                            <i><img src="~/images/HelpCenterImg/Step_3.png" /> </i>
+                            <p>输入新的电话号码，点击提交</p>
+
+                        </span>
+                        <div class="aa-2">
+                            <a><img src="~/Images/HelpCenterImg/UpdPhone02.png" ></a>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="tiao"></div>
+                    <div class="aa-1">
+                        <span>
+                            <i><img src="~/images/HelpCenterImg/Step_4.png" /> </i>
+                            <p>输入系统发给您的验证码，点击提交</p>
+
+                        </span>
+                        <div class="aa-2">
+                            <a><img src="~/Images/HelpCenterImg/Phone.png"></a>
+                        </div>
+                    </div>
+                </li>
+                <li>
+
+                    <div class="aa-1">
+                        <span>
+                            <i><img src="~/images/HelpCenterImg/Step_5.png" /> </i>
+                            <p>修改成功后跳回至账户设置页面</p>
+
+                        </span>
+                        <div class="aa-2">
+                            <a><img src="~/Images/HelpCenterImg/VerificationPhone.png"></a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <!--neirong结束-->
+<!--content结束-->
+@section scripts
+{
+    @Scripts.Render("~/js/helpPageHover")
+}

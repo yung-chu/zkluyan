@@ -1,0 +1,86 @@
+﻿@model Zkly.BLL.ViewModels.RoadshowHallViewModel
+
+@{
+    ViewBag.Title = "路演厅";
+}
+<br />
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <span>业务路演</span>
+        @if (Model.BusinessRoadshows != null && Model.BusinessRoadshows.Count() > 0)
+        {
+            <a href="#" class="zkly-right">更多...</a>
+        }
+    </div>
+    <div class="panel-body">
+        @if (Model.BusinessRoadshows == null || Model.BusinessRoadshows.Count() == 0)
+        {
+            <p>目前还没有业务路演可以观看！</p>
+        }
+        else
+        {
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>视频名称</th>
+                        <th>视频描述</th>
+                        <th>提交时间</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.BusinessRoadshows)
+                    {
+                        <tr>
+                            <td>@item.VideoName</td>
+                            <td class="zkly-my-roadshow-desc">@item.VideoDescrition</td>
+                            <td>@item.SubmitDate</td>
+                            <td><a href="roadshow/business-roadshow/@item.Id" class="btn btn-info">进入</a></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <span>资本路演</span>
+        @if (Model.CapitalRoadshows != null && Model.CapitalRoadshows.Count() > 0)
+        {
+            <a href="#" class="zkly-right">查看更多...</a>
+        }
+    </div>
+    <div class="panel-body">
+        @if (Model.CapitalRoadshows == null || Model.CapitalRoadshows.Count() == 0)
+        {
+            <p>目前还没有资本路演可以观看！</p>
+        }
+        else
+        {
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>公司名称</th>
+                        <th>活动主题</th>
+                        <th>开始时间</th>
+                        <th>结束时间</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.CapitalRoadshows)
+                    {
+                        <tr>
+                            <td>@item.CompanyName</td>
+                            <td>@item.Subject</td>
+                            <td>@item.StartDate.ToString("yyyy-MM-dd hh:mm")</td>
+                            <td>@item.EndDate.ToString("yyyy-MM-dd hh:mm")</td>                           
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    </div>
+</div>
+

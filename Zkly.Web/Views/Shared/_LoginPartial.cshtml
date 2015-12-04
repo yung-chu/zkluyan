@@ -1,0 +1,35 @@
+﻿@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+    @Html.AntiForgeryToken()
+
+    <ul class="nav navbar-right">
+        <li>
+            @Html.ActionLink("你好，" + User.Identity.GetUserName() + "!", "Index", "Profile", routeValues: null, htmlAttributes: new { title = "Manage" })
+       </li>
+  
+        <li>
+            <a  style="cursor: pointer;height: 32px;" href="@Url.Action("MessageCenter", "Enterprise", new { id="", state = false })">
+                <img src="~/Images/PublicImg/Btn-News.png" />
+                @if (UserManager.PublicEnterpriseMessageCount(User.Identity.GetUserId()) != 0)
+                {
+                <label style="color: red">
+                    @UserManager.PublicEnterpriseMessageCount(User.Identity.GetUserId())
+                </label>
+                }
+            </a>
+        </li>
+       
+        <li><a href="javascript:document.getElementById('logoutForm').submit()">注销</a></li>
+    </ul>
+    }
+}
+else
+{
+    <ul class="nav navbar-right">
+        <li>@Html.ActionLink("登录", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink"})</li>
+        <li>@Html.ActionLink("注册", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink"})</li>
+    </ul>
+}

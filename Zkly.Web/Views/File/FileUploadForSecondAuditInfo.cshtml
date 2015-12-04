@@ -1,0 +1,36 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>文件上传</title>
+    @Styles.Render("~/css/css")
+    @Styles.Render("~/css/common")
+    @Scripts.Render("~/js/jquery")
+  
+</head>
+<body>
+<div>
+    <form id="fromFile" action="/File/FileUploadForSecondAuditInfo" method="POST" enctype="multipart/form-data">
+        <span class="btn btn-default btn-file">
+            浏     览... <input id="file" type="file" name="file" onchange="FormSubmit()" />
+        </span>
+      
+        <input type="hidden" value="@(ViewBag.fileType)" name="fileType" id="fileType" />
+        <input type="hidden" value="@(ViewBag.fileId)" name="fileId" id="fileId" />
+        <input type="hidden" value="@(ViewBag.fileHidId)" name="fileHidId" id="fileHidId" />
+        <input type="hidden" value="@ViewBag.Flag" name="flag" id="flag" />
+        <input type="hidden" value="@ViewBag.errorInfo" id="errorInfo" />
+        <input type="hidden" value="@ViewBag.Path" id="path" />
+    </form>
+</div>
+</body>
+
+@Scripts.Render("~/js/FileUploadForSecondAuditInfo")
+
+</html>
+

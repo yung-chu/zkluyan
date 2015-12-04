@@ -1,0 +1,78 @@
+﻿@using Zkly.BLL.ViewModels
+@model LoginViewModel
+@{
+    ViewBag.Title = "登录";
+}
+
+@section heads {
+    @Styles.Render("~/css/bootstrapValidatorCss")
+    @Styles.Render("~/css/Login")
+    @Scripts.Render("~/js/jqueryval")
+    @Scripts.Render("~/js/bootstrapValidator")
+}
+
+<div id="login-panel" class="row">
+    <div class="col-xs-6">
+        <img class="img-responsive" src="~/Images/LoginAndRegister/login-bg.png" />
+    </div>
+    <div class="col-xs-6  form-header">
+        <section id="loginForm">
+            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", id="logonForm",role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                <span class="title">用户登录</span> <span>我没有帐号，现在就 @Html.ActionLink("注册", "Register")</span>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                <br />
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.UserName, new { @class = "col-xs-2 control-label" })
+                    <div class="col-xs-10">
+                        @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", @placeholder = "用户名/邮箱/手机" })
+                        @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Password, new { @class = "col-xs-2 control-label" })
+                    <div class="col-xs-10">
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "密码" })
+                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-2"> </div>
+                    <div class="col-xs-4">
+                        <div class="checkbox">
+                            @Html.CheckBoxFor(m => m.RememberMe)
+                            @Html.LabelFor(m => m.RememberMe)
+                        </div>
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="checkbox">
+                            @* 在为密码重置功能启用帐户确认后启用此项*@
+                            @Html.ActionLink("忘记密码?", "ForgotPassword")
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-2"></div>
+                    <div class="col-xs-10">
+                        <input type="submit" value="立 即 登 录" class="btn btn-primary btn-block" id="logon" />
+                    </div>
+                </div>
+            }
+        </section>
+        @*<section id="socialLoginForm">
+                @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
+            </section>*@
+    </div>
+
+</div>
+
+@section scripts {
+  @Scripts.Render("~/js/logonVerify")
+                    }
+
+
+

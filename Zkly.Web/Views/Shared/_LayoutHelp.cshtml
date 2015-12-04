@@ -1,0 +1,236 @@
+﻿@using System.Net.Mime
+@using Microsoft.AspNet.Identity
+@using Zkly.DAL.Models;
+@using Zkly.Common;
+@{
+    Layout = "_Layout.cshtml";    
+}
+@section heads{
+    @Styles.Render("~/css/HelpPage")
+}
+<!--[if lt IE 8]>
+    <div class="alert alert-warning" role="alert">
+        <p>You are using an outdated browser. Please <a class="alert-link" href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    </div>
+<![endif]-->
+<ol class="breadcrumb">
+    <li><a href="/">首页</a></li>
+    <li>@Html.ActionLink("帮助中心", "Index", "HelpPage")</li>
+    @if (@ViewBag.IndexName == "账户管理")
+    {
+        <li>@Html.ActionLink("账户管理", "AccountManagement", "HelpPage")</li>
+    }
+    @if (@ViewBag.IndexName == "申请投资")
+    {
+     <li>@Html.ActionLink("申请投资", "ApplicationForInvestment", "HelpPage")</li>
+    }
+    @if (@ViewBag.IndexName == "申请贷款")
+    {
+        <li>@Html.ActionLink("申请贷款", "ApplicationForLoan", "HelpPage")</li>
+    }
+    @if (@ViewBag.IndexName == "投资人偏好设置")
+    {
+        <li>@Html.ActionLink("投资人偏好设置", "InvestorPreference", "HelpPage")</li>
+    }
+    @if (@ViewBag.IndexName == "路演厅")
+    {
+        <li>@Html.ActionLink("路演厅", "RoadShowRoom", "HelpPage")</li>
+    }
+    @if (@ViewBag.IndexName == "联系客服")
+    {
+        <li>@Html.ActionLink("联系客服", "ContactCustomerService", "HelpPage")</li>
+    }
+    <li>@ViewBag.PageName</li>
+</ol>
+<div class="content row"style="margin-top: 10px;">
+    <div class="left col-xs-2">
+        <ul class="expmenu">
+            <li class="tu-2">
+                <span class="arrow up"></span>
+                <p>账户管理</p>
+
+            </li>
+            <div class="xiaobiao">
+                <ul class="menu">
+                    <li>
+                        <p>@Html.ActionLink("账户注册", "Register", "HelpPage")</p>
+
+                    </li>
+
+                    <li>
+                        <p>@Html.ActionLink("账户登录", "Login", "HelpPage")</p>
+
+                    </li>
+                    <li>
+                        <p>@Html.ActionLink("验证邮箱", "VerifyMailbox", "HelpPage")</p>
+
+                    </li>
+                    <li>
+                        <p>@Html.ActionLink("验证手机", "VerifyPhone", "HelpPage")</p>
+
+                    </li>
+                    <li>
+                        <p>@Html.ActionLink("更改密码", "UpdPWD", "HelpPage")</p>
+
+                    </li>
+                    <li>
+                        <p>@Html.ActionLink("更改邮箱", "", "HelpPage")</p>
+
+                    </li>
+                    <li>
+                        <p>@Html.ActionLink("更改手机", "UpdPhone", "HelpPage")</p>
+
+                    </li>
+                    <li>
+                        <p>@Html.ActionLink("忘记密码", "ResetPassword", "HelpPage")</p>
+
+                    </li>
+                </ul>
+            </div>
+        </ul>
+        <ul class="expmenu">
+            <li class="tu-2">
+                <span class="arrow up"></span>
+                <p>申请投资</p>
+
+            </li>
+            <div class="xiaobiao">
+                <ul class="menu">
+                    <li>
+                        <p>@Html.ActionLink("申请投资流程", "ApplicationInvestment", "HelpPage")</p>
+
+                    </li>
+
+                    <li>
+                        <p>@Html.ActionLink("提交一审资料", "FirstInstance", "HelpPage")</p>
+
+                    </li>
+                    <li>
+                        <p>@Html.ActionLink("修改一审资料", "UpdFirstInstance", "HelpPage")</p>
+
+                    </li>
+                    <li>
+                        <p>@Html.ActionLink("提交二审资料", "TowFirstInstance", "HelpPage")</p>
+
+                    </li>
+                    <li>
+                        <p>@Html.ActionLink("修改二审资料", "UpdTowFirstInstance", "HelpPage")</p>
+
+                    </li>
+                    <li>
+                        <p>@Html.ActionLink("上传业务路演", "UploadRoadShow", "HelpPage")</p>
+
+                    </li>
+                    <li>
+                        <p>@Html.ActionLink("查看投资申请状态", "LookInvestment", "HelpPage")</p>
+
+                    </li>
+                    <li>
+                        <p>@Html.ActionLink("参加资本路演", "", "HelpPage")</p>
+
+                    </li>
+                </ul>
+            </div>
+        </ul>
+
+        <ul class="expmenu">
+            <li class="tu-2">
+                <span class="arrow up"></span>
+                <p>申请贷款</p>
+
+            </li>
+            <div class="xiaobiao">
+                <ul class="menu">
+                    <li>
+                        <p>@Html.ActionLink("申请贷款流程", "LendingProcess", "HelpPage")</p>
+
+                    </li>
+
+                    <li>
+                        <p>@Html.ActionLink("提交申请贷款资料", "Loan", "HelpPage")</p>
+
+                    </li>
+                    <li>
+                        <p>@Html.ActionLink("修改申请贷款资料", "UpdLoan", "HelpPage")</p>
+
+                    </li>
+
+                </ul>
+            </div>
+        </ul>
+        <ul class="expmenu">
+            <li class="tu-2">
+                <span class="arrow up"></span>
+                <p>投资人偏好设置</p>
+
+            </li>
+            <div class="xiaobiao">
+                <ul class="menu">
+                    <li>
+                        <p>@Html.ActionLink("设置投资人偏好", "PreferenceSetting", "HelpPage")</p>
+
+                    </li>
+
+                    <li>
+                        <p>@Html.ActionLink("修改投资人偏好", "UpdPreferenceSetting", "HelpPage")</p>
+
+                    </li>
+
+
+                </ul>
+            </div>
+        </ul>
+        <ul class="expmenu">
+            <li class="tu-2">
+                <span class="arrow up"></span>
+                <p>路演厅</p>
+
+            </li>
+            <div class="xiaobiao">
+                <ul class="menu">
+                    <li>
+                        <p>@Html.ActionLink("查看业务路演", "BusinessRoadShow", "HelpPage")</p>
+
+                    </li>
+
+                    <li>
+                        <p>@Html.ActionLink("查看资本路演", "CapitalRoadShow", "HelpPage")</p>
+
+                    </li>
+                    <li>
+                        <p>@Html.ActionLink("参加资本路演", "", "HelpPage")</p>
+
+                    </li>
+
+                </ul>
+            </div>
+        </ul>
+        <ul class="expmenu">
+            <li class="tu-2">
+                <span class="arrow up"></span>
+                <p>联系客服</p>
+
+            </li>
+            <div class="xiaobiao">
+                <ul class="menu">
+                    <li>
+                        <p>@Html.ActionLink("客服", "QQ", "HelpPage")</p>
+
+                    </li>
+                </ul>
+            </div>
+        </ul>
+    </div>
+    <!--left结束-->
+    <div class="col-xs-10 right">
+        @RenderBody()
+
+    </div>
+
+</div>
+
+
+@section scripts{
+    @Scripts.Render("~/js/navigationScroll")
+    @RenderSection("scripts", required: false)
+}

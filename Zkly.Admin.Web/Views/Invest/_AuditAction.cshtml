@@ -1,0 +1,53 @@
+﻿@model Invest
+@using Microsoft.AspNet.Identity
+@using Zkly.Common.Extension
+
+@{
+    var requestStage = this.ViewContext.RouteData.Values["stage"].ToString().ToEnum<EInvestAuditStage>();
+}
+
+@using (Html.BeginForm("SaveAudit", "Invest"))
+{
+    <div id="invest-audit-panel" class="panel panel-default">
+
+        <div class="panel-heading">
+            审批
+        </div>
+
+        <div class="panel-body">
+            @Html.AntiForgeryToken()
+            <input type="hidden" value="@Model.Id" name="AuditId" />
+            <input type="hidden" value="@Model.Stage" name="Stage" />
+            <input type="hidden" value="@Model.UserId" name="UserId" />
+            <input type="hidden" value="@Model.Id" name="InvestId" />
+            <input type="hidden" value="1" name="AuditType" />
+            <input type="hidden" value="@ViewBag.State" name="FilterType" />
+
+            <div class="btn-group btn-group-justified" data-toggle="buttons">
+                <label class="btn btn-default">
+                    <input type="radio" name="IsPass" id="pass" value="true" autocomplete="off"> 通过
+                </label>
+                <label class="btn btn-default">
+                    <input type="radio" name="IsPass" id="fail" value="false" autocomplete="off"> 拒绝
+                </label>
+            </div>
+
+            <div id="audit-quota" style="display:none">
+                <span>批复金额（万元）：</span>
+                <input name="AuditQuota" class="form-control" type="text" placeholder="@Model.FirstAuditInfo.ApplyQuota" />
+            </div>
+
+            <div id="audit-reason" style="display: none;">
+                <span>拒绝原因：</span>
+                <textarea name="Reason" class="form-control" type="text" placeholder="拒绝的原因"></textarea>
+            </div>
+        </div>
+
+        <div class="panel-footer">
+            <button type="submit" id="save-audit" class="btn btn-primary" disabled="disabled"><span class="fa fa-save" aria-hidden="true"></span> 保存</button>
+            <input style="display: none" type="checkbox" name="chkItem" checked="checked" value="@Model.Id"/>
+            <input type="button" class="btn btn-primary" value="放入暂存文件夹" id="placeTempFolder" data-request-url="@Url.Action("AuditList", "Invest", new {stage = requestStage, state = ViewBag.State})" data-post-url="@Url.Action("PlaceTempFolder", "TempFolder")" />
+            <a class="btn btn-default" href="@Url.Action("AuditList", "Invest", new {stage = requestStage, state = ViewBag.State})"><span class="fa fa-arrow-left" aria-hidden="true"></span> 返回列表</a>
+        </div>
+    </div>
+}

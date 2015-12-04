@@ -1,0 +1,26 @@
+﻿@model Zkly.DAL.Models.CapitalRoadshow
+@section styles{
+    @Styles.Render("~/style/roadshow");
+}
+@{
+    ViewBag.Title = "删除";
+}
+<br />
+<div class="capital-roadshow-del">
+    <div class="del-info">
+        <div><b>确定要删除这个资本路演吗？</b></div>
+        <div>@Model.CompanyName</div>
+        <div>@Model.Description</div>
+        <div>@Model.StartDate</div>
+        <div>@Model.EndDate</div>
+    </div>
+    
+    <div class="del-op">
+        @using (Html.BeginForm("Delete", "CapitalRoadshow", new { id = Model.Id }))
+        {
+            @Html.AntiForgeryToken()
+            <input type="submit" class="btn btn-danger" value="确定" />
+        }
+        <a href="@Url.Action("Index")" class="btn btn-default">返回</a>
+    </div>
+</div>

@@ -1,0 +1,47 @@
+﻿@using Zkly.Common.Log
+@model HandleErrorInfo
+
+@{
+    ViewBag.Title = "您所访问的页面出错了";
+    var msg = string.Format("未捕捉的异常！\r\nController Name: {0}\r\nAction Name: {1}", Model.ControllerName, Model.ActionName);
+    Logger.Error(msg, Model.Exception);
+}
+
+<br />
+<div class="panel panel-default">
+    <div class="panel-heading">@ViewBag.Title</div>
+    <div class="panel-body row" id="error-body">
+        <div class="col-xs-8">
+            <div class="jumbotron bg-img-scale">
+                <div class="row">
+                    <div class="col-xs-5">
+                        @*<p class="error-text-tip text-right">咦...系统出错了~</p>*@
+                    </div>
+                    <div class="col-xs-7">
+                        <h3><span class="label label-danger">500 - Internal Server Error</span></h3>
+                        <hr />
+                        @{
+                            if (String.IsNullOrEmpty(ViewBag.Message))
+                            {
+                                <p class="text-danger">对不起，您所访问的页面出现了错误，请联系客服解决</p>
+                            }
+                            else
+                            {
+                                <p class="text-danger">@ViewBag.Message</p>
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-4">
+            <div class="list-group">
+                <a class="list-group-item active" href="javascript:;">快速进入：</a>
+                <a class="list-group-item" href="/">返回首页</a>
+                <a class="list-group-item" href="javascript:history.go(-2);return false;">返回上层页面</a>
+                <a class="list-group-item" href="#">帮助中心</a>
+                <a class="list-group-item" href="#">联系客服</a>
+            </div>
+        </div>
+    </div>
+</div>

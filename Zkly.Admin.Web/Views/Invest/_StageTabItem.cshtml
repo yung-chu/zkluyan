@@ -1,0 +1,19 @@
+﻿@using Zkly.Common.Extension
+@model Invest
+@{
+    var routeValues = this.ViewContext.RouteData.Values;
+    var requestStage = routeValues["stage"].ToString().ToEnum<EInvestAuditStage>();
+    var displayStage = (EInvestAuditStage)ViewData["stage"];
+    var active = requestStage == displayStage;
+    var accessable = Model.GetStageStatus(displayStage) != EInvestAuditStatus.NotStarted;
+}
+<li role="presentation" class="@(active ? "active" : " ")@(accessable ? "" : "disabled")">
+    @if (!accessable)
+    {
+        <a href="#invest-@displayStage" tab="invest-@displayStage" aria-controls="invest-@displayStage" role="tab" data-toggle="tab">@Html.DisplayFor(m => displayStage)</a>
+    }
+    else
+    {
+        <a href="#invest-@displayStage" tab="invest-@displayStage" aria-controls="invest-@displayStage" role="tab" data-toggle="tab" data-src="@Url.RouteUrl("audit-detail", new { stage = displayStage,id=Model.Id })">@Html.DisplayFor(m => displayStage)</a>
+    }
+</li>

@@ -1,0 +1,27 @@
+﻿<!--content头部信息结束-->
+@*偏好设计跳转*@
+@section heads {
+    @Styles.Render("~/css/TestAndVerify")
+}
+<div class="content">
+    <div class="yanzheng">
+        <ul>
+            <li>
+                <input type="hidden" id="url" value="/Home/Index"/>
+                <div class="col-xs-12 text-center"><img src="~/images/PublicImg/PromptWarning.png" /></div>
+                <div class="col-xs-12 text-center " id="Zkly_Title">提 &nbsp;&nbsp;&nbsp;示</div>
+                <div class="col-xs-12 text-center " id="Zkly_fTitle">请进入路演厅参加企业路演</div>
+                <br />
+                <div class="col-xs-12 text-center" id="showTimer">
+                    <label id="time">5</label>秒后将自动跳转如未跳转请点击此进行<a href="@(Url.Action("Index", "Home"))">立即跳转</a>
+                </div>
+               
+            </li>
+        </ul>
+    </div>
+</div>
+<!--content头部信息结束-->
+@section scripts{
+ @Scripts.Render("~/js/setTimeout")
+}
+

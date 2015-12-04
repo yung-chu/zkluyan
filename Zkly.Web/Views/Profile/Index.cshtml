@@ -1,0 +1,113 @@
+﻿@model Zkly.BLL.ViewModels.IndexViewModel
+@{
+    ViewBag.Title = "管理";
+}
+@section heads{
+    @Styles.Render("~/css/AccounSetup")
+}
+<ol class="breadcrumb">
+    <li><a href="/">首页</a></li>
+    <li class="active">账户设置</li>
+</ol>
+<div class="panel panel-default">
+    <div id="zkly_Div1">
+        <div class="col-xs-1">
+            <img src="~/images/PublicImg/Blue.png" />
+        </div>
+        <div class="col-xs-11"><span>账户设置</span></div>
+    </div>
+    <div id="zkly_Div2">
+        <div class="col-xs-2">邮箱:</div>
+        <div class="col-xs-10">
+            @Model.Email&nbsp;
+            @if (Model.IsEmailConfirmed)
+            {
+                <span class="label label-success">已验证</span>
+            }
+            else
+            {
+                <span class="label label-danger">未激活</span>
+                @: &nbsp;&nbsp;
+                @Html.ActionLink("验证", "SendEmailConfirmationToken", "Account")
+            }
+        </div>
+    </div>
+    <div id="zkly_Div2">
+        <div class="col-xs-2">用户密码:</div>
+        <div class="col-xs-10">
+            @if (Model.HasPassword)
+            {
+                @Html.ActionLink("更改密码", "ChangePassword")
+            }
+            else
+            {
+                @Html.ActionLink("创建", "SetPassword")
+            }
+        </div>
+    </div>
+    <div id="zkly_Div3">
+        <div class="col-xs-2">联系电话:</div>
+        <div class="col-xs-10">
+            @(Model.PhoneNumber ?? "无")&nbsp;
+            @if (Model.PhoneNumber != null)
+            {
+                if (Model.IsPhoneNumberConfirmed)
+                {
+                    <span class="label label-success">已验证</span>
+                }
+                else
+                {
+                    <span class="label label-danger">未激活</span>
+                    @:&nbsp;|&nbsp;
+                    @Html.ActionLink("验证", "SendPhoneConfirmationToken")
+
+                }
+                @: &nbsp;|&nbsp;
+                @Html.ActionLink("更改", "AddPhoneNumber")
+                @: &nbsp;|&nbsp;
+                @Html.ActionLink("删除", "RemovePhoneNumber")
+            }
+            else
+            {
+                @Html.ActionLink("添加", "AddPhoneNumber")
+            }
+        </div>
+    </div>
+    <div id="zkly_Div4">
+        <div class="col-xs-1">
+            <img src="~/images/PublicImg/Blue.png" />
+        </div>
+        <div class="col-xs-11"><span>安全设置</span></div>
+
+        <p>
+            登录验证可以在用户登录系统的时候提供包括短信和电子邮箱的身份验证，以保护帐号安全。
+        </p>
+        @if (Model.TwoFactor)
+        {
+            using (Html.BeginForm("DisableTwoFactorAuthentication", "Profile", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="col-xs-2">
+                    <span class="label label-success">已启用</span>
+                </div>
+                <div class="col-xs-10">
+                    <input type="submit" value="禁用登录验证" class="btn btn-link" />
+                </div>
+            }
+        }
+        else
+        {
+            using (Html.BeginForm("EnableTwoFactorAuthentication", "Profile", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="col-xs-2">
+                    <span class="label label-danger">已禁用</span>
+                </div>
+                <div class="col-xs-10">
+                    <input type="submit" value="启用登录验证" class="btn btn-link" />
+                </div>
+
+            }
+        }
+    </div>
+</div>

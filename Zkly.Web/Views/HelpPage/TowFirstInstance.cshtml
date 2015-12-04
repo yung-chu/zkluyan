@@ -1,0 +1,82 @@
+﻿
+@{
+    ViewBag.Title = "TowFirstInstance";
+    Layout = "~/Views/Shared/_LayoutHelp.cshtml";
+}
+<!--content开始-->
+<div class="row" id="zkly_Row">
+
+    <div class="col-xs-1">
+        <img src="~/images/PublicImg/Blue.png" />
+    </div>
+    <div class="col-xs-10">
+        投资申请二审
+    </div>
+
+</div>
+        <!--neirong开始-->
+        <div class="neirong">
+
+            <ul id="UI">
+                <li>
+                    <div class="tiao"></div>
+                    <div class="aa-1">
+                        <span>
+                            <i><img src="~/images/HelpCenterImg/Step_1.png" /> </i>
+                            <p>企业方登录后点击我的主页</p>
+                            @*<a href="#">免费注册</a>*@
+                        </span>
+                        <div class="aa-2">
+                            <a><img src="~/Images/HelpCenterImg/Invest_16.png" /></a>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="tiao"></div>
+                    <div class="aa-1">
+                        <span>
+                            <i><img src="~/images/HelpCenterImg/Step_2.png" /> </i>
+                            <p>查看我的投资信息，点击已通过一审的材料，进入二审页面</p>
+
+                        </span>
+                        <div class="aa-2">
+                            <a><img src="~/Images/HelpCenterImg/Invest_17.png"></a>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="tiao"></div>
+                    <div class="aa-1">
+                        <span>
+                            <i><img src="~/images/HelpCenterImg/Step_3.png" /> </i>
+                            <p>请填写二审信息，填写完毕勾中我已阅读XXXX协议进行申请</p>
+
+                        </span>
+                        <div class="aa-2">
+                            <a><img src="~/Images/HelpCenterImg/TowInstance.png"></a>
+                        </div>
+                    </div>
+                </li>
+
+                <li>
+
+                    <div class="aa-1">
+                        <span>
+                            <i><img src="~/images/HelpCenterImg/Step_4.png" /> </i>
+                            <p>申请成功</p>
+
+                        </span>
+                        <div class="aa-2">
+                            <a><img src="~/Images/HelpCenterImg/TowInvest_1.png"></a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <!--neirong结束-->
+<!--content结束-->
+@section scripts
+{
+    @Scripts.Render("~/js/helpPageHover")
+}
+

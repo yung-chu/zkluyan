@@ -1,0 +1,154 @@
+﻿@model Zkly.DAL.Models.ApplicationUser
+
+@{
+    var role = ViewBag.Role ?? RoleManager.GetRoleType(Model);
+}
+
+<dl class="dl-horizontal dl-md">
+
+    <dt>
+        用户名：
+    </dt>
+
+    <dd>
+        @(IsAjax ? Html.ActionLink(Model.UserName, "Details", new { Model.Id }, new { target = "_blank" }) : Html.DisplayFor(model => model.UserName))
+    </dd>
+
+    <dt>
+        显示名（昵称）：
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.DisplayName)
+    </dd>
+
+    <dt>
+        密码状态：
+    </dt>
+
+    <dd>
+        @if (!string.IsNullOrEmpty(Model.PasswordHash))
+        {
+            <span class="label label-success">已设置</span>
+        }
+        else
+        {
+            <span class="label label-danger">未设置</span>
+        }
+    </dd>
+
+    <dt>
+        手机号：
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.PhoneNumber)
+        @if (Model.PhoneNumberConfirmed)
+        {
+            <span class="label label-success">已验证</span>
+        }
+        else
+        {
+            <span class="label label-danger">未验证</span>
+        }
+    </dd>
+
+    <dt>
+        邮箱：
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.Email)
+        @if (Model.EmailConfirmed)
+        {
+            <span class="label label-success">已验证</span>
+        }
+        else
+        {
+            <span class="label label-danger">未验证</span>
+        }
+    </dd>
+
+    <dt>
+        用户类型：
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => role)
+    </dd>
+
+    <dt>
+        安全登录：
+    </dt>
+
+    <dd>
+        <span class="label label-info">@Html.Raw(@Model.TwoFactorEnabled ? "已启用" : "未开启")</span>
+    </dd>
+
+    <dt>
+        允许锁定：
+    </dt>
+
+    <dd>
+        <span class="label label-info">@Html.Raw(Model.LockoutEnabled ? "已启用" : "未开启")</span>
+    </dd>
+
+    <dt>
+        锁定到期时间：
+    </dt>
+
+    <dd>
+        @if (IsAjax)
+        {
+            if (Model.LockoutEndDateUtc.HasValue && Model.LockoutEndDateUtc.Value > DateTime.Now)
+            {
+                @Html.DisplayFor(model => model.LockoutEndDateUtc)
+                <span class="label label-danger">已锁定</span>
+            }
+            else
+            {
+                <span class="label label-info">未锁定</span>
+            }
+        }
+        else
+        {
+            using (Html.BeginForm("Lock", "UserManagement"))
+            {
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(m => m.Id)
+                <div class="input-group" style="width: 300px">
+                    @if (Model.LockoutEndDateUtc.HasValue && Model.LockoutEndDateUtc.Value > DateTime.Now)
+                    {
+                        <div class="input-group">
+                            <span class="input-group-addon" id="sizing-addon2">当前已锁定</span>
+                            @Html.TextBoxFor(m => m.LockoutEndDateUtc.Value, new { @class = "form-control", disabled = "disabled" })
+                            <span class="input-group-btn">
+                                <input type="hidden" name="isLock" value="false" />
+                                <button class="btn btn-warning" type="submit">解锁</button>
+                            </span>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="input-group">
+                            <span class="input-group-addon" id="sizing-addon2">当前未锁定</span>
+                            <input type="text" name="LockoutEndDateUtc" class="form-control" placeholder="yyyy-MM-dd hh:mm:ss" value="@DateTime.Now.AddMinutes(30).ToString()" data-container="body" data-toggle="popover" data-placement="top" data-trigger="focus" data-content="默认锁定时间为30分钟！">
+                            <span class="input-group-btn">
+                                <input type="hidden" name="isLock" value="true" />
+                                <button class="btn btn-danger" type="submit">锁定</button>
+                            </span>
+                        </div>
+                    }
+                </div>
+            }
+        }
+    </dd>
+
+    <dt>
+        失败登录次数：
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.AccessFailedCount)
+    </dd>
+</dl>

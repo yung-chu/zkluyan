@@ -1,0 +1,13 @@
+﻿@model Zkly.DAL.Models.Roadshow
+
+<div class="roadshow-box">
+    <div class="pic">
+        <a href="@Url.Action("BusinessRoadshow", "roadshow", new { id = @Model.Id })">
+            <img src="@Url.Action("FileDisplayById", "File", new { id = Model.CoverFileId})" alt="@Model.VideoDescrition">
+            <p>@Model.VideoName</p>
+        </a>
+    </div>
+    <div class="date">
+        @Model.UpdateDate
+    </div>
+</div>

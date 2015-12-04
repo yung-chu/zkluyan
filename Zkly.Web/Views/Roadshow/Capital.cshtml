@@ -1,0 +1,58 @@
+﻿@model PagedList.IPagedList<Zkly.DAL.Models.CapitalRoadshow>
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "资本路演大厅";
+}
+@section heads{
+    @Styles.Render("~/css/PagedList")
+    @Styles.Render("~/css/roadshow-item")
+    @Styles.Render("~/css/business")
+}
+
+<div class="business-hall">
+    <ol class="breadcrumb">
+        <li><a href="/">首页</a></li>
+        <li><a href="@Url.Action("Capital", "Roadshow")">路演厅</a></li>
+        <li class="active">资本路演</li>
+    </ol>
+
+    <div>
+        <div class="title">
+            <i></i>
+            <p>资本路演</p>
+
+            @*@Html.ActionLink("路演中", "business", "roadshow", new { status = "ongoing" }, new { @class = ViewBag.Status == "ongoing" ? "on" : "" })
+            @Html.ActionLink("已结束", "business", "roadshow", new { status = "done" }, new { @class = ViewBag.Status == "done" ? "on" : "" })*@
+        </div>
+
+        <div class="roadshow">
+            @if (Model.Count == 0 || (Model.Count == 1 && Model[0] == null))
+            {
+                <div class="no-data-tip">目前还没有资本路演！</div>
+            }
+            else
+            {
+                <div class="items">
+                    <ul>
+                        @foreach (var item in Model)
+                        {
+                            if (item != null)
+                            {
+                                <li>
+                                    @Html.Partial("Template/CapitalRoadshowItem", item)
+                                </li>
+                            }
+                        }
+                    </ul>
+
+                    <div class="clearfix"></div>
+                </div>
+                <div>
+                    @Html.PagedListPager(Model, page => Url.Action("capital", "roadshow"), new PagedListRenderOptions() { LinkToFirstPageFormat = "首页", LinkToNextPageFormat = "下一页", LinkToPreviousPageFormat = "上一页", LinkToLastPageFormat = "末页", DisplayItemSliceAndTotal = false, MaximumPageNumbersToDisplay = 8 })
+                </div>
+            }
+        </div>
+    </div>
+</div>
+

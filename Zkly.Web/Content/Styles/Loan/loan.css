@@ -1,0 +1,83 @@
+﻿.panel panel-default,
+form-group {
+  max-width: 50%;
+}
+input,
+select,
+textarea {
+  max-width: 570px;
+}
+.form-group .col-xs-9 {
+  /*去验证背景色*/
+  /*验证位置*/
+}
+.form-group .col-xs-9 textarea {
+  width: 600px;
+  height: 150px;
+}
+.form-group .col-xs-9 .input-2 {
+  width: 450px;
+}
+.form-group .col-xs-9 .row {
+  margin-left: 1px;
+}
+.form-group .col-xs-9 .zkly-span-frist {
+  float: left;
+  margin-top: -35px;
+  padding-left: 323px;
+  width: 100px;
+}
+.form-group .col-xs-9 i {
+  background: none;
+}
+.form-group .col-xs-9 .form-control-feedback {
+  right: 290px;
+}
+.form-group .selection {
+  width: 120px;
+  float: left;
+}
+.form-input {
+  float: left;
+}
+.form-input ul li {
+  float: left;
+  margin-right: 10px;
+}
+.financial-data {
+  height: 35px;
+  margin-bottom: 10px;
+}
+#showAdvError {
+  padding-left: 5px;
+  color: #A94442;
+  display: none;
+}
+#AreaError {
+  display: none;
+  left: 210px;
+  text-align: center;
+  float: left;
+  padding-top: 10px;
+  width: 34px;
+  height: 34px;
+  background: none;
+}
+#AreaOk {
+  display: none;
+  left: 210px;
+  text-align: center;
+  float: left;
+  padding-top: 10px;
+  width: 34px;
+  height: 34px;
+  background: none;
+}
+#IndustrySpanError {
+  display: none;
+  color: #a94442;
+  float: left;
+  margin-left: 300px;
+  padding-top: 5px;
+}
+/*# sourceMappingURL=loan.css.map */

@@ -1,0 +1,112 @@
+﻿@import "Common/common.less";
+@import "Mixins/border-radius.less";
+
+.enterprise {
+    @border-color: #e7e5e5;
+
+    .message-panel {
+        border: 1px solid @border-color;
+
+        .tip {
+            width: 15%;
+            padding: 15px 0 0 15px;
+
+            span {
+                font-size: 15px;
+                font-weight:bold;
+                color: #6aa8df;
+            }
+        }
+        .message {
+            width: 80%;
+            height: 46px;
+            border: 1px solid #ffc499;
+            margin: 13px 0 40px 110px;
+            .border-radius(5px);
+            background: #fdf1d7;
+            img {
+                margin-left: 20px;
+            }
+            label {
+                margin: 10px 0;
+            }
+            a {
+                background-color:#428bca; 
+                color: #FFFFFF;
+                float: right;
+                margin: 5px 10px 5px 0;
+            }
+        }
+    }
+
+    table {
+        width: 100%;
+    }    
+
+    .section-title {
+        height: 53px;
+        padding: 10px;
+        border-bottom: 1px solid @border-color;
+
+        span {
+            font-size: 16px;
+            font-weight:bold;
+            color: #6aa8df;
+            margin-right: 30px;
+        }
+    }
+
+    .invest, .loan {
+        border: 1px solid @border-color;
+        margin-top: 20px;
+
+        .table-header {
+            height: 47px;
+
+            td {
+                background: #f7f7f7;
+            }            
+        }
+
+        .col-1 {
+            width: 153px;
+        }
+        .col-2 {
+            width: 390px;
+        }
+        .col-3 {
+            width: 135px;
+        }
+        .col-4 {
+            width: 149px;
+        }
+        .col-5 {
+            width: 107px;
+        }
+        .col-6 {
+            width: 153px;
+        }
+        .col-7 {
+            width: 128px;
+        }
+    }    
+
+    .my-roadshow {
+        border: 1px solid @border-color;
+        margin-top: 20px;
+        .no-data-tip {
+            margin: 20px;
+        }
+        .nav-b {
+            width: 100px;
+            height: 30px;
+        }
+        .roadshow {
+            li {
+                width: 23.5%;
+                float: left;
+                margin: 7px;
+            }
+        }
+    }
+}

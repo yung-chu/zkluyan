@@ -1,0 +1,73 @@
+﻿@model PagedList.IPagedList<Zkly.DAL.Models.CapitalRoadshow>
+@{
+    ViewBag.Title = "资本路演管理";
+}
+@section styles{
+    @Styles.Render("~/style/roadshow")
+}
+
+<div class="capital-roadshow panel panel-default">
+    <div class="panel-heading">
+        @ViewBag.Title
+    </div>
+    @if (Model.Count == 0)
+    {
+        <div class="panel-body">
+            <div class="jumbotron alert alert-warning text-center" role="alert">
+                <h1><span class="fa fa-exclamation-circle" aria-hidden="true"></span> 没有可以显示的资本路演！</h1>
+            </div>
+        </div>
+    }
+    else
+    {
+        <table id="capitals" class="table table-hover table-striped">
+            <thead>
+                <tr>
+                    <th>公司名称</th>
+                    <th>活动主题</th>
+                    <th>开始时间</th>
+                    <th>结束时间</th>
+                    <th>状态</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.CompanyName</td>
+                        <td>@item.Subject</td>
+                        <td>@item.StartDate.ToString("yyyy-MM-dd hh:mm")</td>
+                        <td>@item.EndDate.ToString("yyyy-MM-dd hh:mm")</td>
+                        <td>@Html.DisplayFor(m => item.Status)</td>
+                        <td>
+                            <a href="@Url.Action("Edit", new { id = item.Id })">修改</a>
+                            <a href="@Url.Action("DeleteConfirm", new { id = item.Id })">删除</a>
+                            <a name="start" target="_blank" href="@Url.Action("StartActivity", new { id = item.Id })">开始活动</a>
+
+                            <a name="end" href="@Url.Action("EndActivity", new { id = item.Id })">结束活动</a>
+                            <a name="recording" href="#">生成录播</a>
+                        </td>
+
+                    </tr>
+                    <tr class="record-line hidden" data-url="@Url.Action("RecordParts", "CapitalRoadshow", new { id = @item.Id })">
+                        <td colspan="6">
+                            <div></div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    <div class="panel-footer">
+        <a id="createCapital" href="@Url.Action("Create")" class="btn btn-primary">创建资本路演</a>
+        <div class="pull-right">
+            @Html.DisplayPagination(page => Url.Action("Index", new { page }))
+        </div>
+    </div>
+</div>
+
+@section scripts
+{
+    @Scripts.Render("~/js/capital-roadshow")
+}

@@ -1,0 +1,46 @@
+﻿@model Zkly.BLL.ViewModels.VerifyCodeViewModel
+@{
+    ViewBag.Title = "验证";
+}
+@section styles {
+    @Scripts.Render("~/js/jqueryval")
+}
+
+<br />
+<div class="panel panel-default">
+    <div class="panel-heading">@ViewBag.Title</div>
+    <div class="panel-body">
+
+        @using (Html.BeginForm("VerifyCode", "Account", new { ReturnUrl = Model.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.Hidden("provider", @Model.Provider)
+            @Html.Hidden("rememberMe", @Model.RememberMe)
+            <h4>输入验证代码（PS：短信服务尚未开通，请直接输入<span class="label label-warning">@Request.QueryString["code"]</span>）</h4>
+            <hr />
+            @Html.ValidationSummary("", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(m => m.Code, new { @class = "col-xs-2 control-label" })
+                <div class="col-xs-10">
+                    @Html.TextBoxFor(m => m.Code, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-xs-2"></div>
+                <div class="col-xs-10">
+                    <div class="checkbox">
+                        @Html.CheckBoxFor(m => m.RememberBrowser)
+                        @Html.LabelFor(m => m.RememberBrowser)
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-xs-2"></div>
+                <div class="col-xs-10">
+                    <input type="submit" class="btn btn-primary btn-block" value="提 交" />
+                </div>
+            </div>
+        }
+    </div>
+</div>
+

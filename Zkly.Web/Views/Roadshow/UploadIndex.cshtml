@@ -1,0 +1,183 @@
+﻿@model Zkly.BLL.ViewModels.RoadshowViewModel
+@{
+    ViewBag.Title = "业务路演上传";
+}
+
+@section heads{
+
+    @Styles.Render("~/css/invest")
+    @Styles.Render("~/css/fileinput")
+    @Styles.Render("~/css/ProgressBar")
+    @Styles.Render("~/css/business")
+    @Styles.Render("~/css/bootstrapValidatorCss")
+
+
+    @Scripts.Render("~/js/jquery-form")
+    @Scripts.Render("~/js/fileinput")
+    @Scripts.Render("~/js/bootstrapValidator")
+}
+
+<div class="invest">
+    @Html.Partial("_InvestTop", EInvestAuditStage.Roadshow)
+
+    <div class="content panel panel-default">
+
+        <div class="container ">
+            <br />
+            @Html.Partial("AlertMessage")
+            @using (Html.BeginForm("upload", "roadshow", FormMethod.Post, new { @class = "form-horizontal", id = "upload-form", role = "form", enctype = "multipart/form-data" }))
+            {
+                @Html.HiddenFor(m => m.Id, new { id = "roadshow-id" })
+                @Html.HiddenFor(m => m.Guid)
+                <div class="row zkly-upload-item">
+                    <div class="col-md-3 control-label">
+                        <label>路演视频 </label>
+                        <span class="validation-fail">*</span>
+                    </div>
+                    <div class="col-md-9">
+
+                        @{
+                            <!--已经提交了表单-->
+                            bool isSubmitedForm = !string.IsNullOrEmpty(Model.VideoName);
+
+                            string cssStr = isSubmitedForm ? "display:none" : "display:block";
+
+                        }
+
+
+                        <div id="showUploadVideo" style="@cssStr">
+                            <div class="zkly-upload-video">
+                                <input type="file" id="videoFile" accept="video/*" name="VideoFile" value="" class="zkly-input-file" />
+                            </div>
+                            <span class="zkly-upload-tip">大小：不能超过500M，格式：rm,rmvb,wmv,avi,mpg,mpeg,mp4</span>
+                            <div id="showVideo"></div>
+                        </div>
+
+
+                      
+                        @if (isSubmitedForm)
+                        {
+                            <br />
+                            <div id="playRoadshowVideo">
+                                    @if (!string.IsNullOrEmpty(Model.RoadshowAddress))
+                                    {
+                                      <iframe border="0" src="@Model.RoadshowAddress" width="800" height="600"></iframe>
+                                    }
+                                    else
+                                    {
+                                        <div class="jumbotron">
+                                            <h1>视频暂时无法播放</h1>
+                                            <p>服务器正在对该视频文件进行编码处理，请稍候再试。如果该视频长时间依然无法访问，请联系客服人员处理。</p>
+                                            <p><a class="btn btn-primary btn-lg" href="@Url.Action("Index", "Enterprise")" role="button">返回</a></p>
+                                        </div>
+                                    }
+                            </div>
+                            <button class="btn btn-primary" id="updateRoadshowVideo">修改</button>
+                        }
+
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-3 control-label">
+                        <label>视频名称 </label><span class="validation-fail">*</span>
+                    </div>
+                    <div class="col-md-9">
+                        @Html.TextBoxFor(m => m.VideoName, new { @class = "form-control zkly-upload-video-name", id = "vedioName", placeholder = "视频名称" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-3 control-label">
+                        <label>视频简介 </label><span class="validation-fail">*</span>
+                    </div>
+                    <div class="col-md-9" id="myVideoDescrition">
+                        @Html.TextAreaFor(m => m.VideoDescrition, new { @class = "form-control zkly-upload-video-desc", id = "videoDescription", placeholder = "视频简介" })
+                    </div>
+                </div>
+
+
+                <div class="row zkly-upload-item">
+                    <div class="col-md-3 control-label">
+                        <label>活动封面 </label>
+                        <span class="validation-fail">*</span>
+                    </div>
+                    <div class="col-md-9">
+                        @if (Model.CoverFileId > 0)
+                        {
+                            <div class="RoadshowCover">
+                                <img class="thumbnail" src='@Url.Action("FileDisplayById", "File", new { id = Model.CoverFileId })' alt='活动封面' />
+                            </div>
+                        }
+                        <div class="fileinput fileinput-new" data-provides="fileinput">
+                            <div class="fileinput-preview thumbnail" data-trigger="fileinput" name="i" id="businessLicense"></div>
+                            <div>
+                                <span class="btn btn-default btn-file">
+                                    <span class="fileinput-new">选择图片</span><span class="fileinput-exists">改变</span>
+                                    <input type="file" id="coverFile" accept="image/jpg,png" name="CoverFile" value="" class="zkly-input-file" />
+                                </span>
+                                <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">移除</a>
+                                &nbsp;&nbsp;<span class="text-danger" id="businessLicenseError">格式错误</span>
+                            </div>
+                        </div>
+                        <span class="zkly-upload-tip">大小：不能超过2M，格式：jpg,png</span>
+                        <div id="showCover"></div>
+
+                    </div>
+                </div>
+
+
+
+                <div class="row zkly-upload-item">
+                    <div class="col-md-3">
+
+                    </div>
+                    <div class="col-md-9">
+                        <input id="protocol" type="checkbox" />我已阅读并同意签署《<a href="">XXX协议</a>》
+                    </div>
+                </div>
+
+
+
+
+                <div class="col-md-12 zkly-progress-bar hidden">
+                    <div class="progress">
+                        <div class="bar"></div>
+                        <div class="percent">0%</div>
+                    </div>
+
+                    <div id="status"></div>
+
+                    <div class="zkly-progress-info">
+                        <div class="current-text pull-left" id="progressBarWords">文件比较大，请耐心等候</div>
+                        <div class="pull-left">
+                            <img id="loading" src="~/Images/PublicImg/loading-small.gif" />
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="row zkly-upload-item">
+                    <div class="col-md-3">
+                    </div>
+                    <div class="col-md-9">
+                        <button type="button" id="uploadBtn" class="btn btn-primary disabled">上传路演</button>
+                        @Html.ActionLink("返回", "index", "enterprise", null, new { @class = "btn btn-default" })
+                    </div>
+                </div>
+
+            }
+        </div>
+    </div>
+</div>
+
+@section scripts{
+
+    @Scripts.Render("~/js/upload")
+    @Scripts.Render("~/js/enterprise-invest")
+}
+
+
+

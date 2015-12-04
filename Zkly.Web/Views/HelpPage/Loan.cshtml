@@ -1,0 +1,81 @@
+﻿
+@{
+    ViewBag.Title = "Loan";
+    Layout = "~/Views/Shared/_LayoutHelp.cshtml";
+}
+        <div class="row" id="zkly_Row">
+
+    <div class="col-xs-1">
+        <img src="~/images/PublicImg/Blue.png" />
+    </div>
+    <div class="col-xs-10">
+        申请借贷
+    </div>
+
+</div>
+        <!--neirong开始-->
+        <div class="neirong">
+
+            <ul id="UI">
+                <li>
+                    <div class="tiao"></div>
+                    <div class="aa-1">
+                        <span>
+                            <i><img src="~/images/HelpCenterImg/Step_1.png" /> </i>
+                            <p>点击主页面上的我要借贷</p>
+                            @*<a href="#">免费注册</a>*@
+                        </span>
+                        <div class="aa-2">
+                            <a><img src="~/Images/HelpCenterImg/Invest_03.png" />
+                            </a>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="tiao"></div>
+                    <div class="aa-1">
+                        <span>
+                            <i><img src="~/images/HelpCenterImg/Step_2.png" /> </i>
+                            <p>跳转至登录页面，请企业的身份登录或注册</p>
+
+                        </span>
+                        <div class="aa-2">
+                            <a><img src="~/Images/HelpCenterImg/Login_02.png"></a>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="tiao"></div>
+                    <div class="aa-1">
+                        <span>
+                            <i><img src="~/images/HelpCenterImg/Step_3.png" /> </i>
+                            <p>请填写借贷信息,带*的表示必填项，填写完毕后点击申请贷款</p>
+
+                        </span>
+                        <div class="aa-2">
+                            <a><img src="~/Images/HelpCenterImg/Laon_01.png"></a>
+                        </div>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="aa-1">
+                        <span>
+                            <i><img src="~/images/HelpCenterImg/Step_4.png" /> </i>
+                            <p>申请成功（跳回至我的主页）</p>
+
+                        </span>
+                        <div class="aa-2">
+                            <a><img src="~/Images/HelpCenterImg/MyIndex.png"></a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <!--neirong结束-->
+   
+@section scripts
+{
+    @Scripts.Render("~/js/helpPageHover")
+}
+

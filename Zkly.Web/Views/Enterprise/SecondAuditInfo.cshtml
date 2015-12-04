@@ -1,0 +1,419 @@
+﻿@using Zkly.Common.Dictionary
+@using Zkly.DAL.Models
+@using Zkly.Web.Controllers
+@model Zkly.BLL.ViewModels.EnterpriseSecondAudit
+@{
+    ViewBag.Title = "申请投资（二审）";
+
+}
+
+@section heads{
+    @Styles.Render("~/css/bootstrapValidatorCss")
+    @Styles.Render("~/css/fileinput")
+    @Styles.Render("~/css/invest")
+
+    @Scripts.Render("~/js/bootstrapValidator")
+    @Scripts.Render("~/js/jquery-form")
+
+}
+
+@{
+    EnterpriseController enterprise = new EnterpriseController();
+}
+
+<div class="invest">
+    @Html.Partial("_InvestTop", EInvestAuditStage.Second)
+
+    <div class="content">
+        @Html.Partial("AlertMessage")
+
+        <div class="second-audit">
+            <div id="invest-second-audit-form" class="panel panel-default">
+                @using (Html.BeginForm("SaveSecondAuditInfo", "Enterprise", FormMethod.Post, new { @class = "form-horizontal", role = "form", @id = "upload-form" }))
+                {
+                    @Html.HiddenFor(m => m.InvestId)
+                    @Html.HiddenFor(m => m.SecondAuditInfoId)
+
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <br />
+
+                    <div class="form-group">
+                        <label for="companyAddress" class="col-md-3 control-label">公司地址<span class="validation-fail">*</span></label>
+                        <div class="col-md-9">
+                            @Html.TextBoxFor(m => m.Address, new { @class = "form-control", @placeholder = "公司地址" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="RegisteredCapital" class="col-md-3 control-label">公司注册资本<span class="validation-fail">*</span></label>
+                        <div class="col-md-9" id="myRegisteredCapital">
+                            @Html.TextBoxFor(m => m.RegisteredCapital, new { @class = "form-control", @style = "float: left", @placeholder = "公司注册资本" })
+                            <span class="input-group-btn">
+                                <input type="hidden" name="isLock" value="false" />
+                                <button class="btn btn-info">万元</button>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="CompanyStage" class="col-md-3 control-label">公司所处阶段<span class="validation-fail">*</span></label>
+                        <div class="col-md-9">
+                            <span class="zkly-span-Second">
+
+                                @Html.RadioButtonFor(model => model.CompanyStage, 0, new { @id = "radio1", @checked = "checked" })<label>创业期</label>
+                                @Html.RadioButtonFor(model => model.CompanyStage, 1, new { @id = "radio2" })<label>发展期</label>
+                                @Html.RadioButtonFor(model => model.CompanyStage, 2, new { @id = "radio3" })<label>成熟期</label>
+
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="compnayIntroduction" class="col-md-3 control-label">股权结构及主要管理者简介<span class="validation-fail">*</span></label>
+                        <div class="col-md-9">
+                            @Html.TextAreaFor(m => m.Introduction, new { @class = "form-control", @rows = "5" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="ProjectSource" class="col-md-3 control-label">项目来源<span class="validation-fail">*</span></label>
+
+                        <div class="col-md-9">
+                            <span class="zkly-span-Second">
+
+                                @Html.RadioButtonFor(model => model.ProjectSource, 0, new { @id = "radio1", @checked = "checked" })<label>63计划</label>
+                                @Html.RadioButtonFor(model => model.ProjectSource, 1, new { @id = "radio2" })<label>科技支撑计划</label>
+                                @Html.RadioButtonFor(model => model.ProjectSource, 2, new { @id = "radio3" })<label>国家部委计划</label>
+                                @Html.RadioButtonFor(model => model.ProjectSource, 3, new { @id = "radio4" })<label>地方政府计划</label>
+                                @Html.RadioButtonFor(model => model.ProjectSource, 4, new { @id = "radio5" })<label>国际合作</label>
+                                @Html.RadioButtonFor(model => model.ProjectSource, 5, new { @id = "radio6" })<label>企业自主研发</label>
+
+                                @if (!string.IsNullOrEmpty(Model.ProjectSourceOther))
+                                {
+                                    @Html.RadioButtonFor(model => model.ProjectSource, 6, new { @id = "radio7", @checked = "checked" })<label>其他</label>
+                                }
+                                else
+                                {
+                                    @Html.RadioButtonFor(model => model.ProjectSource, 6, new { @id = "radio7" })<label>其他</label>
+                                }
+
+                            </span>
+                            <br />
+
+                            @{
+
+                    string currentClass = !string.IsNullOrEmpty(Model.ProjectSourceOther) ? "display:block" : "display:none";
+                            }
+
+                            @Html.TextBoxFor(m => m.ProjectSourceOther, new { id = "ProjectSourceInfo", @class = "form-control", @placeholder = "其他", @style = @currentClass })
+
+
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label for="ProjectStage" class="col-md-3 control-label">项目阶段<span class="validation-fail">*</span></label>
+
+                        <div class="col-md-9">
+                            <span class="zkly-span-Second">
+
+                                @Html.RadioButtonFor(model => model.ProjectStage, 0, new { @id = "radio1", @checked = "checked" })<label>实验室研究成果</label>
+                                @Html.RadioButtonFor(model => model.ProjectStage, 1, new { @id = "radio2" })<label>中试成果</label>
+                                @Html.RadioButtonFor(model => model.ProjectStage, 2, new { @id = "radio3" })<label>小批量生产成果</label>
+                                @Html.RadioButtonFor(model => model.ProjectStage, 3, new { @id = "radio4" })<label>已投入市场</label>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="compnayIntroduction" class="col-md-3 control-label">项目介绍<span class="validation-fail">*</span></label>
+                        <div class="col-md-9">
+                            @Html.TextAreaFor(m => m.ProjectIntroduction, new { @class = "form-control", @rows = "5" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Inferiority" class="col-md-3 control-label">公司劣势<span class="validation-fail">*</span></label>
+                        <div class="col-md-9">
+                            @Html.TextAreaFor(m => m.Inferiority, new { @class = "form-control", @rows = "5" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="IsHasIPR" class="col-sm-3 control-label">是否有知识产权<span class="validation-fail">*</span></label>
+                        <div class="col-md-9">
+                            <span class="zkly-span-Second">
+
+                                @Html.RadioButtonFor(model => model.IsHasIPR, true, new { @id = "IsHasIPRRadio1", @checked = "checked" })<label>是</label>
+                                @Html.RadioButtonFor(model => model.IsHasIPR, false, new { @id = "IsHasIPRRadio2" })<label>否</label>
+                            </span>
+
+                            @{
+                    string currentCss = Model.IsHasIPR ? "display:block" : "display:none";
+                            }
+
+                            <table class="table table-bordered" id="showIsHasIPR" style="@currentCss">
+                                <tr>
+                                    <td>专利状况<span class="validation-fail">*</span></td>
+                                    <td colspan="4">
+
+                                        @Html.RadioButtonFor(model => model.PatentStatus, 0, new { @id = "radio1", @checked = "checked" })<label>未申请专利</label>
+                                        @Html.RadioButtonFor(model => model.PatentStatus, 1, new { @id = "radio2" })<label>已受理专利</label>
+                                        @Html.RadioButtonFor(model => model.PatentStatus, 2, new { @id = "radio3" })<label>已授权专利</label>
+
+                                        <br /><br />
+                                        @{
+                    string patentStatus = Model.PatentStatus != 0 ? "display:block" : "display:none";
+                                        }
+
+                                        @Html.TextBoxFor(m => m.PatentNumber, new { @class = "form-control", @placeholder = "填写专利号", @style = @patentStatus })
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td>知识产权形式<span class="validation-fail">*</span></td>
+                                    <td colspan="4">
+
+
+                                        @Html.RadioButtonFor(model => model.IPRform, 0, new { @id = "radio1", @checked = "checked" })<label>发明专利</label>
+                                        @Html.RadioButtonFor(model => model.IPRform, 1, new { @id = "radio2" })<label>实用型专利</label>
+                                        @Html.RadioButtonFor(model => model.IPRform, 2, new { @id = "radio3" })<label>外观设计专利</label>
+                                        @Html.RadioButtonFor(model => model.IPRform, 3, new { @id = "radio4" })<label>软件著作权</label>
+
+                                        @if (!string.IsNullOrEmpty(Model.IPRformOther))
+                                        {
+                                            @Html.RadioButtonFor(model => model.IPRform, 4, new { @id = "radio5", @checked = "checked" })<label>其他</label>
+                                        }
+                                        else
+                                        {
+                                            @Html.RadioButtonFor(model => model.IPRform, 4, new { @id = "radio5" })<label>其他</label>
+                                        }
+
+
+                                        <br /><br />
+                                        @{
+                    string currentClassInfo = !string.IsNullOrEmpty(Model.IPRformOther) ? "display:block" : "display:none";
+                                        }
+
+                                        @Html.TextBoxFor(m => m.IPRformOther, new { @class = "form-control", @placeholder = "其他", @style = @currentClassInfo })
+
+
+
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>知识产权权属</td>
+                                    <td>专利发明人<span class="validation-fail">*</span></td>
+                                    <td>
+                                        @Html.TextAreaFor(m => m.PatentInventor, new { @class = "form-control", @rows = "3", @placeholder = "多个发明人换行填写" })
+                                    </td>
+                                    <td>专利所有权人<span class="validation-fail">*</span></td>
+                                    <td>
+                                        @Html.TextAreaFor(m => m.PatentOwner, new { @class = "form-control", @rows = "3", @placeholder = "多个所有权人换行填写" })
+                                    </td>
+                                </tr>
+
+                            </table>
+                            <span class="zkly_Error" id="PatentInventorSpanError"></span>
+                            <br />
+                            <span class="zkly_Error" id="PatentOwnerSpanError"></span>
+
+
+
+
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Plan" class="col-md-3 control-label">融资后的战略规划<span class="validation-fail">*</span></label>
+                        <div class="col-md-9">
+                            @Html.TextAreaFor(m => m.Plan, new { @class = "form-control", @rows = "5" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="RiskPrevention" class="col-md-3 control-label">目前存在的问题风险及对策<span class="validation-fail">*</span></label>
+                        <div class="col-md-9">
+                            @Html.TextAreaFor(m => m.RiskPrevention, new { @class = "form-control", @rows = "5" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Debt" class="col-sm-3 control-label">公司债务<span class="validation-fail">*</span></label>
+                        <div class="col-md-9">
+                            <span class="zkly-span-Second" id="currentDebtAmount">
+
+
+                                @if (Model.Debt)
+                                {
+                                    @Html.RadioButtonFor(model => model.Debt, true, new { @id = "Debt1", @checked = "checked" })<label>是</label>
+                                    @Html.RadioButtonFor(model => model.Debt, false, new { @id = "Debt2" })<label>否</label>
+                                }
+                                else
+                                {
+                                    @Html.RadioButtonFor(model => model.Debt, true, new { @id = "Debt1" })<label>是</label>
+                                    @Html.RadioButtonFor(model => model.Debt, false, new { @id = "Debt2", @checked = "checked" })<label>否</label>
+                                }
+
+
+
+                                @{
+                    string debtCss = Model.Debt ? "display:inline" : "display:none";
+                                }
+                                <span style="@debtCss" id="showDebtAmount">
+                                    &nbsp; &nbsp;  &nbsp;
+                                    @Html.TextBoxFor(m => m.DebtAmount, new { @placeholder = "公司债务" })
+                                    <label>万元</label>
+                                    <br />
+                                    <span id="debtAmountError" style="margin-left: 85px;color: #A94442"></span>
+                                </span>
+
+                            </span>
+                        </div>
+                    </div>
+
+
+
+                    foreach (var item in Model.InvestSecondAuditFilesUpload)
+                    {
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">
+                                @(item.Value.Value)
+
+                                <!--资信证明,身份证正反面必上传-->
+                                @if (item.Key == (int)Enums.InvestSecondAuditFilesUpload.IdCardFront || item.Key == (int)Enums.InvestSecondAuditFilesUpload.IdCardBack || item.Key == (int)Enums.InvestSecondAuditFilesUpload.CreditCertificate || item.Key == (int)Enums.InvestSecondAuditFilesUpload.ProjectImage)
+                                {
+                                    <span class="validation-fail">*</span>
+                                }
+                               
+                            </label>
+                            <div class="col-md-9">
+
+                                <div name="fileUploadIframe">
+                                    <iframe width="500px" height="40px" frameborder="0" scrolling="no" src="/file/FileUploadForSecondAuditInfo?fileType=@(item.Value.Key)&fileHidId=@(item.Key)&fileId=img@(item.Key)"></iframe>
+                                </div>
+
+
+                                @*图片*@
+                                @if (item.Value.Key == 1)
+                                {
+                                    if (!string.IsNullOrEmpty(enterprise.GetUploadFileInfo(Model.SecondAuditInfoId, item.Key)))
+                                    {
+                                        <img class="thumbnail" id="img@(item.Key)" src='@Url.Action("ShowUploadFileInfo", "Enterprise", new { investSecondAuditId = Model.SecondAuditInfoId, fileTypeId = item.Key })' alt='@(item.Value.Value)'/>
+
+                                    }
+                                    else
+                                    {
+                                        <br/>
+                                        <img class="thumbnail" id="img@(item.Key)" src="" alt="" style="display: none;"/>
+                                    }
+
+                                } @*文件*@
+                                else
+                                {
+                                    if (!string.IsNullOrEmpty(enterprise.GetUploadFileInfo(Model.SecondAuditInfoId, item.Key)))
+                                    {
+                                        <br/>
+                                        <span class="text-success">文件名： @enterprise.GetUploadFileInfo(Model.SecondAuditInfoId, item.Key)</span>
+                                        <a href="@Url.Action("ShowUploadFileInfo", "Enterprise", new { investSecondAuditId = Model.SecondAuditInfoId, fileTypeId = item.Key })">下载文件</a>
+                                    }
+                                    else
+                                    {
+                                        <br/>
+                                        <span class="text-success" id="fileName@(item.Key)" style="display: none"></span>
+                                        <a id="file@(item.Key)" href="" style="display: none">下载文件</a>
+                                    }
+                                }
+
+
+                                <br/>
+                                <span style="display: none; color: #A94442" id="error@(item.Key)" name="errorMessInfo"></span>
+                                <input type="hidden" name="fileInfos" id="hid@(item.Key)"/>
+                                <input type="hidden" name="fileInfoId" id="fileId@(item.Key)"/>
+
+                                @if (item.Key == (int)Enums.InvestSecondAuditFilesUpload.IdCardFront)
+                                {
+                                    <div class="row" id="Front_IdCard">
+                                        <span class="zkly-span-IdCard">
+                                            <img src="~/images/SecondInstanceImg/Front_IdCard.jpg">
+                                        </span>
+                                    </div>
+                                    <br/><br/>
+                                }
+
+                                @if (item.Key == (int)Enums.InvestSecondAuditFilesUpload.IdCardBack)
+                                {
+                                    <span id="zkly-float-left">
+                                        <img src="~/images/SecondInstanceImg/Back_IdCard.jpg">
+                                    </span>
+                                }
+
+                            </div>
+                        </div>
+                    }
+
+
+                    if (ViewBag.IsEditable)
+                    {
+
+                        <br />
+                        <div class="form-group">
+                            <label class="col-md-3 control-label"></label>
+                            <div class="col-md-9">
+                                <input id="second-audit-protocol" type="checkbox" />我已阅读并同意签署
+                                《<a href="">XXX协议</a>》
+                                <span style="color: #ddd">请先阅读此协议并勾选前面复选框</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label"></label>
+                            <div class="col-md-9">
+
+                                <button type="button" id="second-audit-submit" class="btn btn-primary disabled" onclick="return checkform_success()">申请二审</button>
+
+                                @Html.ActionLink("取消", "Index", null, new { @style = "margin-left: 40px;font-size: 14px" })
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12 zkly-progress-bar hidden">
+
+                                <div class="progress">
+                                    <div class="bar"></div>
+                                    <div class="percent">0%</div>
+                                </div>
+
+                                <div id="status"></div>
+
+                                <div class="zkly-progress-info">
+                                    <div class="current-text pull-left" id="progressBarWords">文件比较大，请耐心等候</div>
+                                    <div class="pull-left">
+                                        <img id="loading" src="~/Images/PublicImg/loading-small.gif" />
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    }
+                }
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+@section scripts{
+
+    @Scripts.Render("~/js/enterprise-invest")
+    @Scripts.Render("~/js/second-audit")
+
+}
+
+

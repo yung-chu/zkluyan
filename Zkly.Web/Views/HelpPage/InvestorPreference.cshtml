@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "InvestorPreference";
+    Layout = "~/Views/Shared/_LayoutHelp.cshtml";
+}
+<div class="row" id="zkly_Row">
+    <div class="col-xs-12" id="zkly_HelpHeader">
+        <img src="~/images/PublicImg/Blue.png" />
+        投资人偏好设置
+    </div>
+
+    <div class="col-xs-12" id="zkly_Style">
+        @Html.ActionLink("我是投资人，如何设置我的个人偏好？", "PreferenceSetting", "HelpPage")
+    </div>
+    <div class="col-xs-12" id="zkly_Style">
+        @Html.ActionLink("我是投资人，如何修改我的个人偏好？", "UpdPreferenceSetting", "HelpPage")
+    </div>
+
+</div>
+
+

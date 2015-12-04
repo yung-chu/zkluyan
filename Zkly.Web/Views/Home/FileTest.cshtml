@@ -1,0 +1,154 @@
+﻿@using Zkly.Common.Dictionary
+@{
+    ViewBag.Title = "文件上传测试";
+}
+
+
+上传多个文件,只需要在枚举类进行配置
+<form id="fileTest" action="/home/FileTest" method="POST" enctype="multipart/form-data">
+
+
+    @if (ViewBag.InvestSecondAuditFilesUpload != null)
+    {
+        Dictionary<int, ZkjlKeyValuePair> dics = (Dictionary<int, ZkjlKeyValuePair>)ViewBag.InvestSecondAuditFilesUpload;
+        foreach (var item in dics)
+        {
+            @(item.Value.Value)
+            <iframe width="500px" height="40px" frameborder="0" src="/file/FileUpload?fileType=@(item.Value.Key)&fileHidId=hid@(item.Key)&fileId=img@(item.Key)"></iframe>
+
+            <img id="img@(item.Key)" src="" alt="" style="display: none;" />
+            <input type="hidden" value="" name="files" id="hid@(item.Value.Key)" />
+            <input type="hidden" value="" name="typeIds" id="hid@(item.Key)" />
+            <br />
+        }
+    }
+    <input type="submit" value="提交" id="btnSubmit1" />
+</form>
+<br /><br />
+
+上传文件并进行添加操作
+<form id="fileTest1" action="/home/FileTest1" method="POST" enctype="multipart/form-data">
+    <input id="CreditCertificate" type="file" name="CreditCertificate" />
+    <input type="submit" value="提交" id="btnSubmit2" />
+</form>
+<br /><br />
+
+
+图片显示（根据主键Id显示）
+<img src='@Url.Action("FileDisplayById", "File", new { id = 4 })' a alt='机构代码证' />
+
+<br /><br />
+客户端实现上传图片预览
+<div>
+    <table>
+        <tr>
+            <td>
+                <input id="File1" type="file" name="CreditCertificate" />
+                <br />
+                <img id="img1" src="" alt="" />
+                <br />
+                <span id="fn1"></span>&nbsp;&nbsp;<span id="fs1"></span>
+            </td>
+            <td>
+                <input id="File2" type="file" name="CreditCertificate" />
+                <br />
+                <img id="img2" src="" alt="" />
+                <br />
+                <span id="fn2"></span>&nbsp;&nbsp;<span id="fs2"></span>
+            </td>
+            <td>
+                <input id="File3" type="file" name="CreditCertificate" />
+                <br />
+                <img id="img3" src="" alt="" />
+                <br />
+                <span id="fn3"></span>&nbsp;&nbsp;<span id="fs3"></span>
+            </td>
+        </tr>
+
+    </table>
+
+</div>
+
+<br />
+
+<div>
+    iframe实现图片上传后显示图片
+    <form id="fileTest1" action="/home/FileTest1" method="POST" enctype="multipart/form-data">
+        <table>
+            <tr>
+                <td>
+                    <iframe width="500px" height="40px" frameborder="0" src="/file/FileUpload?fileType=1&fileHidId=hidName1&fileId=imgFram1"></iframe>
+                    <img id="imgFram1" src="" alt="" style="display: none;" />
+                    <input type="hidden" value="" name="files" id="hidName1" />
+                </td>
+                <td>
+                    <iframe width="500px" height="40px" frameborder="0" src="/file/FileUpload?fileType=1&fileHidId=hidName2&fileId=imgFram2"></iframe>
+                    <img id="imgFram2" src="" alt="" style="display: none;" />
+                    <input type="hidden" value="" name="files" id="hidName2" />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="submit" value="提交" id="btnSubmit2" />
+                </td>
+            </tr>
+        </table>
+
+    </form>
+
+    <br />
+    iframe实现文件上传后显示文件下载
+    <form id="fileTest1" action="/home/FileTest1" method="POST" enctype="multipart/form-data">
+        <table>
+            <tr>
+                <td>
+                    <iframe width="500px" height="40px" frameborder="0" src="/file/FileUpload?fileType=2&fileHidId=hidName3&fileId=imgFram3"></iframe>
+                    <a id="imgFram3" href="#" alt="" style="display: none;">文件查看</a>
+                    <input type="hidden" value="" name="files" id="hidName3" />
+                </td>
+                <td>
+                    <iframe width="500px" height="40px" frameborder="0" src="/file/FileUpload?fileType=2&fileHidId=hidName4&fileId=imgFram4"></iframe>
+                    <a id="imgFram4" href="#" alt="" style="display: none;">文件查看</a>
+                    <input type="hidden" value="" name="files" id="hidName4" />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="submit" value="提交" id="btnSubmit2" />
+                </td>
+            </tr>
+        </table>
+
+    </form>
+</div>
+
+@section scripts{
+<script type="text/javascript" language="javascript">
+    $(function () {
+        PreViewImg("File1", "img1");
+        PreViewImg("File2", "img2");
+        PreViewImg("File3", "img3");
+    });
+
+    function FileUploadSuccess(fileType, hidName1, fileId, pathInfo) {
+        var paths = pathInfo.split(":");
+        if (fileType == 1) {
+            $("#" + fileId).show();
+
+            $("#" + hidName1).val(pathInfo);
+            $("#" + fileId).attr("src", "/file/FileDisplayByPath?path=" + paths[0] + "&fileName=" + paths[1]);
+        } else {
+            $("#" + fileId).show();
+            $("#" + hidName1).val(pathInfo);
+            $("#" + fileId).attr("href", "/file/FileDisplayByPath?path=" + paths[0] + "&fileName=" + paths[1]);
+        }
+    }
+</script>
+}
+
+
+
+
+
+
+

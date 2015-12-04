@@ -1,0 +1,686 @@
+﻿/* CSS Document */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+a,
+span,
+td,
+div,
+li,
+dl,
+dt,
+dd,
+em,
+input,
+th,
+td,
+label {
+  font: 14px/150% 'Microsoft YaHei', SimSun, Arial, "Lucida Grande", Verdana, Lucida, Helvetica, sans-serif;
+}
+body,
+td,
+div,
+dl,
+dt,
+dd,
+em,
+input,
+th,
+td,
+label {
+  color: #3e3e3e;
+}
+body,
+ul,
+ol,
+li,
+dl,
+dt,
+dd,
+em,
+div,
+input,
+form,
+tr,
+th,
+img,
+td,
+label {
+  margin: 0;
+  padding: 0;
+}
+img {
+  border: 0;
+}
+ul,
+li {
+  list-style: none;
+}
+h1 {
+  font-size: 36px;
+  font-weight: normal;
+}
+h2 {
+  font-size: 18px;
+  font-weight: normal;
+}
+h3,
+h4,
+h5,
+h6 {
+  font-size: 14px;
+}
+.clear {
+  clear: both;
+}
+.clearfix:after {
+  content: " ";
+  display: block;
+  height: 0;
+  clear: both;
+}
+/* Set padding to keep content from hitting the edges */
+.body-content {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+  white-space: normal;
+}
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+  max-width: 280px;
+}
+a.navbar-brand {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.nav-pills > li > a.btn {
+  margin-top: 4px;
+}
+.bg-img-scale {
+  filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale')";
+  -moz-background-size: 100% 100%;
+  background-size: 100% 100%;
+}
+#home-banner {
+  background-image: url(../Images/home_banner.jpg);
+}
+#error-body .jumbotron {
+  background-image: url("../../../Images/PublicImg/ErrorWarning.png");
+  padding: 10px 10px 60px;
+  margin-top: 20px;
+}
+#error-body .error-text-tip {
+  font-weight: bold;
+  color: #fff;
+  margin-right: 30px;
+}
+#error-body .list-group {
+  margin-top: 20px;
+}
+#road-show-entry {
+  margin-top: 50px;
+}
+#road-show-entry :hover {
+  text-decoration: underline;
+}
+#road-show-entry > span {
+  position: relative;
+  left: -120px;
+  font-size: 30px;
+  font-weight: bold;
+  color: white;
+}
+/* #top-header */
+#top-header {
+  background-color: #555;
+  height: 32px;
+}
+#top-header span,
+#top-header a {
+  color: #fff;
+  background-color: #555;
+  vertical-align: middle;
+  padding: 5px;
+  display: inline-block;
+}
+#top-header ul {
+  float: left;
+}
+#top-header ul li {
+  float: left;
+  list-style: none;
+}
+#top-header #loginLink {
+  color: #0195ff;
+  margin-right: 15px;
+}
+#top-header #registerLink {
+  color: #90c31f;
+}
+/* #top-header-menu */
+#top-header-menu {
+  height: 58px;
+  background: #ffffff;
+  margin: 0px;
+}
+#top-header-menu .navbar-brand {
+  margin-right: 18px;
+}
+#top-menu > .nav > li > a,
+#top-menu .dropdown-menu li > a {
+  font-size: 18px;
+}
+ul.auto-width {
+  width: 100%;
+  display: table;
+  table-layout: fixed;
+  /* optional */
+}
+ul.auto-width > li {
+  display: table-cell;
+  width: auto;
+  text-align: center;
+}
+/*bannerʼ开始*/
+#top-carousel .banner-bg0 {
+  background: #e43441;
+}
+#top-carousel .banner-bg1 {
+  background: #075f9e;
+}
+/*banner结束*/
+/*首页公告开始*/
+#activity {
+  background-color: #ff7f27;
+  position: relative;
+}
+#activityImg {
+  max-width: 100%;
+}
+#gonggao {
+  overflow: hidden;
+  height: 80px;
+  line-height: 24px;
+  width: 1170px;
+  white-space: nowrap;
+  margin: 0 auto;
+}
+#gonggao1,
+#gonggao2 {
+  width: 1170px;
+}
+/*#gonggao1, #gonggao2 {
+    width: 960px;
+    margin: 0 auto;
+}*/
+#denglongOut {
+  position: relative;
+  width: 960px;
+  margin: 0 auto;
+  height: 1px;
+}
+#lihua {
+  position: absolute;
+  right: -210px;
+  top: -160px;
+}
+#j-spring-cas {
+  height: 150px;
+  width: 200px;
+}
+#lihua img {
+  width: 180px;
+}
+.NoteTitle {
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  padding-left: 10px;
+  padding-right: 10px;
+  color: #fff;
+}
+.NoteContent {
+  text-align: left;
+  padding-left: 10px;
+  padding-right: 20px;
+  line-height: 24px;
+  color: #fff;
+  font-size: 16px;
+}
+#XinwenNews {
+  overflow: hidden;
+  width: 100%;
+}
+#XinwenNews1 td {
+  text-align: center;
+  padding: 5px;
+}
+#XinwenNews1 img {
+  height: 200px;
+  border-radius: 5px;
+}
+#block-gonggao {
+  overflow: hidden;
+  width: 100%;
+  margin: 0 auto;
+  height: 100px;
+  background-color: #ff7d27;
+}
+#block-gonggao1 {
+  width: 1170px;
+  margin: 0 auto;
+  font-size: 18px;
+  color: #fff;
+  line-height: 24px;
+}
+/*首页公告结束*/
+.circle-white {
+  background-image: url(../../../Images/IndexImg/circle-white.png);
+  width: 328px;
+  height: 328px;
+}
+.circle-white .circle-block {
+  display: block;
+  width: 100%;
+  padding: 25px 75px 0;
+}
+.circle-white .circle-block h2 {
+  text-align: center;
+  margin: 15px 0 3px;
+}
+.circle-white .circle-block p {
+  text-align: center;
+  font-size: 12px;
+  color: #656565;
+  margin-bottom: 5px;
+}
+.circle-white .right-block h2 {
+  margin-top: 90px;
+}
+.circle-white .right-block p {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.circle-white .right-block p > a {
+  font-size: 12px;
+  color: #656565;
+  text-decoration: underline;
+  margin: 0 1px;
+}
+.circle-white .circle-block a.btn {
+  padding: 3px 15px;
+  width: 88px;
+  margin: 0 auto;
+  display: block;
+}
+.circle-blue {
+  background-image: url(../../../Images/IndexImg/circle-blue.png);
+  width: 328px;
+  height: 328px;
+  margin: 0 auto;
+}
+.circle-blue .circle-block {
+  display: block;
+  width: 328px;
+  margin-bottom: 0;
+  padding: 95px 75px 0;
+}
+.circle-blue .circle-block h1 {
+  text-align: center;
+  margin: 15px 0 25px;
+  color: #ffffff;
+}
+.circle-blue .circle-block a {
+  padding: 3px 14px;
+  border-color: #ffffff;
+}
+.text-center .title i {
+  margin-bottom: 10px !important;
+}
+/*相关网站开始*/
+.relationWeb {
+  padding: 0 15px !important;
+}
+.relationWeb .row {
+  margin-bottom: 15px;
+}
+.relationWeb .col-xs-2 {
+  width: 226px !important;
+  padding: 0 8px !important;
+}
+.relationWeb img {
+  width: 210px;
+  height: 30px;
+}
+/*相关网站结束*/
+/*合作伙伴开始*/
+.huoban {
+  padding: 0 15px !important;
+}
+.huoban .col-xs-2 {
+  width: 125px !important;
+  padding: 0 15px !important;
+}
+.huoban .row {
+  margin-bottom: 15px;
+}
+.huoban img {
+  max-width: 109px;
+}
+/*合作伙伴结束*/
+/*footer开始*/
+#footer {
+  margin-top: 20px;
+}
+#footer div,
+#footer span,
+#footer li,
+#footer a {
+  color: #FFFFFF;
+}
+#footer .footer-menu {
+  background: #353535;
+  margin: 0 auto;
+  height: 60px;
+}
+#footer .footer-menu ul {
+  margin: 25px 20px 0 0;
+}
+#footer .copyright {
+  background: #555555;
+  height: 122px;
+  padding: 10px;
+}
+#footer .copyright .tel {
+  color: #FFFFFF;
+  font-size: 32px;
+  margin-top: -5px;
+}
+#footer .copyright p {
+  color: #fff;
+  font-weight: normal;
+  margin-top: -5px;
+}
+#footer .copyright .col-xs-3 img {
+  margin-top: 7px;
+}
+#footer .copyright .friend-link {
+  margin: 20px 0;
+}
+#footer .copyright .friend-link li:first-child {
+  margin: 0;
+  display: inline-block;
+}
+/*footer结束*/
+.zkly-bold {
+  font-weight: bold;
+}
+.zkly-text-width-400 {
+  max-width: 400px !important;
+}
+.validation-fail {
+  color: red;
+}
+.zkly-right {
+  float: right;
+}
+.zkly-pointer {
+  cursor: pointer;
+}
+.zkly-separator {
+  border-bottom: 1px solid #dddddd;
+  margin: 25px 0;
+}
+.zkly-my-roadshow-desc {
+  width: 600px;
+}
+/* for roadshow show order */
+.zkly-show-all-roadshow {
+  height: 440px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+.zkly-show-desc {
+  border-left: 1px solid #dddddd;
+  border-right: 1px solid #dddddd;
+  padding: 10px;
+}
+/* end roadshow show order */
+/*************业务路演显示页面*************/
+.zkly-biz-embed {
+  width: 100%;
+  height: 450px;
+}
+.zkly-biz-container {
+  margin-bottom: 83px;
+}
+.zkly-biz-title {
+  margin-top: 34px;
+}
+.zkly-biz-desc {
+  margin: 28px 0 40px 0;
+}
+/*************结束 业务路演显示页面*************/
+/*************资本路演*************/
+.zkly-capital-container {
+  width: 100%;
+  height: 600px;
+  border: 0;
+}
+.zkly-capital-subject {
+  font-size: 16px;
+  font-weight: bold;
+  color: #000000;
+}
+.zkly-capital-desc {
+  border-top: 1px solid #dddddd;
+  margin-top: 19px;
+  padding-top: 28px;
+  min-height: 200px;
+}
+/*************结束 资本路演*************/
+/*************上传业务路演*************/
+.zkly-upload-item {
+  margin: 0 0 19px 0;
+}
+.zkly-upload-success {
+  height: 300px;
+  padding-top: 30px;
+}
+.zkly-upload-cover {
+  background: url('../../../Images/PublicImg/Btn-Plus.png');
+  width: 120px;
+  height: 110px;
+  cursor: pointer;
+}
+.zkly-upload-video {
+  background: url('../../../Images/SecondInstanceImg/UploadVideo.png');
+  width: 300px;
+  height: 180px;
+  cursor: pointer;
+}
+.zkly-upload-tip {
+  font-size: 11px;
+  color: gray;
+}
+.zkly-upload-title {
+  font-size: 16px;
+  color: #0c84d6;
+  font-weight: bold;
+}
+.zkly-upload-video-name {
+  max-width: 300px;
+  margin-top: 5px;
+}
+.zkly-upload-video-desc {
+  max-width: 600px;
+  height: 200px !important;
+  margin-top: 5px;
+}
+.zkly-input-file {
+  min-width: 100%;
+  min-height: 100%;
+  text-align: right;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  cursor: inherit;
+  display: block;
+}
+.zkly-progress-bar {
+  border-bottom: 1px solid #dddddd;
+  margin-bottom: 20px;
+}
+.zkly-progress-info {
+  width: 100%;
+  height: 20px;
+  margin: -20px 0 20px 0;
+}
+#showVideo {
+  font-weight: bold;
+}
+#showCover {
+  font-weight: bold;
+}
+/*************结束 上传业务路演*************/
+/*table开始*/
+.zkjl-list-button1 {
+  background: url(../../../Images/IndexImg/Btn-ToSeeMore.png) no-repeat;
+  width: 91px;
+  height: 30px;
+  border: 0px;
+  cursor: pointer;
+  background-color: none;
+}
+i {
+  width: 1170px;
+  height: 1px;
+  background: none repeat scroll 0% 0% #E2E2E2;
+  display: block;
+  margin: 0px 0px 30px;
+}
+b {
+  margin: 0px auto;
+  display: block;
+  background: none repeat scroll 0% 0% #9B9C9C;
+  height: 2px;
+  width: 146px;
+}
+/*禁用响应式布局*/
+.container {
+  width: 1170px !important;
+  max-width: none !important;
+}
+body,
+.navbar-fixed-top,
+.navbar-fixed-bottom {
+  min-width: 1170px;
+}
+.container .navbar-header,
+.container .navbar-collapse {
+  margin-right: 0;
+  margin-left: 0;
+  border-top: 0;
+}
+/* Always float the navbar header */
+.navbar-header {
+  float: left;
+}
+/* Undo the collapsing navbar */
+.navbar-collapse {
+  display: block !important;
+  height: auto !important;
+  padding-bottom: 0;
+  overflow: visible !important;
+  visibility: visible !important;
+}
+.navbar-toggle {
+  display: none;
+}
+.navbar-brand {
+  margin-left: -15px;
+}
+/* Always apply the floated nav */
+/* Redeclare since we override the float above */
+.navbar-nav.navbar-right {
+  float: right;
+}
+.navbar-right {
+  float: right !important;
+}
+/* Undo custom dropdowns */
+.navbar .navbar-nav .open .dropdown-menu {
+  position: absolute;
+  float: left;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-width: 0 1px 1px;
+  border-radius: 0 0 4px 4px;
+  -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+}
+/*禁止label 标签*/
+.control-label {
+  text-align: right;
+}
+#login-panel,
+#register-panel {
+  margin-top: 50px;
+}
+#login-panel div.form-header,
+#register-panel div.form-header {
+  padding-top: 25px;
+}
+#login-panel span.title,
+#register-panel span.title {
+  font-size: 24px;
+  color: #0d83d7;
+  margin-right: 110px;
+}
+.zkjl-list-span1 {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 2px;
+}
+.zkjl-list-span {
+  margin-left: 4px;
+  font-size: 22px;
+  color: #0d83d7;
+}
+.row h1 {
+  color: #0094ff;
+}
+.row table {
+  border: 0px;
+  text-align: left;
+}
+#zkly-logo-frist {
+  padding-right: 39px;
+}
+#zkly-logo-tow {
+  padding-left: 80px;
+}
+.Project-display {
+  display: block;
+  padding: 4px;
+  margin-bottom: 20px;
+  line-height: 1.42857;
+  background-color: #FFF;
+  border: 1px solid #DDD;
+  border-radius: 4px;
+  transition: border 0.2s ease-in-out 0s;
+  width: 250px;
+  height: 200px;
+}
+/*# sourceMappingURL=Site.css.map */

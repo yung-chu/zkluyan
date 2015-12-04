@@ -1,0 +1,36 @@
+﻿@model IList<InvestHistory>
+
+<div class="panel panel-default">
+    <!-- Default panel contents -->
+    <div class="panel-heading">操作历史</div>
+
+    <!-- Table -->
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>序号</th>
+                <th>阶段状态</th>
+                <th>操作用户</th>
+                <th>审批金额</th>
+                <th>备注说明</th>
+                <th>操作时间</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                var id = 1;
+            }
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@(id++)</td>
+                    <td>@item.Stage.Description(item.Status)</td>
+                    <td>@item.User.UserName</td>
+                    <td>@(item.AuditQuota.HasValue ? string.Format("{0:N0} 万元", item.AuditQuota) : "")</td>
+                    <td>@item.Remark</td>
+                    <td>@item.CreateTime</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

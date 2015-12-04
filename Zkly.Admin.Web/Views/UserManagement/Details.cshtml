@@ -1,0 +1,98 @@
+﻿@model Zkly.DAL.Models.ApplicationUser
+
+@{
+    ViewBag.Title = "查看用户信息";
+    ViewBag.Role = RoleManager.GetRoleType(Model);
+}
+
+<div id="user-details-panel" class="panel panel-default">
+    <div class="panel-heading">
+        @ViewBag.Title
+    </div>
+    @Html.Partial("_SuccessMessage")
+    @Html.Partial("_ErrorMessage")
+    <div class="panel-body">
+
+        @Html.Partial("_Details", Model)
+
+    </div>
+
+    <div class="panel-footer dl-footer">
+        <a href="@Url.Action("Edit", new {id = Model.Id})" c class="btn btn-primary">编辑</a>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#reset-password">
+            重置密码
+        </button>
+        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete-account">
+            删除帐户
+        </button>
+        <a href="@Url.Action("Index", new { role = ViewBag.Role })" class="btn btn-default">返回列表</a>
+    </div>
+</div>
+
+
+<!-- 弹窗 -->
+<div class="modal fade" id="reset-password" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    @using (Html.BeginForm("ResetPassword", "UserManagement"))
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(m => m.Id)
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">重置密码</h4>
+                </div>
+                <div class="modal-body">
+                    <p>即将将重置该帐户的密码为初始密码，重置后：</p>
+                    <p>&nbsp;&nbsp;1. 系统将自动发送消息和邮件通知该用户密码已经重置。</p>
+                    <p>&nbsp;&nbsp;2. 用户的原密码将会失效。</p>
+                    <p>&nbsp;&nbsp;3. 用户的新密码为m+手机号，@Html.Raw("如m" + Model.PhoneNumber)。</p>
+                    @if (Model.PhoneNumberConfirmed)
+                    {
+                        <h2><span class="label label-info">你确定要重置吗？</span></h2>
+                    }
+                    else
+                    {
+                        <h2><span class="label label-warning">警告：当前用户手机未验证，你确定要重置吗？</span></h2>
+                    }
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="submit" class="btn btn-danger">重置</button>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<div class="modal fade" id="delete-account" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    @using (Html.BeginForm("Delete", "UserManagement"))
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(m => m.Id)
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">删除帐户</h4>
+                </div>
+                <div class="modal-body">
+                    <p>即将删除帐户以及与该帐户关联的所有数据。</p>
+                    <p>警告：删除后数据将不可恢复！</p>
+                    <p>&nbsp;</p>
+                    <p>你确定要删除吗？</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="submit" class="btn btn-danger">删除</button>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@section scripts
+{
+    @Scripts.Render("~/js/user-management")
+}

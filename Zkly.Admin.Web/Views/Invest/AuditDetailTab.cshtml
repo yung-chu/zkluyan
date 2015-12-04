@@ -1,0 +1,72 @@
+﻿@model Zkly.BLL.ViewModels.InvestAuditViewModel
+<div role="tabpanel" class="tab-pane @(IsAjax ? "" : "active") row" id="invest-@Model.Stage">
+    <div class="col-md-8">
+        @switch (Model.Stage)
+        {
+            case EInvestAuditStage.First:
+                @Html.Partial("FirstAuditInfo", Model.Invest.FirstAuditInfo)
+                break;
+            case EInvestAuditStage.Second:
+            @Html.Partial("SecondAuditInfo", Model.Invest.SecondAuditInfo)
+                break;
+            case EInvestAuditStage.Agreement:
+            @*<div class="jumbotron alert alert-warning text-center" role="alert">
+                <p>&nbsp;</p>
+                <h1>
+                    <span class="fa fa-ban" aria-hidden="true"></span> 功能未开放
+                </h1>
+                <p>&nbsp;</p>
+                <p>暂不支持签订协议功能，请直接进入终（路演）页面。</p>
+                <p>&nbsp;</p>
+                <p>&nbsp;</p>
+                <p>&nbsp;</p>
+                <p>&nbsp;</p>
+            </div>*@
+             @Html.Partial("InvestAgreement", Model.Invest.Agreement)
+                break;
+            case EInvestAuditStage.Roadshow:
+
+                if (Model.Invest.CapitalRoadshow == null || (Model.Invest.CapitalRoadshow != null && !Model.Invest.CapitalRoadshow.RecordState) || (bool)@ViewData["isedit"])
+                {
+                    using (Html.BeginForm("Save", "CapitalRoadshow", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data", @id = "info-form" }))
+                    {
+                        @Html.Partial("CapitalRoadshow/_Edit", (Model.Invest.CapitalRoadshow == null || (Model.Invest.CapitalRoadshow != null && !Model.Invest.CapitalRoadshow.RecordState)) ? new CapitalRoadshow { Id = 0, StartDate = DateTime.Now.AddHours(-1), EndDate = DateTime.Now, CompanyName = Model.Invest.FirstAuditInfo.CompanyName } : Model.Invest.CapitalRoadshow)
+                        <div class="panel-footer">
+                            <div class="col-xs-offset-2">
+                                <input type="submit" class="btn btn-primary" value="保存" />
+                                <a href="@Url.Action("AuditDetails", "Invest", new {id = Model.Invest.Id, stage = EInvestAuditStage.Roadshow})" class="btn btn-primary">返回列表</a>
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    @Html.Partial("_Details", Model.Invest.CapitalRoadshow)
+                }
+
+                @*<div class="jumbotron alert alert-success text-center" role="alert">
+                        <p>&nbsp;</p>
+                        <h1><span class="fa fa-warning" aria-hidden="true"></span> 无相关资料</h1>
+                        <p>&nbsp;</p>
+                        <p>终审无相关资料，请直接审批金额。</p>
+                        <p>&nbsp;</p>
+                        <p>&nbsp;</p>
+                        <p>&nbsp;</p>
+                    </div>*@
+
+
+                break;
+        }
+    </div>
+    @if (Model.Stage != EInvestAuditStage.Roadshow)
+    {
+        <div class="col-md-4">
+            <div data-spy="affix" data-offset-top="125">
+                @(Model.Invest.IsAuditable(Model.Stage)
+                      ? Html.Partial("_AuditAction", Model.Invest)
+                      : Html.Partial("_AuditResult", Model.Invest))
+            </div>
+        </div>
+
+    }
+</div>

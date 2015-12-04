@@ -1,0 +1,139 @@
+﻿@using CaptchaMvc.HtmlHelpers;
+@using Zkly.DAL.Models;
+@model Zkly.BLL.ViewModels.RegisterViewModel
+@{
+    ViewBag.Title = "注册";
+}
+
+@section heads {
+@Styles.Render("~/css/bootstrapValidatorCss")
+@Styles.Render("~/css/Register")
+@Scripts.Render("~/js/bootstrapValidator")
+}
+
+@*@if (@Model.DataDictionaries.DataDictionaryName == "0")
+{
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            @ViewBag.Title
+        </div>
+        <div class="panel-body">
+            <div class="jumbotron alert alert-warning text-center" role="alert">
+                <h1>
+                    <img src="http://localhost:57036/Images/PublicImg/No-Icon.png" /><span class="fa fa-ban" aria-hidden="true"></span> 注册功能暂停开放
+                </h1>
+            </div>
+        </div>
+  </div>
+        }
+        else
+        {*@
+        <div id="register-panel" class="row">
+            <div class="col-xs-12">
+                <img class="img-responsive center-block" src="~/Images/LoginAndRegister/RegisterAccountInfo.png" />
+            </div>
+            <div class="col-xs-6">
+            </div>
+            <div class="col-xs-6 form-header">
+                <span class="title">免费注册</span> <span>我已经注册，现在就 @Html.ActionLink("登录", "Login")</span>
+                <hr />
+            </div>
+            <div class="col-xs-6">
+                <img class="img-responsive" src="~/Images/LoginAndRegister/login-bg.png" />
+            </div>
+            <div class="col-xs-6">
+
+                @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form", id = "registForm" }))
+            {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true, "", new { @class = "bg-danger" })
+                    <br />
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.UserName, new { @class = "col-xs-2 control-label" })
+                        <div class="col-xs-10">
+                            @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
+                            @*@Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })*@
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Email, new { @class = "col-xs-2 control-label" })
+                        <div class="col-xs-10">
+                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                            @*@Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })*@
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.PhoneNumber, new { @class = "col-xs-2 control-label" })
+                        <div class="col-xs-10">
+                            @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control" })
+                            @*@Html.ValidationMessageFor(m => m.PhoneNumber, "", new { @class = "text-danger" })*@
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Role, new { @class = "col-xs-2 control-label" })
+                        <div class="col-xs-10">
+                            <div id="user-role-group" class="btn-group" data-toggle="buttons" data-active="@Model.Role">
+                                <label class="btn btn-default active">
+                                    @Html.RadioButtonFor(m => m.Role, "Enterprise", new { @class = "form-control" }) 我是企业
+                                </label>
+                                <label class="btn btn-default">
+                                    @Html.RadioButtonFor(m => m.Role, "Investor", new { @class = "form-control" }) 我是投资人
+                                </label>
+                            </div>
+                            @*@Html.ValidationMessageFor(m => m.Role, "", new { @class = "text-danger" })*@
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Password, new { @class = "col-xs-2 control-label" })
+                        <div class="col-xs-10">
+                            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                            @*@Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })*@
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-xs-2 control-label" })
+                        <div class="col-xs-10">
+                            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.Label("验证码", new { @class = "col-xs-2 control-label" })
+                        <div class="col-xs-10">
+                            @Html.Captcha(5, "_Captcha")
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-xs-2"></div>
+                        <div class="col-xs-10">
+                            <input type="submit" class="btn btn-primary btn-block" value="注 册" />
+                        </div>
+                    </div>
+            }
+            </div>
+        </div>
+        @*}*@
+
+
+        @section scripts {
+
+            @Scripts.Render("~/js/registerForm")
+        }
+
+
+
+
+
+
+
+
+
+
+

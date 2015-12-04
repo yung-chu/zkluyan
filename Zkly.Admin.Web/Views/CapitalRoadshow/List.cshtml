@@ -1,0 +1,61 @@
+﻿@model PagedList.IPagedList<Zkly.DAL.Models.Invest>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "资本路演管理";
+}
+@section styles{
+    @Styles.Render("~/style/roadshow")
+}
+
+<div class="capital-roadshow panel panel-default">
+    <div class="panel-heading">
+        @ViewBag.Title
+    </div>
+    @if (Model.Count == 0)
+    {
+        <div id="container" class="panel-body">
+            <div class="jumbotron alert alert-warning text-center" role="alert">
+                <h1><span class="fa fa-exclamation-circle" aria-hidden="true"></span> 目前还没有申请资料</h1>
+            </div>
+        </div>
+    }
+    else
+    {
+        <table name="audit" class="table table-hover table-striped">
+            <thead>
+                <tr>
+                    <th>申请日期</th>
+                    <th>公司</th>
+                    <th>项目</th>
+                    <th>申请资金</th>
+                    <th>阶段状态</th>
+                    <th>申请时间</th>
+                    <th>更新时间</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.ApplyTime.ToString("yyyy-MM-dd")</td>
+                        <td>@item.FirstAuditInfo.CompanyName</td>
+                        <td>
+                            <a href="@Url.Action("AuditDetails", "Invest", new {id = @item.Id, stage = EInvestAuditStage.Roadshow})" target="_blank">
+                                @item.FirstAuditInfo.ProjectName
+                            </a>
+                        </td>
+                        <td>@string.Format("{0:N0} 万元", item.FirstAuditInfo.ApplyQuota)</td>
+                        <td>@item.GetStatusDescription()</td>
+                        <td>@Html.DisplayFor(m => item.ApplyTime)</td>
+                        <td>@Html.DisplayFor(m => item.UpdateTime)</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>
+
+@section scripts
+{
+    @Scripts.Render("~/js/capital-roadshow")
+}

@@ -1,0 +1,29 @@
+﻿<!--content头部信息结束-->
+@*偏好设计跳转*@
+@section heads {
+    @Styles.Render("~/css/TestAndVerify")
+}
+<div class="content">
+    <div class="yanzheng">
+        <ul>
+            <li>
+                <input type="hidden" id="url" value="@(Url.Action("InvestorPreference", "Manage"))" />
+
+                <div class="col-xs-12 text-center"><img src="~/images/PublicImg/PromptWarning.png" /></div>
+
+                <div class="col-xs-12 text-center " id="Zkly_Title">提 &nbsp;&nbsp;&nbsp;示</div>
+                <div class="col-xs-12 text-center " id="Zkly_fTitle">您还未设置偏好，请设置偏好</div>
+                <div class="col-xs-12 text-center" id="showTimer">
+                    <lable id="time">5</lable>秒后将自动跳转到偏好设置页面...如未跳转请点击此: <a href="@(Url.Action("InvestorPreference", "Manage"))">立即跳转</a>
+                </div>
+                <div class="col-xs-12 text-center">
+                    
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+<!--content头部信息结束-->
+@section scripts{
+    @Scripts.Render("~/js/setTimeout")
+}

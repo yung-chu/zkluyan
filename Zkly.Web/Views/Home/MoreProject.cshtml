@@ -1,0 +1,38 @@
+﻿@model Zkly.BLL.ViewModels.HomeIndexViewModel
+@using Zkly.Common.Dictionary
+@{
+    ViewBag.Title = "查看更多项目";
+}
+<ol class="breadcrumb">
+    <li><a href="/">首页</a></li>
+    <li class="active">@ViewBag.Title</li>
+</ol>
+<div class="panel panel-default">
+    <div class="row text-center">
+        <h1>项目展示</h1>
+        <b></b>
+        <br />
+        <!--table开始-->
+        <div class="col-xs-12">
+
+            @foreach (var item in Model.Invests)
+            {
+                <div class="col-xs-3" style="margin-bottom:60px;">
+                    <a title="查看详情" href="@Url.Action("Invest", new { item.Id })">
+                        <img class="Project-display" src='@Url.Action("ShowUploadFileInfo", "Enterprise", new { investSecondAuditId = item.Id, fileTypeId = (long)Enums.InvestSecondAuditFilesUpload.ProjectImage })' />
+                    </a>
+                    <a href="@Url.Action("Invest", new { item.Id })">
+                        @item.FirstAuditInfo.ProjectName
+                    </a>
+                </div>
+                
+            }
+            <br />
+        </div>
+        <!--table结束-->
+        <br />
+    </div>
+  </div>
+
+
+

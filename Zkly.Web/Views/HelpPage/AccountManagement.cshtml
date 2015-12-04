@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewBag.Title = "AccountManagement";
+    Layout = "~/Views/Shared/_LayoutHelp.cshtml";
+}
+    <div class="row" id="zkly_Row">
+
+    <div class="col-xs-12" id="zkly_HelpHeader">
+        <img src="~/images/PublicImg/Blue.png" />
+        账户管理
+    </div>
+    <div class="col-xs-12" id="zkly_Style">
+
+        @Html.ActionLink("如何注册为路演新用户？", "Register", "HelpPage")
+    </div>
+    <div class="col-xs-12" id="zkly_Style">
+        @Html.ActionLink("如何登录已有的路演账户？", "Login", "HelpPage")
+    </div>
+    <div class="col-xs-12" id="zkly_Style">
+        @Html.ActionLink("如何验证我的邮箱？", "VerifyMailbox", "HelpPage")
+    </div>
+
+
+    <div class="col-xs-12" id="zkly_Style">
+
+        @Html.ActionLink("如何验证我的手机？", "VerifyPhone", "HelpPage")
+    </div>
+    <div class="col-xs-12" id="zkly_Style">
+        @Html.ActionLink("如何更改我的密码？", "UpdPWD", "HelpPage")
+    </div>
+    <div class="col-xs-12" id="zkly_Style">
+        @Html.ActionLink("如何更改我的邮箱？", "", "HelpPage")
+
+    </div>
+    <div class="col-xs-12" id="zkly_Style">
+
+        @Html.ActionLink("如何更改我的手机？", "UpdPhone", "HelpPage")
+    </div>
+    <div class="col-xs-12" id="zkly_Style">
+        @Html.ActionLink("当我忘记我的密码时密码，该如何找回？", "ResetPassword", "HelpPage")
+    </div>
+
+</div>

@@ -1,0 +1,32 @@
+﻿@{
+    ViewBag.Title = "您没有权限访问该页面";
+}
+<br />
+<div class="panel panel-default">
+    <div class="panel-heading">@ViewBag.Title</div>
+    <div class="panel-body row" id="error-body">
+        <div class="col-xs-8">
+            <div class="jumbotron bg-img-scale">
+                <div class="row">
+                    <div class="col-xs-7">
+                        <p class="error-text-tip text-right">咦...系统出错了~</p>
+                    </div>
+                    <div class="col-xs-5">
+                        <h2><span class="label label-warning">403 - Access Denied</span></h2>
+                        <hr />
+                        <p>主人，那个那个，您没有权限访问这个页面哦！</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-4">
+            <div class="list-group">
+                <a class="list-group-item active" href="javascript:;">快速进入：</a>
+                <a class="list-group-item" href="/">返回首页</a>
+                <a class="list-group-item" href="javascript:history.go(-2);">返回上层页面</a>
+                <a class="list-group-item" href="#">帮助中心</a>
+                <a class="list-group-item" href="#">联系客服</a>
+            </div>
+        </div>
+    </div>
+</div>

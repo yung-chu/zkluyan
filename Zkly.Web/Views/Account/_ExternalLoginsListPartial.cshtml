@@ -1,0 +1,27 @@
+﻿@model Zkly.BLL.ViewModels.ExternalLoginListViewModel
+@using Microsoft.Owin.Security
+
+<h4>合作帐号登录：</h4>
+<hr />
+@{
+    var loginProviders = Context.GetOwinContext().Authentication.GetExternalAuthenticationTypes();
+    if (loginProviders.Count() == 0) {
+        <div>
+            <p>
+                尚未配置第三方身份验证服务，包括：QQ，微信，网易，人人，豆瓣，支付宝，开心，奇虎360，搜狐，新浪微博，手机二维码扫描等。
+            </p>
+        </div>
+    }
+    else {
+        using (Html.BeginForm("ExternalLogin", "Account", new { ReturnUrl = Model.ReturnUrl })) {
+            @Html.AntiForgeryToken()
+            <div id="socialLoginList">
+                <p>
+                    @foreach (AuthenticationDescription p in loginProviders) {
+                        <button type="submit" class="btn btn-default" id="@p.AuthenticationType" name="provider" value="@p.AuthenticationType" title="使用你的 @p.Caption 帐户登录">@p.AuthenticationType</button>
+                    }
+                </p>
+            </div>
+        }
+    }
+}

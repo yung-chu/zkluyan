@@ -1,0 +1,41 @@
+﻿@model Zkly.DAL.Models.Loan
+@{
+    ViewBag.Title = "贷款审批";
+}
+
+@section styles{
+    @Styles.Render("~/style/loan")
+}
+
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        借贷审批 - @Model.ProjectName
+    </div>
+
+        <div class="panel-body">
+            <div id="loan-tabs" role="tabpanel">
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs nav-justified" role="tablist">
+                    <li role="presentation" class="active">
+                        <a href="#loan" aria-controls="loan" role="tab" data-toggle="tab">审批</a>
+                       
+                    </li>
+                    <li role="presentation">
+                        <a href="#loan-user" aria-controls="loan-user" role="tab" data-toggle="tab">用户资料</a>
+                    </li>
+                </ul>
+                <br />
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    @Html.Partial("AuditDetailTab", Model)
+                  
+                    <div role="tabpanel" class="tab-pane" id="loan-user" data-src="@Url.Action("Details", "UserManagement", new {id = Model.UserId})">
+                    </div>
+                </div>
+            </div>
+       </div>
+</div>
+@section scripts{
+    @Scripts.Render("~/js/loan")
+}

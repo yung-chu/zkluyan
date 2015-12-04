@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "RoadShowRoom";
+    Layout = "~/Views/Shared/_LayoutHelp.cshtml";
+}
+<div class="row" id="zkly_Row">
+    <div class="col-xs-12" id="zkly_HelpHeader">
+        <img src="~/images/PublicImg/Blue.png" />
+        路演厅
+    </div>
+
+    <div class="col-xs-12" id="zkly_Style"
+         @Html.ActionLink("怎么去查看企业上传的业务路演？", "BusinessRoadShow", "HelpPage")
+    </div>
+    <div class="col-xs-12" id="zkly_Style">
+        @Html.ActionLink("怎么去查看企业的资本路演？", "CapitalRoadShow", "HelpPage")
+    </div>
+    <div class="col-xs-12" id="zkly_Style">
+        @Html.ActionLink("如何参加企业的资本路演？", "", "HelpPage")
+    </div>
+</div>
+

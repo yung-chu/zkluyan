@@ -1,0 +1,80 @@
+﻿
+@{
+    ViewBag.Title = "VerifyMailbox";
+    Layout = "~/Views/Shared/_LayoutHelp.cshtml";
+}
+<div class="row" id="zkly_Row">
+
+    <div class="col-xs-1">
+        <img src="~/images/PublicImg/Blue.png" />
+    </div>
+    <div class="col-xs-10">
+        用户邮箱验证
+    </div>
+
+</div>
+        <!--neirong开始-->
+        <div class="neirong">
+
+            <ul id="UI">
+                <li>
+                    <div class="tiao"></div>
+                    <div class="aa-1">
+                        <span>
+                            <i><img src="~/images/HelpCenterImg/Step_1.png" /> </i>
+                            <p>登录后，点击页面右上角您的登录名</p>
+                            @*<a href="#">免费注册</a>*@
+                        </span>
+                        <div class="aa-2">
+                           <a><img src="~/Images/HelpCenterImg/Manager_01.png" /></a>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="tiao"></div>
+                    <div class="aa-1">
+                        <span>
+                            <i><img src="~/images/HelpCenterImg/Step_2.png" /> </i>
+                            <p>点击验证，系统会自动发一封邮件至您的邮箱</p>
+
+                        </span>
+                        <div class="aa-2">
+                           <a><img src="~/Images/HelpCenterImg/UpdEmail.png"></a>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="tiao"></div>
+                    <div class="aa-1">
+                        <span>
+                            <i><img src="~/images/HelpCenterImg/Step_3.png" /> </i>
+                            <p>收到邮件后，请及时进入链接进行邮箱验证</p>
+
+                        </span>
+                        <div class="aa-2">
+                           <a><img src="~/Images/HelpCenterImg/Email01.png"></a>
+                        </div>
+                    </div>
+                </li>
+                <li>
+
+                    <div class="aa-1">
+                        <span>
+                            <i><img src="~/images/HelpCenterImg/Step_4.png" /> </i>
+                            <p>验证过后，您的邮箱会显示已验证</p>
+
+                        </span>
+                        <div class="aa-2">
+                           <a><img src="~/Images/HelpCenterImg/VerificationEmail.png"></a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <!--neirong结束-->
+
+
+@section scripts
+{
+    @Scripts.Render("~/js/helpPageHover")
+}

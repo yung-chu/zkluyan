@@ -1,0 +1,51 @@
+﻿@model Zkly.DAL.Models.Roadshow
+@{
+    ViewBag.Title = "观看业务路演";
+}
+<br />
+<div class="row">
+    @Html.Partial("AlertMessage")
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        @if (string.IsNullOrEmpty(Model.VhallRoadshowAddress))
+        {
+            <div class="jumbotron">
+                <h1>视频暂时无法播放</h1>
+                <p>服务器正在对该视频文件进行编码处理，请稍候再试。如果该视频长时间依然无法访问，请联系客服人员处理。</p>
+                <p><a class="btn btn-primary btn-lg" href="@Url.Action("Business", "Roadshow")" role="button">返回</a></p>
+            </div>
+        }
+        else
+        {
+            <iframe border="0" src="@Model.VhallRoadshowAddress" width="1062" height="600"></iframe>
+            @*<embed class="zkly-biz-embed" src="@Model.VhallRoadshowAddress" autostart="true" loop="true">*@
+        }
+    </div>
+</div>
+
+<div class="row zkly-biz-container">
+    <div class="col-xs-12 zkly-biz-title">
+        @Model.VideoName
+    </div>
+    <div class="col-xs-12 zkly-biz-desc">
+        @Model.VideoDescrition
+    </div>
+    <div class="col-xs-12">
+        <a id="attend" class="btn btn-primary" data-roadshow-id="@Model.Id" href="javascript:void(0);">我要参加资本路演</a>
+    </div>
+</div>
+
+
+@section scripts {
+   @Scripts.Render("~/js/business-roadshow-manager")
+
+}
+
+
+
+
+
+
+
+

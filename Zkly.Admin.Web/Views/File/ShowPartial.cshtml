@@ -1,0 +1,38 @@
+﻿@model Zkly.DAL.Models.UploadFileInfo
+
+<style type="text/css">
+    .thumbnail {
+        display: block;
+        padding: 4px;
+        margin-bottom: 20px;
+        line-height: 1.42857;
+        background-color: #FFF;
+        border: 1px solid #DDD;
+        border-radius: 4px;
+        transition: border 0.2s ease-in-out 0s;
+        width: 200px;
+        height: 150px;
+    }
+</style>
+
+
+
+@*修改该UI， doc等文件，直接提供文件名和下载链接，图片提供缩略图和超链接*@
+@if (Model == null)
+{
+    <span>无</span>
+}
+else
+{
+    if (ViewBag.IsImg)
+    {
+        <span style="height: 300px;width:300px">
+            <img class="thumbnail" src='@Url.Action("FileDisplayById", new { id = Model.Id })' alt='' />
+        </span>
+        <span>图片: @Model.FileName <a href="@Url.Action("FileDisplayById", new { Model.Id })" target="_blank">点击查看</a></span>
+    }
+    else
+    {
+        <span>文件: @Model.FileName <a href="@Url.Action("DownLoad", new { Model.Id })" target="_blank">点击下载</a></span>
+    }
+}

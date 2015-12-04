@@ -1,0 +1,92 @@
+﻿@model Zkly.BLL.ViewModels.RegisterViewModel
+
+@{
+    ViewBag.Title = "创建新用户";
+}
+@section styles {
+    @Styles.Render("~/css/bootstrapValidatorCss")
+    @Scripts.Render("~/js/bootstrapValidator")
+    @Scripts.Render("~/js/jqueryval")
+}
+
+@using (Html.BeginForm("SaveCreate", "UserManagement", FormMethod.Post, new { @class = "form-horizontal", role = "form", @id = "info-form" }))
+{
+    <div id="create-user" class="panel panel-default">
+        <div class="panel-heading">
+            @ViewBag.Title
+        </div>
+        @Html.Partial("_SuccessMessage")
+        @Html.Partial("_ErrorMessage")
+        <div class="panel-body">
+
+            @Html.AntiForgeryToken()
+            <div class="form-group">
+                @Html.LabelFor(m => m.UserName, new { @class = "col-xs-2 control-label" })
+                <div class="col-xs-6">
+                    @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", data_content = "用户名只能是数字与字母的组合，且必须包含至少一个字母！", @id = "UserName" })
+                    @*@Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })*@
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.Email, new { @class = "col-xs-2 control-label" })
+                <div class="col-xs-6">
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @id = "Email" })
+                    @*@Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })*@
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.PhoneNumber, new { @class = "col-xs-2 control-label" })
+                <div class="col-xs-6">
+                    @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control", data_content = "手机号码必须为11位数字！", @id = "PhoneNumber" })
+                    @*@Html.ValidationMessageFor(m => m.PhoneNumber, "", new { @class = "text-danger" })*@
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.Role, new { @class = "col-xs-2 control-label" })
+                <div class="col-xs-6">
+                    <div id="user-role-group" class="btn-group" data-toggle="buttons" data-active="@Model.Role" >
+                        <label class="btn btn-default">
+                            @Html.RadioButtonFor(m => m.Role, "Enterprise", new { @class = "form-control" }) 企业用户
+                        </label>
+                        <label class="btn btn-default">
+                            @Html.RadioButtonFor(m => m.Role, "Investor", new { @class = "form-control" }) 投资人
+                        </label>
+                        <label class="btn btn-default">
+                            @Html.RadioButtonFor(m => m.Role, "Administrator", new { @class = "form-control" }) 管理员
+                        </label>
+                    </div>
+                    @Html.ValidationMessageFor(m => m.Role, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.Password, new { @class = "col-xs-2 control-label" })
+                <div class="col-xs-6">
+                    @Html.PasswordFor(m => m.Password, new { @class = "form-control", data_content = "密码长度不能小于6位，且至少包含一个小写字母！", @id = "Password" })
+                    @*@Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })*@
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-xs-2 control-label" })
+                <div class="col-xs-6">
+                    @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", @id = "ConfirmPassword" })
+                </div>
+            </div>
+        </div>
+
+        <div class="panel-footer">
+            <div class="col-xs-offset-2">
+                <input type="submit" class="btn btn-primary" value="创建" />
+                <a href="@Url.Action("Index", new { Model.Role })" class="btn btn-default">返回列表</a>
+           </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/js/user-management")
+    @Scripts.Render("~/js/user")
+}

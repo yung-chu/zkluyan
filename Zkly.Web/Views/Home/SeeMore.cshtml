@@ -1,0 +1,20 @@
+﻿@using Zkly.DAL.Models
+@model EInvestAuditStage
+@{
+    ViewBag.Title = "项目展示";
+}
+<ol class="breadcrumb">
+    <li><a href="/">首页</a></li>
+    <li class="active">@ViewBag.Title</li>
+</ol>
+
+<div id="invest-nav-tabs" class="home-info-nav">
+    <ul>
+        <li id="first-audit" class="@(EInvestAuditStage.First == Model ? "on" : "")" data-url="@Url.Action("FirstAuditInfo", "Home", Html.ViewContext.RouteData.Values)">一审资料</li>
+        <li id="second-audit" class="@(EInvestAuditStage.Second == Model ? "on" : "") @(EInvestAuditStage.Second > ViewBag.MaxStage ? "disabled" : "")" data-url="@Url.Action("SecondAuditInfo", "Home", Html.ViewContext.RouteData.Values)">二审资料</li>
+    </ul>
+</div>
+
+@section scripts{
+    @Scripts.Render("~/js/enterprise-invest")
+}

@@ -1,0 +1,413 @@
+﻿@model Zkly.BLL.ViewModels.HomeIndexViewModel
+@using Zkly.Common.Dictionary
+@{
+    ViewBag.Title = "首页";
+}
+@section banner{
+    <!--banner开始-->
+    <div id="top-carousel" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#top-carousel" data-slide-to="0" class="active"></li>
+            @*<li data-target="#top-carousel" data-slide-to="1"></li>*@
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+            <div class="item active">
+                <img src="~/Images/LogoAndBanner/IndexBanner-01.png" alt="Chania">
+            </div>
+
+            @*<div class="item">
+                    <img src="~/Images/banner-7.png" alt="Chania">
+                </div>*@
+        </div>
+
+        <!-- Left and right controls -->
+        <a class="left carousel-control" href="#top-carousel" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#top-carousel" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+
+
+    </div>
+    <!--banner结束-->
+}
+
+
+@section homeActivity{
+    @*<div id="activity">
+            <img id="activityImg" src="~/Images/LogoAndBanner/bg-title2.png" alt="Chania">
+            <div id="gonggao">
+                <div id="gonggao1">
+                    <table>
+                        <tr>
+                            <td width="30px" class="NoteTitle" align="center">
+                                主办
+                                <br />
+                                单位
+                            </td>
+                            <td class="NoteContent" align="center">
+                                中国生产力金融专业委员会<br />
+                                深圳中科金集控股集团
+                            </td>
+                            <td class="NoteTitle" align="center">战略<br />合作</td>
+                            <td class="NoteContent" align="center">
+                                中国华融资产、腾讯、中国信达资产、中融国际信托、深圳高新金融促进会、前海股权交易中心、国海证券、华泰证券、英大证券、安信证券、东北证券、<br />
+                                世纪证券、上海银行深圳分行、前海众筹、吉昌盛集团、华石基金、深圳浩世投资、钧濠集团、北京天使街、北京易通贷、金海贷、久亿财富（北京）、<br />
+                                温州网诚、金信财富（北京）、广东数字领海科技投资、长江财税、中兴通讯、华为技术、爱思拓集团、清华大学研究院、中国光华设计基金会
+                            </td>
+                            <td class="NoteTitle" align="center">银企<br />合作</td>
+                            <td class="NoteContent" align="center">
+                                中信银行、建设银行、招商银行、光大银行、农业银行、杭州银行、<br />
+                                民生银行、包商银行、平安银行、上海银行、浦发银行、浙商银行
+                            </td>
+                            <td class="NoteTitle" align="center">法务<br />合作</td>
+                            <td class="NoteContent" align="center">
+                                国浩律师事务所、金杜律师事务所、君合律师事务所、<br />
+                                中伦律师事务所等十家律师执业机构<br />
+                            </td>
+                            <td class="NoteTitle" align="center">新闻<br />媒体</td>
+                            <td class="NoteContent" align="center">
+                                深圳卫视、深视第一现场、深圳特区报
+                            </td>
+                            <td id="gonggao2"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>*@
+
+
+    @*<div id="Xinwen">
+            <div id="XinwenNews">
+                <div id="XinwenNews1">
+                    <table>
+                        <tr>
+                            <td>
+                                <img src="/Images/News/20150530/gwysdhcsjh.jpg" alt="国务院石定寰参事讲话" /><br />
+                                国务院石定寰参事讲话
+                            </td>
+                            <td>
+                                <img src="/Images/News/20150530/lylmszjh.jpg" alt="刘玉兰秘书长讲话" /><br />
+                                刘玉兰秘书长讲话
+                            </td>
+                            <td>
+                                <img src="/Images/News/20150530/yypjh.jpg" alt="余一平董事长讲话" /><br />
+                                余一平董事长讲话
+                            </td>
+                            <td>
+                                <img src="/Images/News/20150530/yzjh.jpg" alt="严雪铵总裁讲话" /><br />
+                                严雪铵总裁讲话
+                            </td>
+                            <td>
+                                <img src="/Images/News/20150530/qhyzqgsjjh.jpg" alt="清华院张庆刚书记讲话" /><br />
+                                清华院张庆刚书记讲话
+                            </td>
+
+
+
+
+                            <td>
+                                <img src="/Images/News/20150530/fabuhuixifenghaoyou.jpg" alt="发布会喜逢好友" /><br />
+                                发布会喜逢好友
+                            </td>
+
+                            <td>
+                                <img src="/Images/News/20150530/fbhzwzbg.jpg" alt="发布会在深圳五洲宾馆" /><br />
+                                发布会在深圳五洲宾馆
+                            </td>
+                            <td>
+                                <img src="/Images/News/20150530/zgyglhsz.jpg" alt="中国英谷落户深圳" /><br />
+                                中国英谷落户深圳
+                            </td>
+                            <td>
+                                <img src="/Images/News/20150530/ldjp.jpg" alt="领导揭牌" /><br />
+                                领导揭牌
+                            </td>
+
+
+
+                            <td>
+                                <img src="/Images/News/20150530/qhyqy.jpg" alt="与清华院领导签约" /><br />
+                                与清华院领导签约
+                            </td>
+
+                            <td>
+                                <img src="/Images/News/20150530/gxjrcjhxcjy.jpg" alt="高新金融促进会现场签约" /><br />
+                                高新金融促进会现场签约
+                            </td>
+                            <td>
+                                <img src="/Images/News/20150530/scsqxdycxc.jpg" alt="石参事敲响第一锤现场放款500万" /><br />
+                                石参事敲响第一锤现场放款500万
+                            </td>
+                            <td>
+                                <img src="/Images/News/20150530/wbwcj.jpg" alt="现场5百万成交" /><br />
+                                现场5百万成交
+                            </td>
+
+
+                            <td>
+                                <img src="/Images/News/20150530/ldsczgygjd.jpg" alt="领导视察中国英谷基地" /><br />
+                                领导视察中国英谷基地
+                            </td>
+
+                            <td>
+                                <img src="/Images/News/20150530/ldsczgyg.jpg" alt="领导视察中国英谷" /><br />
+                                领导视察中国英谷
+                            </td>
+
+                            <td>
+                                <img src="/Images/News/20150530/zgygcjc.jpg" alt="中国英谷筹建处" /><br />
+                                中国英谷筹建处
+                            </td>
+
+                            <td>
+                                <img src="/Images/News/20150530/zkjljt.jpg" alt="中科金集集团部分成员" /><br />
+                                中科金集集团部分成员
+                            </td>
+                            <td>
+                                <img src="/Images/News/20150530/fabuhuishenzhendianshitaizhuchiren.jpg" alt="发布会深圳电视台主持人" /><br />
+                                发布会深圳电视台主持人
+                            </td>
+                            <td id="XinwenNews2"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+        </div>*@
+}
+
+
+<!--公告内容开始-->
+<!--公告内容结束-->
+<!--circle 开始-->
+<div class="row">
+    <div class="col-xs-4">
+        <div class="circle-white">
+
+            <div class="circle-block">
+                <h2>百千万计划</h2>
+                <p>金融助推一万家百万级年收入企业年收入过千万</p>
+                @if (User.IsInRole("Enterprise"))
+                {
+                    <a href="@(Url.Action("index", "enterprise"))" class="btn btn-warning">立即加入</a>
+                }
+                else
+                {
+                    <a href="@(Url.Action("Setup", "Home"))" class="btn btn-warning">立即加入</a>
+                }
+            </div>
+            <div class="circle-block">
+                <h2>千万亿计划</h2>
+                <p>金融助推一千家千万级年收入企业年收入过亿</p>
+                @if (User.IsInRole("Enterprise"))
+                {
+                    <a href="@(Url.Action("index", "enterprise"))" class="btn btn-warning">立即加入</a>
+                }
+                else
+                {
+                    <a href="@(Url.Action("Setup", "Home"))" class="btn btn-warning">立即加入</a>
+                }
+            </div>
+
+        </div>
+    </div>
+
+    <div class="col-xs-4">
+        <div class="circle-blue">
+            <div class="circle-block">
+                <h1>路演大厅</h1>
+                <a href="@Url.Action("Business", "Roadshow")" class="btn btn-primary">业务路演</a>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    if (User.IsInRole("Investor"))
+                    {
+                        <a href="@(Url.Action("Capital", "Roadshow"))" class="btn btn-primary">资本路演</a>
+                    }
+                    if (User.IsInRole("Enterprise"))
+                    {
+                        <a href="@(Url.Action("RoadshowLoagErro", "Error"))" class="btn btn-primary">资本路演</a>
+                    }
+                }
+                else
+                {
+                    <a href="@(Url.Action("RoadshowErro", "Error"))" class="btn btn-primary">资本路演</a>
+                }
+            </div>
+
+        </div>
+    </div>
+
+    <div class="col-xs-4">
+        <div class="circle-white">
+            <div class="circle-block right-block">
+                <h2>投资人</h2>
+                <br />
+                @if (User.IsInRole("Enterprise"))
+                {
+                    <a href="@(Url.Action("index", "enterprise"))" class="btn btn-warning">立即加入</a>
+                }
+                else
+                {
+                    <a href="@(Url.Action("Setup", "Home"))" class="btn btn-warning">立即加入</a>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<!--circle 结束-->
+<!--list开始-->
+<div class="row text-center">
+    <h1>项目展示</h1>
+    <b></b>
+    <i></i>
+    <!--table开始-->
+    <div class="col-xs-12">
+      
+            @*@foreach (var item in Model.Invests)
+            {
+                <div class="col-xs-3">
+                    <a title="查看详情" href="@Url.Action("Invest", new { item.Id })"  >
+                        <img class="Project-display" src='@Url.Action("ShowUploadFileInfo", "Enterprise", new { investSecondAuditId = item.Id, fileTypeId = (long)Enums.InvestSecondAuditFilesUpload.ProjectImage })' />
+                    </a>
+                    <a href="@Url.Action("Invest", new { item.Id })">
+                        @item.FirstAuditInfo.ProjectName
+                    </a>
+                    
+                </div>
+            }*@
+       
+    </div>
+    <div class="col-xs-12 text-right">
+        <a href="@Url.Action("MoreProject")" class="btn zkjl-list-button1 "></a>
+    </div>
+        <!--table结束-->
+    </div>
+<br />
+<br />
+
+<!--list结束-->
+<!--list开始-->
+<div class="row text-center">
+    <div class="title">
+        <h1>相关网站</h1>
+        <b></b>
+        <i></i>
+    </div>
+    <div class="panel-body relationWeb">
+        <div class="row">
+            <div class="col-xs-2">
+                <a href="http://www.most.gov.cn/" target="_blank"><img src="~/Images/Partners/kejibu.png" /></a>
+            </div>
+            <div class="col-xs-2">
+                <a href="http://www.sdpc.gov.cn/" target="_blank"><img src="~/Images/Partners/fagaiwei.png" /></a>
+            </div>
+            <div class="col-xs-2">
+                <a href="http://www.miit.gov.cn" target="_blank"><img src="~/Images/Partners/gongxinbu.png" /></a>
+            </div>
+            <div class="col-xs-2">
+                <a href="http://www.chinatorch.gov.cn/" target="_blank"><img src="~/Images/Partners/kejibuhuojuzhongxin.png" /></a>
+            </div>
+            <div class="col-xs-2">
+                <a href="http://www.cppc.gov.cn/" target="_blank"><img src="~/Images/Partners/shengchanlizhongxin.png" /></a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-2">
+                <a href="http://www.gd.gov.cn/" target="_blank"><img src="~/Images/Partners/guangdong.jpg" /></a>
+            </div>
+            <div class="col-xs-2">
+                <a href="http://www.sz.gov.cn/" target="_blank"><img src="~/Images/Partners/Shenzhen-ZhengFu.png" /></a>
+            </div>
+            <div class="col-xs-2">
+                <a href="https://www.hkpc.org/" target="_blank"><img src="~/Images/Partners/hk-sclcjj.png" /></a>
+            </div>
+            <div class="col-xs-2">
+                <a href="http://www.gdppnet.com/" target="_blank"><img src="~/Images/Partners/gds-sclcjzx.png" /></a>
+            </div>
+            <div class="col-xs-2">
+                <a href="http://www.gsppc.cn/" target="_blank"><img src="~/Images/Partners/gss-sclcjzx.png" /></a>
+            </div>
+        </div>
+    </div>
+</div>
+<!--list结束-->
+<!--list开始-->
+<div class="row text-center">
+    <div class="title">
+        <h1>合作伙伴</h1>
+        <b></b>
+        <i></i>
+    </div>
+    <div class="panel-body huoban">
+        <div class="row">
+            <div class="col-xs-2">
+                <a href="http://www.tencent.com/zh-cn/"><img src="~/Images/Partners/logo-1.png" /></a>
+            </div>
+            <div class="col-xs-2">
+                <a href="http://www.crbank.com.cn/"><img src="~/Images/Partners/logo-2.png" /></a>
+            </div>
+            <div class="col-xs-2">
+                <a href="http://www.chamc.com.cn/"><img src="~/Images/Partners/logo-3.png" /></a>
+            </div>
+            <div class="col-xs-2">
+                <a href="http://www.szmc.net/page/index.html"><img src="~/Images/Partners/logo-4.png" /></a>
+            </div>
+            <div class="col-xs-2">
+                <a href="http://www.baidu.com"><img src="~/Images/Partners/logo-5.png" /></a>
+            </div>
+            <div class="col-xs-2">
+                <a href="http://www.jinxin99.cn/"><img src="~/Images/Partners/logo-6.png" /></a>
+            </div>
+            <div class="col-xs-2">
+                <a href="http://www.lhzq.com/main/sy/index.shtml"><img src="~/Images/Partners/logo-7.png" /></a>
+            </div>
+            <div class="col-xs-2">
+                <a href="http://www.szhq.com/"><img src="~/Images/Partners/logo-8.png" /></a>
+            </div>
+            <div class="col-xs-2">
+                <a href="http://www.cib.com.cn/cn/index.html"><img src="~/Images/Partners/logo-9.png" /></a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-2">
+                <a href="http://www.huawei.com/cn/"><img src="~/Images/Partners/logo-10.png" /></a>
+            </div>
+            <div class="col-xs-2">
+                <a href="http://www.grandall.com.cn/index.htm"><img src="~/Images/Partners/logo-11.png" /></a>
+            </div>
+            <div class="col-xs-2">
+                <a href="http://www.zritc.com/"><img src="~/Images/Partners/zrgjxt.png" /></a>
+            </div>
+            <div class="col-xs-2">
+                <a href="http://www.gxjr88.cn/"><img src="~/Images/Partners/szgxjrcjh.png" /></a>
+            </div>
+            <div class="col-xs-2">
+                <a href="https://www.qhee.com/"><img src="~/Images/Partners/qhgqjyzx.png" /></a>
+            </div>
+            <div class="col-xs-2">
+                <a href="http://www.essence.com.cn/"><img src="~/Images/Partners/axzq.png" /></a>
+            </div>
+            <div class="col-xs-2">
+                <a href="http://www.szcjcpa.com/"><img src="~/Images/Partners/cjcs.png" /></a>
+            </div>
+            <div class="col-xs-2">
+                <a href="http://www.tsinghua.edu.cn/"><img src="~/Images/Partners/qhdx.png" /></a>
+            </div>
+            <div class="col-xs-2">
+                <a href="http://www.gdpe.org/"><img src="~/Images/Partners/gdpe.jpg" /></a>
+            </div>
+        </div>
+    </div>
+</div>
+<!--list结束-->
+@*@section scripts{
+
+    @Scripts.Render("~/js/move")
+}*@

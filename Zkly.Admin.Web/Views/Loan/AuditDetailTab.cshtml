@@ -1,0 +1,154 @@
+﻿@model Loan
+<div role="tabpanel" class="tab-pane @(IsAjax ? "" : "active") row" id="loan">
+   
+        <div class="col-xs-8">
+            <div class="panel panel-default audit-form">
+                <div class="panel-body">
+                    <div class="form-group">
+                        <div class="form-label">公司名称</div>
+                        <div class="form-input underline">
+                            <span>@Model.CompanyName</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-label">公司简介</div>
+                        <div class="form-input underline">
+                            <span>@Model.CompanyDescription</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-label">成立时间</div>
+                        <div id="foundingDateWrap" class="form-input underline">
+                            <span>@Model.FoundingDate.ToString("yyyy-MM-dd")</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="form-label">所属行业</div>
+                        <div class="form-input underline">
+                            <span>@Model.Industry</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="form-label">所在地区</div>
+                        <div class="form-input underline">
+                            <span>@Model.Area</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="form-label">项目名称</div>
+                        <div class="form-input underline">
+                            <span>@Model.ProjectName</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="form-label">申请金额</div>
+                        <div class="form-input underline">
+                            <span>@Model.ApplyQuota 万元</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="form-label">抵押物估值</div>
+                        <div class="form-input underline">
+                            <span>@Model.GuaranteeAssessment 万元</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="form-label">联系人</div>
+                        <div class="form-input">
+                            <span class="underline input-1">@Html.Raw(string.IsNullOrEmpty(@Model.Contract) ? "&nbsp" : @Model.Contract)</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="form-label">电话</div>
+                        <div class="form-input">
+                            <span class="underline input-1">@Html.Raw(string.IsNullOrEmpty(@Model.Phone) ? "&nbsp" : @Model.Phone)</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="form-label">公司邮箱</div>
+                        <div class="form-input underline">
+                            <span>@Model.Email</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group group-list">
+                        <div class="form-label">公司核心优势</div>
+                        <div class="form-input">
+                            <div class="">
+                                @Html.CheckBoxFor(m => m.IsTeamAdv) 团队优势
+                                @{ var clsTeam = Model.IsTeamAdv ? "" : "hidden";
+                                <div class="@clsTeam underline">@Model.TeamAdv</div>
+                                }
+                            </div>
+                            <div class="">
+                                @Html.CheckBoxFor(m => m.IsProdAdv) 产品优势
+                                @{ var clsProd = Model.IsProdAdv ? "" : "hidden";
+                                <div class="@clsProd underline">@Model.ProdAdv</div>
+                                }
+                            </div>
+                            <div class="">
+                                @Html.CheckBoxFor(m => m.IsTechAdv) 技术优势
+                                @{ var clsTech = Model.IsTechAdv ? "" : "hidden";
+                                <div class="@clsTech underline">@Model.TechAdv</div>
+                                }
+                            </div>
+                            <div class="">
+                                @Html.CheckBoxFor(m => m.IsScaleAdv) 规模优势
+                                @{ var clsScale = Model.IsScaleAdv ? "" : "hidden";
+                                <div class="@clsScale underline">@Model.ScaleAdv</div>
+                                }
+                            </div>
+                            <div class="">
+                                @Html.CheckBoxFor(m => m.IsSaleAdv) 销售优势
+                                @{ var clsSale = Model.IsSaleAdv ? "" : "hidden";
+                                <div class="@clsSale underline">@Model.SaleAdv</div>
+                                }
+                            </div>
+                            <div class="">
+                                @Html.CheckBoxFor(m => m.IsIndustryAdv) 行业优势
+                                @{ var clsIndustry = Model.IsIndustryAdv ? "" : "hidden";
+                                <div class="@clsIndustry underline">@Model.IndustryAdv</div>
+                                }
+                            </div>
+                            <div class="">
+                                @Html.CheckBoxFor(m => m.IsResourceAdv) 客户资源优势
+                                @{
+                                    var clsResource = Model.IsResourceAdv ? "" : "hidden";
+                                    <div class="@clsResource underline">@Model.ResourceAdv</div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="form-label">5年财务数据 <br />(单位：万元)</div>
+                        <div class="form-input">
+                            <div class="financial-data">
+                                <ul>
+                                    <li class="underline"><span>@Model.Data1</span><span>(@DateTime.Now.Year)</span></li>
+                                    <li class="underline"><span>@Model.Data2</span><span>(@DateTime.Now.AddYears(-1).Year)</span></li>
+                                    <li class="underline"><span>@Model.Data3</span><span>(@DateTime.Now.AddYears(-2).Year)</span></li>
+                                    <li class="underline"><span>@Model.Data4</span><span>(@DateTime.Now.AddYears(-3).Year)</span></li>
+                                    <li class="underline"><span>@Model.Data5</span><span>(@DateTime.Now.AddYears(-4).Year)</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-4">
+            <div data-spy="affix">
+                @Html.Partial("_AuditAction", Model)
+
+            </div>
+        </div>
+</div>

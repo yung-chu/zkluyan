@@ -1,0 +1,17 @@
+﻿@model Zkly.DAL.Models.CapitalRoadshow
+
+@{
+    Layout = "~/Views/Shared/CapitalRoadshow/Details.cshtml";
+}
+
+@section buttons
+{
+    <a href="@Url.Action("AuditDetails", "Invest", new { id = Model.Invest.Id, stage = EInvestAuditStage.Roadshow, isedit = "true" })" class="btn btn-primary">编辑</a>
+    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete-account">
+        删除
+    </button>
+    <a name="start" class="btn btn-primary" target="_blank" href="@Url.Action("StartActivity","CapitalRoadshow", new { id = Model.Id })">开始活动</a>
+
+    <a name="end" class="btn btn-primary" href="@Url.Action("EndActivity", "CapitalRoadshow", new { id = Model.Id })">结束活动</a>
+    <a class="btn btn-primary" id="recording" href="#">生成录播</a>
+}

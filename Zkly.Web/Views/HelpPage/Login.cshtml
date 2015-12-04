@@ -1,0 +1,84 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_LayoutHelp.cshtml";
+
+}
+<!--content开始-->
+        <div class="row" id="zkly_Row">
+
+    <div class="col-xs-1">
+        <img src="~/images/PublicImg/Blue.png" />
+    </div>
+    <div class="col-xs-10">
+        用户登录
+    </div>
+
+</div>
+        <!--neirong开始-->
+        <div class="neirong">
+           
+            <ul id="UI">
+                <li>
+                    <div class="tiao"></div>
+                    <div class="aa-1">
+                        <span>
+                            <i><img src="~/images/HelpCenterImg/Step_1.png" /> </i>
+                            <p>登录www.zkluyan.com，点击首页右上方【登录】，进入登录页面：</p>
+                            @*<a href="#">免费注册</a>*@
+                        </span>
+                        <div class="aa-2">
+                            <a><img src="~/Images/HelpCenterImg/Login_01.png" /></a>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="tiao"></div>
+                    <div class="aa-1">
+                        <span>
+                            <i><img src="~/images/HelpCenterImg/Step_2.png" /> </i>
+                            <p>输入正确的用户名/邮箱/电话号码及密码 也可勾选为自动登录 点击立即登录</p>
+
+                        </span>
+                        <div class="aa-2">
+                            <a><img src="~/Images/HelpCenterImg/Login_02.png"></a>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="tiao"></div>
+                    <div class="aa-1">
+                        <span>
+                            <i><img src="~/images/HelpCenterImg/Step_3.png" /> </i>
+                            <p>企业方登录成功跳转至主页</p>
+
+                        </span>
+                        <div class="aa-2">
+                            <a><img src="~/Images/HelpCenterImg/LoanLogin.png"></a>
+                        </div>
+                    </div>
+                </li>
+                <li>
+
+                    <div class="aa-1">
+                        <span>
+                            <i><img src="~/images/HelpCenterImg/Step_4.png" /> </i>
+                            <p>资金方登录成功跳转至主页</p>
+
+                        </span>
+                        <div class="aa-2">
+                            <a><img src="~/Images/HelpCenterImg/InvestLogin.png"></a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <!--neirong结束-->
+
+<!--content结束-->
+
+
+@section scripts
+{
+    @Scripts.Render("~/js/helpPageHover")
+}

@@ -1,0 +1,75 @@
+﻿@model  Zkly.BLL.ViewModels.ManageLoginsViewModel
+@using Microsoft.Owin.Security
+@{
+    ViewBag.Title = "第三方帐号管理";
+}
+
+<br />
+<div class="panel panel-default">
+    <div class="panel-heading">@ViewBag.Title</div>
+    <div class="panel-body">
+
+        <p class="text-success">@ViewBag.StatusMessage</p>
+        @{
+            var loginProviders = Context.GetOwinContext().Authentication.GetExternalAuthenticationTypes();
+            if (loginProviders.Count() == 0)
+            {
+                <div>
+                    <p>
+                        尚未配置第三方身份验证服务，包括：QQ，微信，网易，人人，豆瓣，支付宝，开心，奇虎360，搜狐，新浪微博，手机二维码扫描等。
+                    </p>
+                </div>
+            }
+            else
+            {
+                if (Model.CurrentLogins.Count > 0)
+                {
+                    <h4>已注册的登录名</h4>
+                    <table class="table">
+                        <tbody>
+                            @foreach (var account in Model.CurrentLogins)
+                            {
+                                <tr>
+                                    <td>@account.LoginProvider</td>
+                                    <td>
+                                        @if (ViewBag.ShowRemoveButton)
+                                        {
+                                            using (Html.BeginForm("RemoveLogin", "Profile"))
+                                            {
+                                                @Html.AntiForgeryToken()
+                                                <div>
+                                                    @Html.Hidden("loginProvider", account.LoginProvider)
+                                                    @Html.Hidden("providerKey", account.ProviderKey)
+                                                    <input type="submit" class="btn btn-default" value="删除" title="从你的帐户中删除此 @account.LoginProvider 登录名" />
+                                                </div>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            @: &nbsp;
+                                }
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                }
+                if (Model.OtherLogins.Count > 0)
+                {
+                    using (Html.BeginForm("LinkLogin", "Profile"))
+                    {
+                        @Html.AntiForgeryToken()
+                        <div id="socialLoginList">
+                            <p>
+                                @foreach (AuthenticationDescription p in Model.OtherLogins)
+                                {
+                                    <button type="submit" class="btn btn-default" id="@p.AuthenticationType" name="provider" value="@p.AuthenticationType" title="使用你的 @p.Caption 帐户登录">@p.AuthenticationType</button>
+                                }
+                            </p>
+                        </div>
+                    }
+                }
+            }
+        }
+    </div>
+</div>

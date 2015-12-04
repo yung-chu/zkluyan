@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html>
+
+@{
+  
+    Layout = "~/Views/Shared/_LayoutHelp.cshtml";
+}
+<div class="row" id="zkly_Row">
+
+    <div class="col-xs-1">
+        <img src="~/images/PublicImg/Blue.png" />
+    </div>
+    <div class="col-xs-10">
+        用户注册
+    </div>
+
+</div>
+        <!--neirong开始-->
+        <div class="neirong">
+
+            <ul id="UI">
+                <li>
+                    <div class="tiao"></div>
+                    <div class="aa-1">
+                        <span>
+                            <i><img src="~/images/HelpCenterImg/Step_1.png" /> </i>
+                            <p>登录www.zkluyan.com，进入中科路演首页，点击首页右上方【注册】进入注册页面：</p>
+                            @*<a href="#">免费注册</a>*@
+                        </span>
+                        <div class="aa-2">
+                            <a><img src="~/Images/HelpCenterImg/Regisetr_02.png" /></a>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="tiao"></div>
+                    <div class="aa-1">
+                        <span>
+                            <i><img src="~/images/HelpCenterImg/Step_2.png" /> </i>
+                            <p>或点击首页右上方【登录】，进入登录页面进行注册：</p>
+
+                        </span>
+                        <div class="aa-2">
+                            <a><img src="~/Images/HelpCenterImg/Register01.jpg"></a>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="tiao"></div>
+                    <div class="aa-1">
+                        <span>
+                            <i><img src="~/images/HelpCenterImg/Step_3.png" /> </i>
+                            <p>请参照右边框所给提示填写注册信息，填写完后点击按钮完成注册按钮</p>
+
+                        </span>
+                        <div class="aa-2">
+                            <a><img src="~/Images/HelpCenterImg/Register_03.png"></a>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="tiao"></div>
+                    <div class="aa-1">
+                        <span>
+                            <i><img src="~/images/HelpCenterImg/Step_4.png" /> </i>
+                            <p>点击获取验证码</p>
+
+                        </span>
+                        <div class="aa-2">
+                            <a><img src="~/Images/HelpCenterImg/R_1.png"></a>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="tiao"></div>
+                    <div class="aa-1">
+                        <span>
+                            <i><img src="~/images/HelpCenterImg/Step_5.png" /> </i>
+                            <p>输入正确的验证码点击提交按钮</p>
+
+                        </span>
+                        <div class="aa-2">
+                            <a><img src="~/Images/HelpCenterImg/R_2.png"></a>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                  
+                    <div class="aa-1">
+                        <span>
+                            <i><img src="~/images/HelpCenterImg/Step_6.png" /> </i>
+                            <p>恭喜你注册成功</p>
+
+                        </span>
+                        <div class="aa-2">
+                            <a><img src="~/Images/HelpCenterImg/Register0.png"></a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <!--neirong结束-->
+
+@section scripts
+{
+    @Scripts.Render("~/js/helpPageHover")
+}

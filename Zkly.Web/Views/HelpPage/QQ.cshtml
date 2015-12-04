@@ -1,0 +1,68 @@
+﻿
+@{
+    ViewBag.Title = "QQ";
+    Layout = "~/Views/Shared/_LayoutHelp.cshtml";
+}
+<div class="row" id="zkly_Row">
+
+    <div class="col-xs-1">
+        <img src="~/images/PublicImg/Blue.png" />
+    </div>
+    <div class="col-xs-10">
+        联系我们
+    </div>
+
+</div>
+        <!--neirong开始-->
+        <div class="neirong">
+            <ul id="UI">
+                <li>
+                    <div class="tiao"></div>
+                    <div class="aa-1">
+                        <span>
+                            <i><img src="~/images/HelpCenterImg/Step_1.png" /> </i>
+                            <p>登录www.zkluyan.com，进入中科路演首页,您可以通过资金池下面的链接联系到我们</p>
+                            @*<a href="#">免费注册</a>*@
+                        </span>
+                        <div class="aa-2">
+                            <a><img src="~/Images/HelpCenterImg/QQ01.png" /></a>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="tiao"></div>
+                    <div class="aa-1">
+                        <span>
+                            <i><img src="~/images/HelpCenterImg/Step_2.png" /> </i>
+                            <p>您也可以通过右边悬浮的小Q仔联系到我们</p>
+
+                        </span>
+                        <div class="aa-2">
+                            <a><img src="~/Images/HelpCenterImg/QQ02.png"></a>
+                        </div>
+                    </div>
+                </li>
+                <li>
+
+                    <div class="aa-1">
+                        <span>
+                            <i><img src="~/images/HelpCenterImg/Step_3.png" /> </i>
+                            <p>如果您还联系不到我们的话，就点击主页左下角的（在线QQ联系我们的客服吧）</p>
+
+                        </span>
+                        <div class="aa-2">
+                            <a><img src="~/Images/HelpCenterImg/QQ.png"></a>
+                        </div>
+                    </div>
+                </li>
+
+
+            </ul>
+        </div>
+        <!--neirong结束-->
+  
+@section scripts
+{
+    @Scripts.Render("~/js/helpPageHover")
+}
+

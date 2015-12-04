@@ -1,0 +1,78 @@
+﻿
+@{
+    ViewBag.Title = "UpdPWD";
+    Layout = "~/Views/Shared/_LayoutHelp.cshtml";
+}
+<div class="row" id="zkly_Row">
+
+    <div class="col-xs-1">
+        <img src="~/images/PublicImg/Blue.png" />
+    </div>
+    <div class="col-xs-10">
+        用户修改密码
+    </div>
+
+</div>
+        <!--neirong开始-->
+        <div class="neirong">
+
+            <ul id="UI">
+                <li>
+                    <div class="tiao"></div>
+                    <div class="aa-1">
+                        <span>
+                            <i><img src="~/images/HelpCenterImg/Step_1.png" /> </i>
+                            <p>登录后，点击页面右上角您的登录名</p>
+                            @*<a href="#">免费注册</a>*@
+                        </span>
+                        <div class="aa-2">
+                           <a><img src="~/Images/HelpCenterImg/Manager_01.png" /></a>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="tiao"></div>
+                    <div class="aa-1">
+                        <span>
+                            <i><img src="~/images/HelpCenterImg/Step_2.png" /> </i>
+                            <p>点击更改密码</p>
+
+                        </span>
+                        <div class="aa-2">
+                           <a><img src="~/Images/HelpCenterImg/UpdPWD.png"></a>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="tiao"></div>
+                    <div class="aa-1">
+                        <span>
+                            <i><img src="~/images/HelpCenterImg/Step_3.png" /> </i>
+                            <p>按右边的提示输入正确的信息，点击更改密码</p>
+
+                        </span>
+                        <div class="aa-2">
+                           <a><img src="~/Images/HelpCenterImg/UpdPWD01.png"></a>
+                        </div>
+                    </div>
+                </li>
+                <li>
+
+                    <div class="aa-1">
+                        <span>
+                            <i><img src="~/images/HelpCenterImg/Step_4.png" /> </i>
+                            <p>更改密码成功</p>
+
+                        </span>
+                        <div class="aa-2">
+                           <a><img src="~/Images/HelpCenterImg/Upwd.png"/></a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <!--neirong结束-->
+@section scripts
+{
+    @Scripts.Render("~/js/helpPageHover")
+}

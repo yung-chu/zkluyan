@@ -1,0 +1,31 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>文件上传</title>
+    <script language="javascript" type="text/javascript">
+        if ("@ViewBag.Flag" != "") {
+            window.parent.FileUploadSuccess('@ViewBag.fileType', '@ViewBag.fileHidId', '@ViewBag.fileId', '@ViewBag.Path');//调用父级页面的Js函数
+        }
+
+        function FormSubmit() {
+            document.getElementById("fromFile").submit();
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <form id="fromFile" action="/File/FileUpload" method="POST" enctype="multipart/form-data">
+            <input id="file" type="file" name="file" onchange="FormSubmit()"/>
+            <input type="hidden" value="@(ViewBag.fileType)" name="fileType" />
+            <input type="hidden" value="@(ViewBag.fileId)" name="fileId" />
+            <input type="hidden" value="@(ViewBag.fileHidId)" name="fileHidId" />
+        </form>
+    </div>
+</body>
+</html>

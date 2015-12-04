@@ -1,0 +1,62 @@
+﻿@model PagedList.IPagedList<Zkly.DAL.Models.Roadshow>
+
+@{
+    ViewBag.Title = "业务路演权重修改";
+}
+@section styles{
+    @Styles.Render("~/style/roadshow")
+}
+<div class="panel panel-default business-roadshow">
+    <div class="panel-heading">
+         @ViewBag.Title
+    </div>
+    @if (Model.Count == 0)
+    {
+        <div class="panel-body">
+            <div class="jumbotron alert alert-warning text-center" role="alert">
+                <h1><span class="fa fa-exclamation-circle" aria-hidden="true"></span> 没有可以显示的业务路演！</h1>
+            </div>
+       </div>
+    }
+    else
+    {
+        <table name="biz-roadshow" class="table table-hover table-striped">
+            <thead>
+                <tr>
+                    <th class="col-1">视频名称</th>
+                    <th class="col-2">视频描述</th>
+                    <th class="col-3">提交日期</th>
+                    <th class="col-4">权重</th>
+                    <th class="col-5"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="col-1">@item.VideoName</td>
+                        <td class="col-2">@item.VideoDescrition</td>
+                        <td class="col-3">@item.SubmitDate.ToString("yyyy-MM-dd")</td>
+                        <td class="priority col-4">@item.Priority</td>
+                        <td class="col-5">
+                            <a name="modify" class="btn btn-primary btn-sm" href="#">修改权重</a>
+                            <a name="save" data-id="@item.Id" class="btn btn-primary btn-sm hidden" href="#">保存</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    <div class="panel-footer" style="height:55px;">
+        <div class="pull-right">
+            @Html.DisplayPagination(page => Url.Action("Business", new { page }))
+        </div>
+    </div>
+</div>
+
+@section scripts
+{
+    @Scripts.Render("~/js/bizroadshow")
+}
+
+

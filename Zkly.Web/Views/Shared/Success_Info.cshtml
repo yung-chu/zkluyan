@@ -1,0 +1,33 @@
+﻿@model Zkly.BLL.ViewModels.ResultViewModel
+@{
+    ViewBag.Title = ViewBag.Message;
+}
+@section heads {
+    @Styles.Render("~/css/TestAndVerify")
+}
+<!--content头部信息结束-->
+<div class="content">
+    <div class="yanzheng">
+        <ul>
+            <li>
+                @{
+                    string url = string.Format("/{0}/{1}", Model.ControllerName, Model.ActionName);
+                }
+                <input type="hidden" id="url"  value="@url"/>
+
+                <div class="col-xs-12 text-center"><img src="~/Images/PublicImg/PromptSuccess.png" /></div>
+
+                <div class="col-xs-12 text-center " id="Zkly_Title">@ViewBag.Message</div>
+
+                <div class="col-xs-12 text-center" id="showTimer">
+                    <label id="time">5</label> 秒钟后自动跳转，如果不跳转，请点击下面的链接 @Html.ActionLink("返回 >>", Model.ActionName, Model.ControllerName)
+                </div>
+
+            </li>
+        </ul>
+    </div>
+</div>
+<!--content头部信息结束-->
+@section scripts{
+    @Scripts.Render("~/js/setTimeout")
+}

@@ -1,0 +1,162 @@
+﻿@{
+    ViewBag.Title = "消息中心";
+}
+@model Zkly.BLL.ViewModels.EnterpriseViewModel
+@using PagedList.Mvc;
+@section heads{
+    @Styles.Render("~/css/message_Center")
+}
+<!--content开始-->
+ <div class="content">
+
+    <ol class="breadcrumb">
+        <li><a href="/">首页</a></li>
+        <li>消息中心</li>
+    </ol>
+
+ 
+    <!--xiaoxi开始-->
+    <div class="xiaoxi">
+        <!--left开始-->
+        <div class="left">
+            <ul>
+
+                @{
+                    string showAll = "";
+                    string showRead = "";
+                    string showUnRead = "";
+                    switch (Model.MessageState)
+                    {
+                        case null:
+                            showAll = "tu-2";
+                            break;
+                        case true:
+                            showRead = "tu-2";
+                            break;
+                        case false:
+                            showUnRead = "tu-2";
+                            break;
+                    }
+
+                }
+
+                <li class="@showAll">
+                    <img src="@Url.Content("~/images/PublicImg/Btn-AllMessage.png")" />
+
+                    <a href="@Url.Action("MessageCenter", "Enterprise")"><p>全部消息</p></a>
+                </li>
+                <li class="@showRead">
+                    <img src="@Url.Content("~/images/PublicImg/Btn-EnvelopeOpen.png")" />
+                    <a  href="@Url.Action("MessageCenter", "Enterprise", new { state=true})"><p>已读消息</p></a>
+                </li>
+                <li class="@showUnRead">
+                    <img src="@Url.Content("~/images/PublicImg/Btn-EnvelopeOff.png")" />
+                    <a  href="@Url.Action("MessageCenter", "Enterprise", new { state = false })"><p>未读消息</p></a>
+                </li>
+            </ul>
+        </div>
+        <!--left结束-->
+        <!--right开始-->
+        <div class="right">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>
+                        <img src="@Url.Content("~/images/PublicImg/Unread.png")" />&nbsp;&nbsp;
+                        <strong>消息列表</strong>&nbsp;&nbsp;
+                        <label>总共 @Model.ListMessage.TotalItemCount 条</label>
+                    </th>
+                </tr>
+                </thead>
+
+                <tbody id="showOrHidden">
+
+                @{
+                    foreach (var item in Model.ListMessage)
+                    {
+                        <tr>
+                            <td>
+                                <br/>
+                                <label>@item.From</label>
+
+                                <div>
+                                    <div class="panel-heading">
+                                        <input type="hidden" name="MessId" value="@item.Id"/>
+                                        <input type="hidden" name="MessState" value="@item.State.ToString()"/>
+
+                                        <span>
+                                            <input type="checkbox" name="checkItem" value="@item.Id" />
+                                            &nbsp;&nbsp;&nbsp;&nbsp;
+                                            <a  name="changeImg" onclick="UpdateMessState(this)" >
+                                                @if (item.State)
+                                                {
+                                                    <img src="@Url.Content("~/images/PublicImg/Read.png")" alt="已读"/>
+                                                }
+                                                else
+                                                {
+                                                    <img src="@Url.Content("~/images/PublicImg/Unread.png")" alt="未读"/>
+                                                }
+                                            </a>
+                                        </span>
+
+                                        <label>@item.Subject</label>
+                                        <label id="zkly-float-right">
+                                            @item.UpdateTime.ToString()
+                                            <a onclick="UpdateMessState(this)">展开&nbsp;&nbsp;〉</a>
+                                        </label>
+                                    </div>
+                                    <div class="panel-body">
+                                        @item.Body
+                                    </div>
+
+                                </div>
+                            </td>
+                        </tr>
+                    }
+
+                }
+
+                </tbody>
+
+            </table>
+
+
+            @if (Model.ListMessage.Any())
+            {
+                <div>
+                    <input type="checkbox" id="selectAll" /><label>全选</label>
+
+                    <button type="button" class="btn btn-link" id="deleteMess">删除消息</button>
+                </div>
+
+            }
+
+
+         
+
+          
+            <br />
+          
+           <span class="pageCount">页数 @(Model.ListMessage.PageCount < Model.ListMessage.PageNumber ? 0 : Model.ListMessage.PageNumber) 总页数 @Model.ListMessage.PageCount</span> 
+            <br />
+            @Html.PagedListPager(Model.ListMessage, page => Url.Action("MessageCenter", new { page, state = Model.MessageState }), new PagedListRenderOptions() { LinkToFirstPageFormat = "首页", LinkToNextPageFormat = "下一页", LinkToPreviousPageFormat = "上一页", LinkToLastPageFormat = "末页", DisplayItemSliceAndTotal = false, MaximumPageNumbersToDisplay = 8 })
+            
+        </div>
+        <!--right结束-->
+
+
+
+    </div>
+    <!--xiaoxi结束-->
+</div>
+
+<!--content结束-->
+@section scripts{
+
+ @Scripts.Render("~/js/messageCenter")
+}
+
+
+
+
+

@@ -1,0 +1,77 @@
+﻿@model Zkly.BLL.ViewModels.UserVerifyInfo
+@{
+    ViewBag.Title = "邮箱或手机验证";
+}
+@section heads {
+    @Styles.Render("~/css/TestAndVerify")
+}
+<div class="row">
+
+    <div class="col-xs-12">
+        <img class="img-responsive center-block" src="~/Images/LoginAndRegister/RegisterProving.png" />
+    </div>
+    <div class="col-xs-6 form-header">
+        <br/>
+        @Html.Partial("AlertMessage")
+        <br />
+    </div>
+</div>
+
+
+
+<div class="row" id="zkly-div-margin">
+
+    <div class="panel panel-default">
+        <div class="panel-heading">手机或者邮箱验证</div>
+        <div class="panel-body">
+
+
+            <div class="col-xs-6">
+                <div class="col-xs-12 text-center">
+                    <img src="~/Images/PublicImg/PromptSuccess.png" />
+                </div>
+
+                <div class="col-xs-12 text-center " id="zkly-div-Title">邮件已发送您邮箱,请注意查收</div>
+            </div>
+
+
+
+            <div class="col-xs-6">
+                <span class="title">手机验证</span>
+                <hr />
+                <input type="hidden" id="userId" value="@Model.UserId" />
+                <div class="form-group">
+                    <label class="col-xs-2 control-label" id="phoneNumber">@Model.PhoneNumber</label>
+                    <div class="col-xs-10">
+                        <button class="btn btn-primary" id="zkly-Btn-margin" data-loading-text="发送中...">获取验证码</button>
+                    </div>
+                </div>
+
+                <br />
+                <hr />
+
+                <div class="form-group" id="inputVerifyCode" >
+                    <label class="col-xs-2 control-label"> 验证码:</label>
+                    <div class="col-xs-10">
+                        <input type="text" class="form-control" id="code" />
+                        <br />
+                        <button class="btn btn-primary" id="btnSubmit">提 交</button>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+
+</div>
+
+
+@section scripts {
+  @Scripts.Render("~/js/verifyPhone")
+}
+
+
+
+

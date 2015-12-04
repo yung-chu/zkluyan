@@ -1,0 +1,19 @@
+﻿.business-roadshow table {
+  table-layout: fixed;
+}
+.business-roadshow .col-1 {
+  width: 250px;
+}
+.business-roadshow .col-2 {
+  width: 400px;
+}
+.business-roadshow .col-3 {
+  width: 90px;
+}
+.business-roadshow .col-4 {
+  width: 60px;
+}
+.business-roadshow .col-5 {
+  width: 70px;
+}
+/*# sourceMappingURL=business-roadshow.css.map */

@@ -1,0 +1,84 @@
+﻿@model  Zkly.DAL.Models.DataDictionary
+@{
+    ViewBag.Title = "是否禁用前台注册";
+}
+
+
+
+<div id="user-details-panel" class="panel panel-default">
+    <div class="panel-heading">
+        @ViewBag.Title
+    </div>
+   
+    <div id="container" class="panel-body">
+            <div class="jumbotron alert alert-warning text-center" role="alert">
+                前台注册是否禁用状态：
+                @if (@Model.DataDictionaryName == "0")
+                {
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#disable">
+                        禁用
+                    </button>
+                }
+                else
+                {
+                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#not-disable">
+                        未禁用
+                    </button>
+                }
+            </div>
+        </div>
+</div>
+
+<div class="modal fade" id="not-disable" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    @using (Html.BeginForm("DisableRegister", "ReceptionRegister"))
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(m => m.DataDictionaryType)
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">当前状态：未禁用</h4>
+                </div>
+                <div class="modal-body">
+                    <p>即将禁用前台注册功能。</p>
+                    <p>警告：禁用功能后前台将不能进行注册！</p>
+                    <p>&nbsp;</p>
+                    <p>你确定要禁用吗？</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="submit" class="btn btn-danger">禁用</button>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<div class="modal fade" id="disable" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    @using (Html.BeginForm("NotDisableRegister", "ReceptionRegister"))
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(m => m.DataDictionaryType)
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">当前状态：禁用</h4>
+                </div>
+                <div class="modal-body">
+                    <p>即将解除禁用前台注册功能。</p>
+                    <p>警告：解除禁用功能后前台用户可以进行注册！</p>
+                    <p>&nbsp;</p>
+                    <p>你确定要解除禁用吗？</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="submit" class="btn btn-danger">解除禁用</button>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+

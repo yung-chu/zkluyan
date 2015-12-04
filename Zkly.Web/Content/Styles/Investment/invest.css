@@ -1,0 +1,386 @@
+﻿/*@import "Common/common.less";*/
+.invest .info-nav {
+  height: 50px;
+  border-top: 1px solid #ccc;
+  margin-top: 20px;
+}
+.invest .info-nav ul li {
+  float: left;
+  width: 25%;
+  padding: 10px;
+  height: 40px;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 16px;
+  cursor: pointer;
+}
+.invest .info-nav ul li:hover {
+  background: #e9d3d3;
+}
+.invest .info-nav a:hover {
+  text-decoration: none;
+}
+.invest .info-nav .disabled {
+  color: #ddd;
+}
+.first-audit #applyQuota {
+  max-width: 500px;
+}
+.first-audit input,
+.first-audit select,
+.first-audit textarea {
+  max-width: 570px;
+}
+.first-audit .col-xs-9 {
+  width: 56%;
+}
+.first-audit .col-xs-9 .row {
+  margin-left: 1px;
+}
+.first-audit .form-group .col-xs-9 {
+  /*去验证背景色*/
+  /*验证位置*/
+}
+.first-audit .form-group .col-xs-9 i {
+  background: none;
+}
+.first-audit .form-group .col-xs-9 .form-control-feedback {
+  right: 50px;
+}
+.first-audit .form-group #myApplyQuota {
+  /*验证位置*/
+}
+.first-audit .form-group #myApplyQuota .form-control-feedback {
+  right: 120px;
+}
+.first-audit .title {
+  float: left;
+  width: 100%;
+  padding-top: 10px;
+}
+.first-audit .title i {
+  width: 7px;
+  height: 24px;
+  background: #0d83d7;
+  display: block;
+  margin: 10px 10px 0px 20px;
+  float: left;
+}
+.first-audit .title p {
+  margin: 1px 30px 25px 0px;
+  font-size: 26px;
+  color: #0d83d7;
+  float: left;
+}
+.first-audit .tip {
+  color: #ddd;
+}
+.first-audit .submit {
+  width: 161px;
+  height: 41px;
+  font-size: 16px;
+}
+.first-audit .cancel {
+  margin-left: 40px;
+  font-size: 14px;
+}
+.first-audit .invest-form .form-group {
+  width: 100%;
+  clear: both;
+  min-height: 30px;
+  margin-bottom: 20px;
+  /*.label-1 {
+                width: 30px;
+            }*/
+}
+.first-audit .invest-form .form-group .form-input {
+  float: left;
+}
+.first-audit .invest-form .form-group .form-input ul li {
+  float: left;
+  margin-right: 10px;
+}
+.first-audit .invest-form .form-group .form-text {
+  float: left;
+}
+.first-audit .invest-form .form-group .input-1 {
+  width: 390px;
+  padding-right: 50px;
+}
+.first-audit .invest-form .form-group .input-2 {
+  width: 450px;
+}
+.first-audit .invest-form .form-group .input-3 {
+  width: 390px;
+}
+.first-audit .invest-form .form-group .text-1 {
+  width: 600px;
+  height: 150px;
+}
+.first-audit .invest-form .form-group .selection {
+  width: 120px;
+  float: left;
+}
+.first-audit .invest-form .group-text {
+  height: 145px;
+}
+.first-audit .invest-form .group-list {
+  min-height: 170px;
+}
+.first-audit .invest-form .financial-data {
+  height: 35px;
+  margin-bottom: 10px;
+}
+.second-audit {
+  /*验证样式*/
+  /*缩略图*/
+  /*进度条*/
+}
+.second-audit input,
+.second-audit select,
+.second-audit textarea {
+  max-width: 570px;
+}
+.second-audit .table {
+  width: 580px;
+}
+.second-audit .form-group .col-md-9 {
+  /*去验证背景色*/
+  /*验证位置*/
+}
+.second-audit .form-group .col-md-9 i {
+  background: none;
+}
+.second-audit .form-group .col-md-9 .form-control-feedback {
+  right: 65px;
+}
+.second-audit .form-group #myRegisteredCapital {
+  /*验证位置*/
+}
+.second-audit .form-group #myRegisteredCapital .form-control-feedback {
+  right: 65px;
+}
+.second-audit .col-md-9 {
+  width: 56%;
+}
+.second-audit .col-md-9 .row {
+  margin-left: 1px;
+}
+.second-audit #message .glyphicon-remove {
+  right: 0;
+}
+.second-audit #myRegisteredCapital .glyphicon-ok {
+  right: -30px;
+}
+.second-audit #myRegisteredCapital .glyphicon-remove {
+  right: -30px;
+}
+.second-audit #myApplyQuota .glyphicon-ok {
+  right: -30px;
+}
+.second-audit #myApplyQuota .glyphicon-remove {
+  right: -30px;
+}
+.second-audit .thumbnail {
+  display: block;
+  padding: 4px;
+  margin-bottom: 20px;
+  line-height: 1.42857;
+  background-color: #FFF;
+  border: 1px solid #DDD;
+  border-radius: 4px;
+  transition: border 0.2s ease-in-out 0s;
+  width: 200px;
+  height: 150px;
+}
+.second-audit .progress {
+  position: relative;
+  left: 120px;
+  width: 880px;
+  border: 1px solid #ddd;
+  padding: 1px;
+  border-radius: 3px;
+}
+.second-audit .bar {
+  background-color: #1C86EE;
+  width: 0%;
+  height: 20px;
+  border-radius: 3px;
+}
+.second-audit .percent {
+  position: absolute;
+  display: inline-block;
+  top: 1px;
+  left: 48%;
+}
+.zkly_Error {
+  display: none;
+  color: #a94442;
+  float: left;
+}
+.text-danger {
+  display: none;
+}
+.Zkly_MillionYuan {
+  float: left;
+  margin-left: 10px;
+  padding-top: 5px;
+}
+.zkly-span-Second {
+  margin: 8px 0 0 0;
+  display: block;
+  clear: both;
+}
+.zkly-span-IdCard {
+  float: left;
+  padding-left: 10px;
+}
+#creditCertificate {
+  width: 200px;
+  height: 150px;
+  display: none;
+}
+#idOrganization {
+  width: 200px;
+  height: 150px;
+  display: none;
+}
+#idCardFront {
+  width: 200px;
+  height: 150px;
+  display: none;
+}
+#idCardBack {
+  width: 200px;
+  height: 150px;
+  display: none;
+}
+#businessLicense {
+  width: 200px;
+  height: 150px;
+  display: none;
+}
+#taxRegistration {
+  width: 200px;
+  height: 150px;
+  display: none;
+}
+#zkly-float-left {
+  float: left;
+}
+#second-audit-submit {
+  width: 161px;
+  height: 41px;
+  font-size: 16px;
+}
+#progressBarWords {
+  margin-left: 450px;
+}
+#IndustrySpanError {
+  display: none;
+  color: #a94442;
+  float: left;
+  padding-top: 5px;
+}
+#AreaError {
+  display: none;
+  right: 20px;
+  text-align: center;
+  float: left;
+  padding-top: 10px;
+}
+#AreaOk {
+  display: none;
+  right: 20px;
+  text-align: center;
+  float: left;
+  padding-top: 10px;
+}
+#LegalSpanError {
+  color: #a94442;
+  float: left;
+  display: none;
+  padding-top: 7px;
+}
+#LegalError {
+  display: none;
+  left: 20px;
+  text-align: center;
+  float: left;
+  padding-top: 10px;
+  width: 34px;
+  height: 34px;
+}
+#LegalOk {
+  display: none;
+  left: -7px;
+  text-align: center;
+  float: left;
+  padding-top: 10px;
+  width: 34px;
+  height: 34px;
+}
+#ContactSpanError {
+  color: #a94442;
+  float: left;
+  display: none;
+  padding-top: 7px;
+}
+#ContactError {
+  display: none;
+  left: 20px;
+  text-align: center;
+  float: left;
+  padding-top: 10px;
+  width: 34px;
+  height: 34px;
+}
+#ContactOk {
+  display: none;
+  left: -7px;
+  text-align: center;
+  float: left;
+  padding-top: 10px;
+  width: 34px;
+  height: 34px;
+}
+#showAdvError {
+  padding-left: 5px;
+  color: #A94442;
+  display: none;
+}
+#Prompt {
+  display: none;
+  color: #A94442;
+}
+.zkly-span-frist {
+  float: left;
+  margin-top: -35px;
+  padding-left: 323px;
+  width: 100px;
+}
+.home-info-nav {
+  height: 50px;
+  border-top: 1px solid #ccc;
+  margin-top: 20px;
+}
+.home-info-nav ul li {
+  float: left;
+  width: 50%;
+  padding: 10px;
+  height: 40px;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 16px;
+  cursor: pointer;
+}
+.home-info-nav ul li:hover {
+  background: #e9d3d3;
+}
+.home-info-nav a:hover {
+  text-decoration: none;
+}
+.home-info-nav .disabled {
+  color: #ddd;
+}
+/*# sourceMappingURL=invest.css.map */

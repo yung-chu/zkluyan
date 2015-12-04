@@ -1,0 +1,40 @@
+﻿@model Zkly.BLL.ViewModels.UserRegisterSuccess
+@{
+    ViewBag.Title = "注册成功";
+}
+@section heads {
+    @Styles.Render("~/css/TestAndVerify")
+}
+
+<div class="row">
+    <div class="col-xs-12">
+        <img class="img-responsive center-block" src="~/Images/LoginAndRegister/RegisteredSuccess.png" />
+    </div>
+</div>
+
+
+<!--content头部信息结束-->
+<div class="content">
+    <div class="yanzheng">
+        <ul>
+            <li>
+
+                <input type="hidden" id="url" value="@Model.Url" />
+
+                <div class="col-xs-12 text-center"><img src="~/Images/PublicImg/PromptSuccess.png" />
+                </div>
+
+                <div class="col-xs-12 text-center " id="zkly_title">注册成功</div>
+
+                <div class="col-xs-12 text-center" id="showTimer">
+                    <label id="time" >5</label>秒钟后自动跳转，如果不跳转，请点击下面的链接<a id="setGotoUrl" href="/">我的页面</a>
+                </div>
+
+            </li>
+        </ul>
+    </div>
+</div>
+<!--content头部信息结束-->
+@section scripts{
+    @Scripts.Render("~/js/setTimeout")
+}

@@ -1,0 +1,42 @@
+﻿@model Zkly.BLL.ViewModels.VerifyPhoneNumberViewModel
+@{
+    ViewBag.Title = "验证电话号码";
+    @Styles.Render("~/css/bootstrapValidatorCss")
+    @Scripts.Render("~/js/bootstrapValidator")
+}
+<br/>
+@section styles {
+    @Scripts.Render("~/js/jqueryval")
+}
+
+<div class="panel panel-default">
+    <div class="panel-heading">@ViewBag.Title</div>
+    <div class="panel-body">
+        @using (Html.BeginForm("SaveVerifyPhoneNumber", "Profile", FormMethod.Post, new { @class = "form-horizontal", role = "form", @id = "info-form" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.Hidden("phoneNumber", @Model.PhoneNumber)
+          
+            <h5>@ViewBag.Status</h5>
+        
+            @Html.ValidationSummary("", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(m => m.Code, new { @class = "col-xs-2 control-label" })
+                <div class="col-xs-6">
+                    @Html.TextBoxFor(m => m.Code, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-xs-2"></div>
+                <div class="col-xs-6">
+                    <input type="submit" class="btn btn-default" value="提交" />
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@section scripts
+{
+    @Scripts.Render("~/js/VerifyPhoneNumber")
+}

@@ -1,0 +1,88 @@
+﻿@model Zkly.DAL.Models.AgencyCommission
+
+@{
+    ViewBag.Title = "察看 - 佣金方案";
+}
+
+<div id="user-details-panel" class="panel panel-default">
+    <div class="panel-heading">
+        @ViewBag.Title
+    </div>
+    @Html.Partial("_SuccessMessage")
+    @Html.Partial("_ErrorMessage")
+    <div class="panel-body">
+
+        <div>
+            
+            <dl class="dl-horizontal dl-md">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Id) :
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Id)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.CashPercent) :
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.CashPercent)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.StockPercent) :
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.StockPercent)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Description) :
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Description)
+                </dd>
+
+            </dl>
+        </div>
+
+    </div>
+
+    <div class="panel-footer dl-footer">
+        <a href="@Url.Action("Edit", new {id = Model.Id})" c class="btn btn-primary">编辑</a>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete-account">
+            删除
+        </button>
+        <a href="@Url.Action("Index")" class="btn btn-default">返回列表</a>
+    </div>
+</div>
+<div class="modal fade" id="delete-account" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    @using (Html.BeginForm("Delete", "AgencyCommissions"))
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(m => m.Id)
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">删除佣金设置</h4>
+                </div>
+                <div class="modal-body">
+                    <p>即将删除该佣金的所有数据。</p>
+                    <p>警告：删除后数据将不可恢复！</p>
+                    <p>&nbsp;</p>
+                    <p>你确定要删除吗？</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="submit" class="btn btn-danger">删除</button>
+                </div>
+            </div>
+        </div>
+    }
+</div>

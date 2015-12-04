@@ -1,0 +1,24 @@
+﻿@model System.Web.Mvc.HandleErrorInfo
+
+@{
+    ViewBag.Title = "消息";
+}
+
+<br />
+<div class="panel panel-default">
+    <div class="panel-heading">@ViewBag.Title</div>
+    <div class="panel-body">
+        <h2 class="text-danger">有新消息哟。</h2>
+
+        @{
+            if (String.IsNullOrEmpty(ViewBag.Message))
+            {
+                <h2 class="text-Info">哦，好吧，你收到了一个未知的消息，肯定是程序员偷懒了，打客服投诉他吧！</h2>
+            }
+            else
+            {
+                <h2 class="text-Info">@ViewBag.Message</h2>
+            }
+}
+    </div>
+</div>

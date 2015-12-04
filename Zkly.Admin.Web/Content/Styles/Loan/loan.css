@@ -1,0 +1,31 @@
+﻿.audit-form .underline {
+  border-bottom: 1px solid #dddddd;
+  min-height: 20px;
+}
+.audit-form .form-group .form-input {
+  float: left;
+  width: 510px;
+}
+.audit-form .form-group .form-input ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.audit-form .form-group .form-input ul li {
+  float: left;
+  margin-right: 10px;
+}
+.audit-form .form-group .form-input .input-1 {
+  width: 160px;
+  display: block;
+  margin-right: 10px;
+  float: left;
+}
+.audit-form .group-list {
+  min-height: 170px;
+}
+.audit-form .financial-data {
+  height: 35px;
+  margin-bottom: 10px;
+}
+/*# sourceMappingURL=loan.css.map */

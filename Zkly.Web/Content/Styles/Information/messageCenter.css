@@ -1,0 +1,111 @@
+﻿.pagination-container {
+  float: right;
+}
+.pageCount {
+  float: right;
+}
+.bgColor {
+  background-color: #f5f5f5;
+}
+.content {
+  width: 100%;
+  margin: 0 auto;
+  clear: both;
+}
+.content .biaoti {
+  clear: both;
+  display: block;
+  margin: 78px 0 0 0px;
+}
+.content .xiaoxi {
+  width: 1092px;
+  height: 800px;
+  margin: 20px 0 106px 0;
+}
+.content .xiaoxi .left {
+  margin-right: 20px;
+  float: left;
+}
+.content .xiaoxi .left ul li {
+  width: 160px ;
+  height: 52px;
+  background: #ececec;
+  display: block;
+}
+.content .xiaoxi .left ul li img {
+  margin: 15px 10px 0px 16px;
+  float: left;
+}
+.content .xiaoxi .left ul li a {
+  cursor: pointer;
+}
+.content .xiaoxi .left ul li p {
+  color: #2e2e2e;
+  float: left;
+  margin: 16px 0px 0px 0px;
+}
+.content .xiaoxi .left ul li b:hover {
+  margin: 15px 10px 0px 16px;
+  float: left;
+  background-image: url(../../../images/PublicImg/Btn-AllMessage-White.png);
+}
+.content .xiaoxi .left ul li p:hover {
+  color: #FFFFFF;
+  float: left;
+  margin: 16px 0px 0px 0px;
+}
+.content .xiaoxi .left ul li:hover {
+  width: 160px ;
+  height: 52px;
+  background: #0d83d7;
+  display: block;
+  margin: 1px 0px 1px 0px;
+}
+.content .xiaoxi .left ul .tu-2 {
+  background: #0d83d7;
+}
+.content .xiaoxi .left ul .tu-2 p {
+  color: #FFFFFF;
+}
+.content .xiaoxi .right {
+  border: #e0e0e0 1px solid;
+  float: left;
+  padding: 0px 0px 20px 0px;
+}
+.content .xiaoxi .right table {
+  width: 800px;
+}
+.content .xiaoxi .right table thead tr th {
+  padding-left: 60px;
+}
+.content .xiaoxi .right table thead tr th strong {
+  color: black;
+}
+.content .xiaoxi .right table thead tr th label {
+  color: #0d83d7;
+}
+.content .xiaoxi .right table tbody tr td label {
+  font-weight: bold;
+  padding-left: 90px;
+}
+.content .xiaoxi .right table tbody tr td div {
+  padding-left: 30px;
+}
+.content .xiaoxi .right table tbody tr td div .panel-heading span a {
+  cursor: pointer;
+  text-decoration-line: none;
+}
+.content .xiaoxi .right table tbody tr td div .panel-heading #zkly-float-right {
+  float: right;
+}
+.content .xiaoxi .right table tbody tr td div .panel-heading #zkly-float-right a {
+  cursor: pointer;
+}
+.content .xiaoxi .right table tbody tr td div .panel-body {
+  display: none;
+  padding-left: 80px;
+}
+.content .xiaoxi .right #selectAll {
+  margin-left: 63px;
+}
+/*# sourceMappingURL=messageCenter.css.map */

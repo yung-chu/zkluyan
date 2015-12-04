@@ -1,0 +1,65 @@
+﻿@model Zkly.BLL.ViewModels.InvestAuditViewModel
+@{
+    ViewBag.Title = "投资审批";
+}
+
+@section styles{
+@Styles.Render("~/css/bootstrapValidatorCss")
+@Scripts.Render("~/js/bootstrapValidator")
+    @Styles.Render("~/style/invest")
+    @if (Model.Stage == EInvestAuditStage.Roadshow)
+    {
+        @Styles.Render("~/css/fileinput")
+    }
+}
+
+<div class="panel panel-default">
+
+    <div class="panel-heading">
+        投资审批 - @Model.Invest.FirstAuditInfo.ProjectName
+        <div class="pull-right">
+            <span class="label label-info">@Html.DisplayFor(m => m.Invest.Stage) - @Html.DisplayFor(m => m.Invest.Status)</span>
+        </div>
+    </div>
+    <div class="panel-body">
+        <div id="invest-tabs" role="tabpanel">
+
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+                @Html.Partial("_StageTabItem", Model.Invest, new ViewDataDictionary(ViewContext) { { "stage", EInvestAuditStage.First } })
+                @Html.Partial("_StageTabItem", Model.Invest, new ViewDataDictionary(ViewContext) { { "stage", EInvestAuditStage.Second } })
+                @Html.Partial("_StageTabItem", Model.Invest, new ViewDataDictionary(ViewContext) { { "stage", EInvestAuditStage.Agreement } })
+                @Html.Partial("_StageTabItem", Model.Invest, new ViewDataDictionary(ViewContext) { { "stage", EInvestAuditStage.Roadshow } })
+                <li role="presentation"><a href="#invest-user" aria-controls="invest-user" role="tab" data-toggle="tab">用户资料</a></li>
+                <li role="presentation"><a href="#audit-history" aria-controls="audit-history" role="tab" data-toggle="tab">历史记录</a></li>
+            </ul>
+
+            @Html.Partial("_SuccessMessage")
+            @Html.Partial("_ErrorMessage")
+            <br />
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+                @Html.Partial("AuditDetailTab", Model)
+                <div role="tabpanel" class="tab-pane" id="invest-user" data-src="@Url.Action("Details", "UserManagement", new {id = Model.Invest.UserId})">
+                </div>
+                <div role="tabpanel" class="tab-pane" id="audit-history" data-src="@Url.Action("History", new {id = Model.Invest.Id})">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section scripts{
+    @Scripts.Render("~/js/investaudit")
+    @Scripts.Render("~/js/placeTempFolder")
+    @if (Model.Stage == EInvestAuditStage.Roadshow)
+    {
+        @Scripts.Render("~/js/capital-roadshow-new")
+        @Scripts.Render("~/js/fileinput")
+        @Scripts.Render("~/js/capital-roadshow-Verification")
+    }
+
+}

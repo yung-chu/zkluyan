@@ -1,0 +1,16 @@
+﻿@model Zkly.DAL.Models.CapitalRoadshow
+
+<div class="roadshow-box">
+    <div class="pic">
+        <a target="_blank" href="@Url.Action("CapitalRoadshow", "roadshow", new { id = @Model.Id })">
+            <img src="@Url.Action("FileDisplayById", "File", new { id = Model.FileId})" />
+            <p>@Model.Subject</p>
+        </a>
+    </div>
+    <div class="date">
+        开始时间：@Model.StartDate
+        @Html.Raw((Model.Status == EActivityStatus.Ordering0 || Model.Status == EActivityStatus.Ordering1) ?
+        "未开始" :
+        (Model.Status == EActivityStatus.Playing ? "直播中" : "已结束"))
+    </div>
+</div>

@@ -1,0 +1,186 @@
+﻿@model Zkly.BLL.ViewModels.EnterpriseViewModel
+
+@Styles.Render("~/css/enterprise")
+@Styles.Render("~/css/roadshow-item")
+
+@{
+    ViewBag.Title = "我的主页";
+}
+
+<div class="ly-container enterprise">
+    <ol class="breadcrumb">
+        <li><a href="/">首页</a></li>
+        <li>我的主页</li>
+    </ol>
+
+    @{
+        string message = "主题为空";
+
+        if (Model.HasMessage())
+        {
+            if (!string.IsNullOrEmpty(Model.Message.Subject))
+            {
+                message = Model.Message.Subject;
+            }
+
+            <div class="message-panel">
+                <div class="tip">
+                    <img src="@Url.Content("~/Images/PublicImg/Btn-Volume-Up.png")" />
+                    <span>最新消息</span>
+                </div>
+
+                <div class="message">
+                    <img src="@Url.Content("~/Images/PublicImg/Btn-Warning.png")" />
+                    <label>
+                        消息提示：<span>@Html.Raw(message)</span>
+                    </label>
+                    <a class="btn btn-default" href="@Url.Action("MessageCenter", "Enterprise", new { state = false })" role="button">点击进入</a>
+                </div>
+            </div>
+        }
+    }
+
+    <div class="invest">
+        <div class="section-title">
+            <span>我的投资</span>
+            <a class="btn btn-primary" href="@Url.Action("FirstAuditInfo")">我要申请投资</a>
+        </div>
+        <div>
+            <table class="table table-striped">
+                <tr class="table-header">
+                    <td class="col-1">申请日期</td>
+                    <td class="col-2">项目名称</td>
+                    <td class="col-3">申请资金(万元)</td>
+                    <td class="col-4">阶段状态</td>
+                    <td class="col-5">更新时间</td>
+                    <td class="col-6">操作</td>
+                </tr>
+                @if (Model.Invests.Count == 0)
+                {
+                    <tr>
+                        <td colspan="7"><p>您目前还没有投资申请！</p></td>
+                    </tr>
+                }
+                else
+                {
+                    foreach (var item in Model.Invests)
+                    {
+
+                        <tr>
+                            <td class="col-1">@item.ApplyTime.ToString("yyyy-MM-dd")</td>
+                            <td class="col-2">@item.FirstAuditInfo.ProjectName</td>
+                            <td class="col-3">@item.FirstAuditInfo.ApplyQuota</td>
+                            <td class="col-4">@item.GetStatusDescription()</td>
+                            <td class="col-5">@Html.DisplayFor(m => @item.UpdateTime)</td>
+                            <td class="col-6">
+                                <a class="btn btn-primary btn-sm" href="@Url.Action("Invest", new { item.Id })">点击进入</a>
+                            </td>
+                        </tr>
+                    }
+                }
+            </table>
+        </div>
+    </div>
+
+    <div class="loan">
+        <div class="section-title">
+            <span>我的贷款</span>
+            <a class="btn btn-primary" href="@Url.Action("loan")">我要申请贷款</a>
+        </div>
+        <table class="table table-striped">
+            <tr class="table-header">
+                <td class="col-1">申请日期</td>
+                <td class="col-2">项目名称</td>
+                <td class="col-3">申请资金(万元)</td>
+                <td class="col-4">状态</td>
+                <td class="col-5">更新时间</td>
+                <td class="col-6">操作</td>
+            </tr>
+
+            @if (Model.Loans.Count == 0)
+            {
+                <tr>
+                    <td colspan="6"><p>您目前还没有贷款申请！</p></td>
+                </tr>
+            }
+            else
+            {
+                foreach (var item in Model.Loans)
+                {
+                    <tr>
+                        <td class="col-1">@item.ApplyTime.ToString("yyyy-MM-dd")</td>
+                        <td class="col-2">@item.ProjectName</td>
+                        <td class="col-3">@item.ApplyQuota</td>
+                        <td class="col-4">@Html.DisplayFor(m => item.Status)</td>
+                        <td class="col-5">@item.UpdateDate</td>
+                        <td class="col-6">
+                            <a class="btn btn-primary btn-sm" href="@Url.Action("ApplyLoan", new { item.Id })">点击进入</a>
+                        </td>
+                    </tr>
+                }
+            }
+        </table>
+    </div>
+
+    <div class="my-roadshow">
+        <div class="section-title">
+            <span>我的路演 </span>
+        </div>
+        <div role="tabpanel">
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active">
+                    <a href="#biz" aria-controls="biz" role="tab" data-toggle="tab">业务路演</a>
+                </li>
+                <li role="presentation">
+                    <a href="#capital" aria-controls="capital" role="tab" data-toggle="tab">资本路演</a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane roadshow active" id="biz">
+                    @if (Model.Roadshows.Count == 0)
+                    {
+                        <div class="no-data-tip">目前还没有上传业务路演！</div>
+                    }
+                    else
+                    {
+                        <ul>
+                            @foreach (var item in Model.Roadshows)
+                            {
+                                if (item != null)
+                                {
+                                    <li>
+                                        @Html.Partial("Template/RoadshowItemForEdit", item)
+                                    </li>
+                                }
+                            }
+                        </ul>
+                        <div class="clearfix"></div>
+                    }
+                </div>
+                <div role="tabpanel" class="tab-pane roadshow" id="capital">
+                    @if (Model.CapitalRoadshows.Count == 0)
+                    {
+                        <div class="no-data-tip">目前还没有资本路演！</div>
+                    }
+                    else
+                    {
+                        <ul>
+                            @foreach (var item in Model.CapitalRoadshows)
+                            {
+                                if (item != null)
+                                {
+                                    <li>
+                                        @Html.Partial("Template/CapitalRoadshowItem", item)  @*todo*@
+                                    </li>
+                                }
+                            }
+                        </ul>
+                        <div class="clearfix"></div>
+                    }
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+

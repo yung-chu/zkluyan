@@ -1,0 +1,68 @@
+﻿@model Zkly.DAL.Models.CapitalRoadshow
+
+<dl class="dl-horizontal dl-md">
+
+    <dt>
+        公司名称：
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.CompanyName)
+    </dd>
+
+    <dt>
+        活动主题：
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.Subject)
+    </dd>
+
+    <dt>
+        活动开始时间：
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.StartDate)
+    </dd>
+
+    <dt>
+        活动结束时间：
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.EndDate)
+    </dd>
+
+    <dt>
+        主持人姓名：
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.Hoster)
+    </dd>
+
+    <dt>
+        活动描述：
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.Description)
+    </dd>
+
+    <dt>
+        公共密码：
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.PublicPassword)
+    </dd>
+
+    <dt>
+        活动封面：
+    </dt>
+
+    <dd>
+        <img src="@Url.Action("FileDisplayById", "File", new { id = Model.FileId})" style="max-width:400px; max-height:250px;" />
+    </dd>
+</dl>

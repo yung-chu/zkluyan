@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewBag.Title = "LookInvestment";
+    Layout = "~/Views/Shared/_LayoutHelp.cshtml";
+}
+        <div class="row" id="zkly_Row">
+
+    <div class="col-xs-1">
+        <img src="~/images/PublicImg/Blue.png" />
+    </div>
+    <div class="col-xs-10">
+        查看投资申请状态
+    </div>
+
+</div>
+        <!--neirong开始-->
+        <div class="neirong">
+
+            <ul id="UI">
+                <li>
+                    <div class="tiao"></div>
+                    <div class="aa-1">
+                        <span>
+                            <i><img src="~/images/HelpCenterImg/Step_1.png" /> </i>
+                            <p>点击我的主页</p>
+
+                        </span>
+                        <div class="aa-2">
+                            <a><img src="~/Images/HelpCenterImg/Invest_16.png" /></a>
+                        </div>
+                    </div>
+                </li>
+
+                <li>
+
+                    <div class="aa-1">
+                        <span>
+                            <i><img src="~/images/HelpCenterImg/Step_2.png" /> </i>
+                            <p>可以查看您现在投资申请的状态</p>
+
+                        </span>
+                        <div class="aa-2">
+                            <a><img src="~/Images/HelpCenterImg/CapitalRoadShow03.png"></a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <!--neirong结束-->
+<!--content结束-->
+@section scripts
+{
+    @Scripts.Render("~/js/helpPageHover")
+}
+

@@ -1,0 +1,85 @@
+﻿
+@{
+    ViewBag.Title = "UpdFirstInstance";
+    Layout = "~/Views/Shared/_LayoutHelp.cshtml";
+}
+<!--content开始-->
+
+  
+       <div class="row" id="zkly_Row">
+
+    <div class="col-xs-1">
+        <img src="~/images/PublicImg/Blue.png" />
+    </div>
+    <div class="col-xs-10" style="font-size: 26px; color: #0d83d7;">
+        修改一审资料
+    </div>
+
+</div>
+        <!--wenzi结束-->
+        <!--neirong开始-->
+        <div class="neirong">
+
+            <ul id="UI">
+                <li>
+                    <div class="tiao"></div>
+                    <div class="aa-1">
+                        <span>
+                            <i><img src="~/images/HelpCenterImg/Step_1.png" /> </i>
+                            <p>企业方登录后点击主页面上的（我的主页）</p>
+                            @*<a href="#">免费注册</a>*@
+                        </span>
+                        <div class="aa-2">
+                            <a><img src="~/Images/HelpCenterImg/Invest_16.png"/></a>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="tiao"></div>
+                    <div class="aa-1">
+                        <span>
+                            <i><img src="~/images/HelpCenterImg/Step_2.png" /> </i>
+                            <p>点击我的投资下面状态为未通过或已提交的一审材料，点击进入</p>
+
+                        </span>
+                        <div class="aa-2">
+                            <a><img src="~/Images/HelpCenterImg/Invest_14.png"></a>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="tiao"></div>
+                    <div class="aa-1">
+                        <span>
+                            <i><img src="~/images/HelpCenterImg/Step_3.png" /> </i>
+                            <p>按自己的需求修改一审材料，修改完毕勾中我已阅读XXXX协议进行申请</p>
+
+                        </span>
+                        <div class="aa-2">
+                            <a><img src="~/Images/HelpCenterImg/FirstInstance.png"></a>
+                        </div>
+                    </div>
+                </li>
+
+                <li>
+
+                    <div class="aa-1">
+                        <span>
+                            <i><img src="~/images/HelpCenterImg/Step_4.png" /> </i>
+                            <p>修改成功</p>
+
+                        </span>
+                        <div class="aa-2">
+                            <a><img src="~/Images/HelpCenterImg/Invest_12.png"></a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+   
+<!--content结束-->
+@section scripts
+{
+    @Scripts.Render("~/js/helpPageHover")
+}
+

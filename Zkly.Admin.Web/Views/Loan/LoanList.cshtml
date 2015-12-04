@@ -1,0 +1,65 @@
+﻿@model PagedList.IPagedList<Zkly.DAL.Models.Loan>
+@using PagedList.Mvc;
+
+
+@{
+    ViewBag.Title = "申请资料列表";
+}
+
+<div class="panel panel-default ">
+        <div class="panel-heading">
+            @ViewBag.Title
+        </div>
+        @Html.Partial("_SuccessMessage")
+        @Html.Partial("_ErrorMessage")
+    <div id="container" class="panel-body first-audit">
+
+        @if (Model.Count == 0)
+        {
+            <div class="panel-body">
+                <div class="jumbotron alert alert-warning text-center" role="alert">
+                    <h1><span class="fa fa-exclamation-circle" aria-hidden="true"></span> 没有可以显示的申请资料列表！</h1>
+                </div>
+            </div>
+        }
+        else
+        {
+            <table name="audit" class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>申请日期</th>
+                        <th>公司</th>
+                        <th>项目</th>
+                        <th>申请资金</th>
+                        <th>状态</th>
+                        <th>申请时间</th>
+                        <th>更新时间</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                            {
+                            <tr>
+                                <td>@item.ApplyTime.ToString("yyyy-MM-dd")</td>
+                                <td>@item.CompanyName</td>
+                                <td>
+                                    <a href="@Url.Action("AuditDetails", "Loan", new { item.Id })" target="_blank">@item.ProjectName</a>
+                                </td>
+                                <td>@string.Format("{0:N0} 万元", item.ApplyQuota)</td>
+                                <td>@Html.DisplayFor(m => @item.Status)</td>
+                                <td>@Html.DisplayFor(m => item.ApplyTime)</td>
+                                <td>@Html.DisplayFor(m => item.UpdateDate)</td>
+                            </tr>
+                            }
+                </tbody>
+            </table>
+
+        }
+    </div>
+    <div class="panel-footer"  style="height:55px;">
+            <div class="pull-right">
+                @Html.DisplayPagination(page => Url.Action("LoanList", "Loan", new { stage = ViewBag.Stage, state = ViewBag.State, page }))
+            </div>
+        </div>
+
+    </div>

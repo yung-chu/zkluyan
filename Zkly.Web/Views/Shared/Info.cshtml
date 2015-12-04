@@ -1,0 +1,37 @@
+﻿@model System.Web.Mvc.HandleErrorInfo
+
+@{
+    ViewBag.Title = "消息";
+}
+
+<!--content头部信息结束-->
+@section heads {
+    @Styles.Render("~/css/TestAndVerify")
+}
+<div class="content">
+    <div class="yanzheng">
+        <ul>
+            <li>
+                <div class="col-xs-12 text-center"><img src="~/images/PublicImg/PromptWarning.png" /></div>
+
+                <div class="col-xs-12 text-center " id="Zkly_Title">提 &nbsp;&nbsp;&nbsp;示</div>
+                <div class="col-xs-12 text-center " id="Zkly_fTitle"> 有新消息哟。</div>
+                <div class="col-xs-12 text-center" id="showTimer">
+                    @if (String.IsNullOrEmpty(ViewBag.Message))
+                    {
+                    <h2 id="time">哦，好吧，你收到了一个未知的消息，肯定是程序员偷懒了，打客服投诉他吧！</h2>
+                    }
+                    else
+                    {
+                    <h2 id="time">@ViewBag.Message</h2>
+                    }
+                   
+                </div>
+                <div class="col-xs-12 text-center">
+
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+<!--content头部信息结束-->

@@ -1,0 +1,63 @@
+﻿.content .yanzheng {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+.content .yanzheng ul li img {
+  padding: 15px 482px;
+}
+.content .yanzheng ul li #Zkly_Title {
+  font-size: 24px;
+  color: #0d83d7;
+  text-align: center;
+  margin-bottom: 15px;
+}
+.content .yanzheng ul li #Zkly_ResetPwdConfirmationOk label {
+  margin-left: 10px;
+}
+.content .yanzheng ul li #showTimer #time {
+  font-size: 20px;
+  color: #0d83d7;
+  margin-left: 35px;
+}
+.content .yanzheng ul li #Zkly_fTitle {
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+.content .yanzheng ul li #Zkly_Login {
+  margin-top: 3px;
+}
+.content .yanzheng ul li #Zkly_TitleError {
+  font-size: 25px;
+  color: red;
+}
+#zkly-div-margin {
+  margin-top: 20px;
+}
+#zkly-div-margin .col-xs-6 {
+  padding-top: 50px;
+}
+#zkly-div-margin .col-xs-6 .title {
+  padding-left: 18px;
+}
+#zkly-div-margin .col-xs-6 #phoneNumber {
+  padding-top: 6px;
+}
+#zkly-div-margin .col-xs-6 #zkly-Btn-margin {
+  margin-left: 200px;
+}
+#zkly-div-margin .col-xs-6 #inputVerifyCode {
+  display: none;
+}
+#zkly-div-margin .col-xs-6 #zkly-div-Title {
+  font-size: 14px;
+  color: #0d83d7;
+  text-align: center;
+}
+.col-xs-10 {
+  width: 59.33333333%;
+}
+#user-role-group .glyphicon-ok {
+  top: 0px;
+  left: 180px;
+}
+/*# sourceMappingURL=TestAndVerify.css.map */
